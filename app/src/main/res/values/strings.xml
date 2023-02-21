@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">CharityApp</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_event">Event</string>
+    <string name="title_emergency">Emergency</string>
+    <string name="title_need_help">Need Help</string>
 </resources>
