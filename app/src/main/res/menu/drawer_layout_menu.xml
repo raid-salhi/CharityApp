@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-
     <item
         android:id="@+id/navigation_home"
         android:icon="@drawable/ic_home_black_24dp"
         android:title="@string/title_home" />
-
+    <item
+        android:id="@+id/navigation_dashboard"
+        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:title="@string/title_dashboard" />
 
     <item
         android:id="@+id/navigation_event"
@@ -15,6 +17,8 @@
         android:id="@+id/navigation_emergency"
         android:icon="@drawable/baseline_notification_important_24"
         android:title="@string/title_emergency" />
-
-
+    <item
+        android:id="@+id/navigation_need_help"
+        android:icon="@drawable/baseline_support_24"
+        android:title="@string/title_need_help" />
 </menu>
