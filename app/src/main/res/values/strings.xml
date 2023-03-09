@@ -7,4 +7,6 @@
     <string name="title_event">Event</string>
     <string name="title_emergency">Emergency</string>
     <string name="title_need_help">Need Help</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
 </resources>
