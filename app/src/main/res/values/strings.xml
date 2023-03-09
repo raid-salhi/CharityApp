@@ -9,4 +9,11 @@
     <string name="title_need_help">Need Help</string>
     <string name="open">Open</string>
     <string name="close">Close</string>
+    <string name="title_donate">Donate</string>
+    <string name="title_projects">Projects</string>
+    <string name="profile">Profile</string>
+    <string name="services">Services</string>
+    <string name="donate">Donate</string>
+    <string name="others">Others</string>
+    <string name="faq">FAQ</string>
 </resources>

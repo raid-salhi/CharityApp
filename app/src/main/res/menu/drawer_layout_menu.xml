@@ -1,24 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/navigation_home"
-        android:icon="@drawable/ic_home_black_24dp"
-        android:title="@string/title_home" />
-    <item
-        android:id="@+id/navigation_dashboard"
-        android:icon="@drawable/ic_dashboard_black_24dp"
-        android:title="@string/title_dashboard" />
-
+        android:id="@+id/navigation_profile"
+        android:icon="@drawable/ic_profile"
+        android:title="@string/profile" />
     <item
         android:id="@+id/navigation_event"
         android:icon="@drawable/baseline_event_24"
         android:title="@string/title_event" />
     <item
-        android:id="@+id/navigation_emergency"
-        android:icon="@drawable/baseline_notification_important_24"
-        android:title="@string/title_emergency" />
-    <item
         android:id="@+id/navigation_need_help"
         android:icon="@drawable/baseline_support_24"
         android:title="@string/title_need_help" />
+    <item android:title="@string/services">
+        <menu>
+            <item
+                android:id="@+id/navigation_home"
+                android:icon="@drawable/ic_home_black_24dp"
+                android:title="@string/title_home" />
+            <item
+                android:id="@+id/navigation_donate"
+                android:icon="@drawable/donate"
+                android:title="@string/donate" />
+
+            <item
+                android:id="@+id/navigation_emergency"
+                android:icon="@drawable/baseline_notification_important_24"
+                android:title="@string/title_emergency" />
+            <item
+                android:id="@+id/navigation_projects"
+                android:icon="@drawable/ic_projects"
+                android:title="@string/title_projects" />
+        </menu>
+    </item>
+    <item android:title="@string/others">
+        <menu>
+            <item
+                android:id="@+id/navigation_faq"
+                android:icon="@drawable/ic_faq"
+                android:title="@string/faq" />
+        </menu>
+    </item>
+
 </menu>

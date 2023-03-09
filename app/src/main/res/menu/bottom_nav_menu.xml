@@ -6,15 +6,18 @@
         android:icon="@drawable/ic_home_black_24dp"
         android:title="@string/title_home" />
 
-
     <item
-        android:id="@+id/navigation_event"
-        android:icon="@drawable/baseline_event_24"
-        android:title="@string/title_event" />
+        android:id="@+id/navigation_donate"
+        android:icon="@drawable/donate"
+        android:title="@string/title_donate" />
     <item
         android:id="@+id/navigation_emergency"
         android:icon="@drawable/baseline_notification_important_24"
         android:title="@string/title_emergency" />
+    <item
+        android:id="@+id/navigation_projects"
+        android:icon="@drawable/ic_projects"
+        android:title="@string/title_projects" />
 
 
 </menu>
