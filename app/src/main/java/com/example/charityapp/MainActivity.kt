@@ -26,12 +26,15 @@ class MainActivity : AppCompatActivity() {
         val bottomNavView: BottomNavigationView = binding.bottomNavView
         val drawerLayout: DrawerLayout = binding.drawerLayout
         val navView: NavigationView = binding.navView
-
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
+        setSupportActionBar(binding.toolbar)
+        supportActionBar?.title=""
         toggle = ActionBarDrawerToggle(this,drawerLayout,R.string.open,R.string.close)
+        toggle.drawerArrowDrawable.color=getColor(R.color.green_main)
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
        appBarConfiguration = AppBarConfiguration(

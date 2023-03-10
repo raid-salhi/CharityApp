@@ -1,6 +1,4 @@
 package com.example.charityapp.ui.home
-
-import android.R
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +7,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.example.charityapp.MainActivity
 import com.example.charityapp.databinding.FragmentHomeBinding
 
 
@@ -31,7 +30,7 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        (activity as AppCompatActivity?)!!.supportActionBar?.title = "Home"
+
 
         val textView: TextView = binding.textHome
         homeViewModel.text.observe(viewLifecycleOwner) {

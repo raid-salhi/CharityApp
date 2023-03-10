@@ -47,4 +47,14 @@
         android:name="com.example.charityapp.ui.donate.DonateFragment"
         android:label="@string/title_donate"
         tools:layout="@layout/fragment_donate" />
+    <fragment
+        android:id="@+id/navigation_financial_aids"
+        android:name="com.example.charityapp.ui.donate.donateTabs.financialAids.FinancialAidsFragment"
+        android:label="@string/title_financial_aids"
+        tools:layout="@layout/fragment_financial_aids" />
+    <fragment
+        android:id="@+id/navigation_others"
+        android:name="com.example.charityapp.ui.donate.donateTabs.others.OthersFragment"
+        android:label="@string/title_others"
+        tools:layout="@layout/fragment_others" />
 </navigation>
