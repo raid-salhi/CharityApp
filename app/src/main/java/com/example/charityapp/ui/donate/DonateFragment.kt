@@ -1,6 +1,6 @@
 package com.example.charityapp.ui.donate
 
-import ViewPagerDonateAdapter
+
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,10 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.viewpager.widget.ViewPager
-import com.example.charityapp.MainActivity
-import com.example.charityapp.R
 import com.example.charityapp.databinding.FragmentDonateBinding
-import com.example.charityapp.databinding.FragmentHomeBinding
 import com.example.charityapp.ui.donate.donateTabs.financialAids.FinancialAidsFragment
 import com.example.charityapp.ui.donate.donateTabs.others.OthersFragment
 import com.google.android.material.tabs.TabLayout

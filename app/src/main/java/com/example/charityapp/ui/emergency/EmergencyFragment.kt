@@ -1,6 +1,6 @@
 package com.example.charityapp.ui.emergency
 
-import ViewPagerEmergencyAdapter
+
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -28,7 +28,7 @@ class EmergencyFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentEmergencyBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
@@ -49,6 +49,10 @@ class EmergencyFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(EmergencyViewModel::class.java)
         // TODO: Use the ViewModel
+    }
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
 }

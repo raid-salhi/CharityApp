@@ -1,11 +1,10 @@
-package com.example.charityapp.ui.donate
-
+package com.example.charityapp.ui.projects
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
 
-class ViewPagerDonateAdapter(supportFragmentManager: FragmentManager) :
+class ViewPagerProjectsAdapter(supportFragmentManager: FragmentManager) :
     FragmentStatePagerAdapter(supportFragmentManager) {
 
     // declare arrayList to contain fragments and its title
