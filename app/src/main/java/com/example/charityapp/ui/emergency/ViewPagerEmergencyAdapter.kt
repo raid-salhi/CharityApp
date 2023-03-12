@@ -2,7 +2,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
 
-class ViewPagerAdapter(supportFragmentManager: FragmentManager) :
+class ViewPagerEmergencyAdapter(supportFragmentManager: FragmentManager) :
     FragmentStatePagerAdapter(supportFragmentManager) {
 
     // declare arrayList to contain fragments and its title

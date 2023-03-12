@@ -1,6 +1,6 @@
 package com.example.charityapp.ui.donate
 
-import ViewPagerAdapter
+import ViewPagerDonateAdapter
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -36,7 +36,7 @@ class DonateFragment : Fragment() {
         _binding = FragmentDonateBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val adapter = ViewPagerAdapter(childFragmentManager)
+        val adapter = ViewPagerDonateAdapter(childFragmentManager)
         pager= binding.pager
         tab =binding.tabs
 
