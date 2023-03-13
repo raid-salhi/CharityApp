@@ -7,11 +7,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import androidx.lifecycle.lifecycleScope
 import androidx.viewpager.widget.ViewPager
+import com.example.charityapp.R
 import com.example.charityapp.databinding.FragmentDonateBinding
 import com.example.charityapp.ui.donate.donateTabs.financialAids.FinancialAidsFragment
 import com.example.charityapp.ui.donate.donateTabs.others.OthersFragment
 import com.google.android.material.tabs.TabLayout
+import kotlinx.coroutines.launch
 
 class DonateFragment : Fragment() {
     private var _binding: FragmentDonateBinding? = null
@@ -48,10 +52,15 @@ class DonateFragment : Fragment() {
     }
 
 
+    @Deprecated("Deprecated in Java")
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(DonateViewModel::class.java)
         // TODO: Use the ViewModel
+        lifecycleScope.launch {
+            val toolbarTitle = activity?.findViewById<TextView>(R.id.toolbar_title)
+            toolbarTitle?.setText(R.string.donate)
+        }
     }
     override fun onDestroyView() {
         super.onDestroyView()

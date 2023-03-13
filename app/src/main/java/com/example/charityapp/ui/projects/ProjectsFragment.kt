@@ -6,11 +6,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import androidx.lifecycle.lifecycleScope
 import androidx.viewpager.widget.ViewPager
+import com.example.charityapp.R
 import com.example.charityapp.databinding.FragmentProjectsBinding
 import com.example.charityapp.ui.projects.projectDonation.ProjectDonationFragment
 import com.example.charityapp.ui.projects.volunteer.VolunteerFragment
 import com.google.android.material.tabs.TabLayout
+import kotlinx.coroutines.launch
 
 class ProjectsFragment : Fragment() {
     private var _binding: FragmentProjectsBinding? = null
@@ -44,10 +48,15 @@ class ProjectsFragment : Fragment() {
         return root
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(ProjectsViewModel::class.java)
+        viewModel = ViewModelProvider(this)[ProjectsViewModel::class.java]
         // TODO: Use the ViewModel
+        lifecycleScope.launch {
+            val toolbarTitle = activity?.findViewById<TextView>(R.id.toolbar_title)
+            toolbarTitle?.setText(R.string.title_projects)
+        }
     }
     override fun onDestroyView() {
         super.onDestroyView()

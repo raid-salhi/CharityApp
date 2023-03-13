@@ -39,7 +39,7 @@
         tools:layout="@layout/fragment_projects" />
     <fragment
         android:id="@+id/navigation_profile"
-        android:name="com.example.charityapp.ui.profile.ProfileFragment"
+        android:name="com.example.charityapp.ui.projects.profile.ProfileFragment"
         android:label="@string/profile"
         tools:layout="@layout/fragment_profile" />
     <fragment

@@ -4,11 +4,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.example.charityapp.MainActivity
+import androidx.lifecycle.lifecycleScope
+import com.example.charityapp.R
 import com.example.charityapp.databinding.FragmentHomeBinding
+import kotlinx.coroutines.launch
 
 
 class HomeFragment : Fragment() {
@@ -24,19 +25,26 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val homeViewModel =
-            ViewModelProvider(this).get(HomeViewModel::class.java)
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
+        val toolbarTitle = activity?.findViewById<TextView>(R.id.toolbar_title)
+        toolbarTitle?.setText(R.string.title_home)
 
 
-        val textView: TextView = binding.textHome
-        homeViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
         return root
+    }
+    @Deprecated("Deprecated in Java")
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        val homeViewModel =
+            ViewModelProvider(this).get(HomeViewModel::class.java)
+        // TODO: Use the ViewModel
+        lifecycleScope.launch {
+            val toolbarTitle = activity?.findViewById<TextView>(R.id.toolbar_title)
+            toolbarTitle?.setText(R.string.title_home)
+        }
     }
 
     override fun onDestroyView() {

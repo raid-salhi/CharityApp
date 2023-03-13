@@ -1,4 +1,4 @@
-package com.example.charityapp.ui.profile
+package com.example.charityapp.ui.projects.profile
 
 import androidx.lifecycle.ViewModel
 

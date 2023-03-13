@@ -7,12 +7,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import androidx.lifecycle.lifecycleScope
 import androidx.viewpager.widget.ViewPager
+import com.example.charityapp.R
 import com.example.charityapp.databinding.FragmentEmergencyBinding
 import com.example.charityapp.ui.emergency.bloodDonation.BloodDonationFragment
 import com.example.charityapp.ui.emergency.medecine.MedecineFragment
 import com.example.charityapp.ui.emergency.surgicalAids.SurgicalAidsFragment
 import com.google.android.material.tabs.TabLayout
+import kotlinx.coroutines.launch
 
 class EmergencyFragment : Fragment() {
     private var _binding: FragmentEmergencyBinding? = null
@@ -49,6 +53,10 @@ class EmergencyFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(EmergencyViewModel::class.java)
         // TODO: Use the ViewModel
+        lifecycleScope.launch {
+            val toolbarTitle = activity?.findViewById<TextView>(R.id.toolbar_title)
+            toolbarTitle?.setText(R.string.title_emergency)
+        }
     }
     override fun onDestroyView() {
         super.onDestroyView()
