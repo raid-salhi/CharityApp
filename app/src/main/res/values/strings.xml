@@ -7,7 +7,7 @@
     <string name="title_event">Event</string>
     <string name="title_emergency">Emergency</string>
     <string name="title_need_help">Need Help</string>
-<<<<<<< Updated upstream
+
     <string name="open">Open</string>
     <string name="close">Close</string>
     <string name="title_donate">Donate</string>
@@ -19,7 +19,7 @@
     <string name="faq">FAQ</string>
     <string name="title_financial_aids">Financial Aids</string>
     <string name="title_others">Others</string>
-=======
+
     <string name="blood_group_label">Blood Group</string>
     <string-array name="blood_groups">
         <item>A+</item>
@@ -31,5 +31,4 @@
         <item>O+</item>
         <item>O-</item>
     </string-array>
->>>>>>> Stashed changes
 </resources>

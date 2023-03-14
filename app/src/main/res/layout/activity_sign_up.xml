@@ -29,7 +29,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/first_name_layout"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="First Name"
@@ -45,7 +45,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/last_name_layout"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Last Name"
@@ -61,7 +61,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/email_layout"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="First Name"
@@ -77,7 +77,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/password_layout"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="First Name"
@@ -93,7 +93,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/wilaya_layout"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="First Name"
@@ -121,12 +121,12 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp" />
 
-        <com.google.android.material.button.MaterialButton
+        <Button
             android:id="@+id/sign_up_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Sign up"
-            app:backgroundTint="#33cccc" />
+            app:backgroundTint="@color/green_main" />
 
         <TextView
             android:id="@+id/login_text"
