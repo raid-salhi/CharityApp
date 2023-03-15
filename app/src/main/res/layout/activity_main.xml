@@ -5,8 +5,8 @@
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    android:background="@color/white">
+    android:background="@color/white"
+    android:fitsSystemWindows="true">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -72,11 +72,16 @@
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_view"
+        style="@style/Widget.Design.NavigationView"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
+        android:background="@color/white"
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/nav_header"
-        app:menu="@menu/drawer_layout_menu"
-        android:background="@color/white"/>
+        app:itemIconTint="@color/navigation_item_color"
+        app:itemShapeFillColor="@android:color/transparent"
+        app:itemTextColor="@color/navigation_item_color"
+        app:menu="@menu/drawer_layout_menu" />
+
 </androidx.drawerlayout.widget.DrawerLayout>
