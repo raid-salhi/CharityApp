@@ -29,13 +29,14 @@ import java.util.HashMap;
 public class SignUp extends AppCompatActivity {
 
     private Spinner bloodGroup;
+    private Spinner Wilayas;
     private EditText firstname;
     private EditText lastname;
     private EditText email;
     private EditText password;
-    private EditText wilaya;
     private TextView LoginText;
     private String bloodType;
+    private String wilaya;
     private Button signUp;
 
     private DatabaseReference reference;
@@ -50,12 +51,12 @@ public class SignUp extends AppCompatActivity {
 
 
         bloodGroup = findViewById(R.id.blood_group);
+        Wilayas = findViewById(R.id.wilaya);
         LoginText = findViewById(R.id.login_text);
         firstname = findViewById(R.id.first_name_edit_text);
         lastname = findViewById(R.id.last_name_edit_text);
         email = findViewById(R.id.email_edit_text);
         password = findViewById(R.id.password_edit_text);
-        wilaya = findViewById(R.id.wilaya_edit_text);
         signUp = findViewById(R.id.sign_up_button);
 
         reference = FirebaseDatabase.getInstance().getReference();
@@ -74,10 +75,28 @@ public class SignUp extends AppCompatActivity {
             }
         });
 
+        Wilayas.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                wilaya = parent.getSelectedItem().toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
                 this,R.array.blood_groups, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         bloodGroup.setAdapter(adapter);
+
+        ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(
+                this,R.array.wilayas, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        Wilayas.setAdapter(adapter1);
+
         LoginText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -92,19 +111,18 @@ public class SignUp extends AppCompatActivity {
                 String Lastname = lastname.getText().toString();
                 String Email = email.getText().toString();
                 String Password = password.getText().toString();
-                String Wilaya = wilaya.getText().toString();
                 if(TextUtils.isEmpty(Firstname) || TextUtils.isEmpty(Lastname) || TextUtils.isEmpty(Email)
-                        || TextUtils.isEmpty(Password) || TextUtils.isEmpty(Wilaya) || TextUtils.isEmpty(bloodType)){
+                        || TextUtils.isEmpty(Password) || TextUtils.isEmpty(wilaya) || TextUtils.isEmpty(bloodType)){
                     Toast.makeText(SignUp.this, "Empty credentials !", Toast.LENGTH_SHORT).show();
                 } else if (Password.length() < 6) {
                     Toast.makeText(SignUp.this, "Too short password", Toast.LENGTH_SHORT).show();
                 }else {
-                    registeruser(Firstname, Lastname, Email, Password, Wilaya,bloodType);
+                    registeruser(Firstname, Lastname, Email, Password, wilaya,bloodType);
                 }
             }
         });
     }
-    private void registeruser(String Firstname,String Lastname, String Email,String Password,String Wilaya, String bloodType){
+    private void registeruser(String Firstname,String Lastname, String Email,String Password,String wilaya, String bloodType){
         progressDialog.setMessage("Please Wait!");
         progressDialog.show();
 
@@ -115,7 +133,7 @@ public class SignUp extends AppCompatActivity {
                 map.put("Firstname" , Firstname);
                 map.put("Lastname" , Lastname);
                 map.put("Email" , Email);
-                map.put("Wilaya" , Wilaya);
+                map.put("Wilaya" , wilaya);
                 map.put("Blood Group" , bloodType);
                 map.put("id" , auth.getCurrentUser().getUid());
                 reference.child("Users").child(auth.getCurrentUser().getUid()).setValue(map)

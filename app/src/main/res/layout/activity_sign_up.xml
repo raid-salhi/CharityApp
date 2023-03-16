@@ -12,9 +12,12 @@
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:src="@drawable/logo"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -25,14 +28,18 @@
         android:padding="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/first_name_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="First Name"
-            android:padding="5dp">
+            android:padding="5dp"
+            android:layout_alignParentStart="true">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/first_name_edit_text"
@@ -47,7 +54,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Last Name"
-            android:padding="5dp">
+            android:padding="5dp"
+            android:layout_alignParentEnd="true">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/last_name_edit_text"
@@ -74,7 +82,6 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/password_layout"
-
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Password"
@@ -88,48 +95,66 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/wilaya_layout"
-
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Wilaya"
-            android:padding="5dp">
+            android:layout_marginTop="8dp">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/wilaya_edit_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="text" />
-
-        </com.google.android.material.textfield.TextInputLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true">
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:labelFor="@id/blood_group"
             android:layout_marginStart="5dp"
-            android:text="Blood Group" />
+            android:text="Blood Group :" />
 
 
         <Spinner
             android:id="@+id/blood_group"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp" />
+            android:layout_alignParentEnd="true">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:labelFor="@id/wilaya"
+                android:layout_marginStart="5dp"
+                android:text="Wilaya :" />
+
+
+            <Spinner
+                android:id="@+id/wilaya"
+                android:layout_width="115dp"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        </RelativeLayout>
 
         <Button
             android:id="@+id/sign_up_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Sign up"
+            android:layout_marginTop="8dp"
             app:backgroundTint="@color/green_main" />
 
         <TextView
             android:id="@+id/login_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="8dp"
             android:layout_marginBottom="10dp"
             android:text="already have an account? Sign in" />
 
