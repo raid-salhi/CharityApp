@@ -14,24 +14,15 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
-
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tabs"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:tabBackground="@color/white"
-        app:layout_constraintTop_toBottomOf="@id/seperator"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:tabGravity="fill"
-        app:tabMode="fixed"
-        app:tabTextColor="@color/green_main"/>
-    <androidx.viewpager.widget.ViewPager
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/projectsRV"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:id="@+id/pager"
+        app:layout_constraintTop_toBottomOf="@id/seperator"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tabs"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:listitem="@layout/item_card_project"/>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -11,6 +11,7 @@ import android.widget.TextView
 import androidx.lifecycle.lifecycleScope
 import androidx.viewpager.widget.ViewPager
 import com.example.charityapp.R
+import com.example.charityapp.classes.Post
 import com.example.charityapp.databinding.FragmentDonateBinding
 import com.example.charityapp.ui.donate.donateTabs.financialAids.FinancialAidsFragment
 import com.example.charityapp.ui.donate.donateTabs.others.OthersFragment
@@ -23,6 +24,7 @@ class DonateFragment : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+    private val postList = ArrayList<Post>()
 
 
     private lateinit var pager: ViewPager // creating object of ViewPager
@@ -40,6 +42,8 @@ class DonateFragment : Fragment() {
         val adapter = ViewPagerDonateAdapter(childFragmentManager)
         pager= binding.pager
         tab =binding.tabs
+
+
 
         adapter.addFragment(FinancialAidsFragment(),"Financial Aids")
         adapter.addFragment(OthersFragment(),"Others")
@@ -60,6 +64,8 @@ class DonateFragment : Fragment() {
         lifecycleScope.launch {
             val toolbarTitle = activity?.findViewById<TextView>(R.id.toolbar_title)
             toolbarTitle?.setText(R.string.donate)
+            postList.add(Post("Orphins Donations","Donation","Setif",100000,53000, R.drawable.outline_payments_24))
+            postList.add(Post("Poor Family Donations","Donation","Bejaia",50000,23000, R.drawable.outline_payments_24))
         }
     }
     override fun onDestroyView() {

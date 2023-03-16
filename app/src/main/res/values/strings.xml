@@ -33,6 +33,7 @@
     </string-array>
 
     <string name="wilaya_label">Wilaya</string>
+    <string name="title_details">Details</string>
     <string-array name="wilayas">
         <item>Adrar</item>
         <item>Chlef</item>

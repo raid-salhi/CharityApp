@@ -14,13 +14,14 @@ import com.example.charityapp.databinding.FragmentBloodDonationBinding
 import com.example.charityapp.databinding.FragmentFinancialAidsBinding
 import com.example.charityapp.ui.recyclerViews.PostRVAdapter
 
-class FinancialAidsFragment : Fragment() {
+class FinancialAidsFragment() : Fragment() {
 
 
     private var _binding: FragmentFinancialAidsBinding? = null
     private val binding get() = _binding!!
-    private lateinit var postRV : RecyclerView
     private lateinit var viewModel: FinancialAidsViewModel
+
+    private lateinit var postRV : RecyclerView
     private lateinit var adapter : PostRVAdapter
 
 
@@ -30,6 +31,7 @@ class FinancialAidsFragment : Fragment() {
     ): View {
         _binding = FragmentFinancialAidsBinding.inflate(inflater, container, false)
         val root: View = binding.root
+
         val postList = ArrayList<Post>()
         postList.add(Post("Orphins Donations","Donation","Setif",100000,53000, R.drawable.outline_payments_24))
         postList.add(Post("Poor Family Donations","Donation","Bejaia",50000,23000, R.drawable.outline_payments_24))
@@ -48,6 +50,9 @@ class FinancialAidsFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(FinancialAidsViewModel::class.java)
+
+
+
     }
 
 }

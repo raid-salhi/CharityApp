@@ -39,7 +39,7 @@
         tools:layout="@layout/fragment_projects" />
     <fragment
         android:id="@+id/navigation_profile"
-        android:name="com.example.charityapp.ui.projects.profile.ProfileFragment"
+        android:name="com.example.charityapp.ui.profile.ProfileFragment"
         android:label="@string/profile"
         tools:layout="@layout/fragment_profile" />
     <fragment
@@ -57,4 +57,9 @@
         android:name="com.example.charityapp.ui.donate.donateTabs.others.OthersFragment"
         android:label="@string/title_others"
         tools:layout="@layout/fragment_others" />
+    <fragment
+        android:id="@+id/navigation_details"
+        android:name="com.example.charityapp.ui.details.DetailsFragment"
+        android:label="@string/title_details"
+        tools:layout="@layout/fragment_details" />
 </navigation>

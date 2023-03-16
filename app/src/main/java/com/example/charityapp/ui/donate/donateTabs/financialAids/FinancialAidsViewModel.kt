@@ -6,4 +6,5 @@ import com.example.charityapp.R
 import com.example.charityapp.classes.Post
 
 class FinancialAidsViewModel : ViewModel() {
+
 }

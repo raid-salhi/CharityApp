@@ -1,4 +1,4 @@
-package com.example.charityapp.ui.projects.volunteer
+package com.example.charityapp.ui.details
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
@@ -8,24 +8,24 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.charityapp.R
 
-class VolunteerFragment : Fragment() {
+class DetailsFragment : Fragment() {
 
     companion object {
-        fun newInstance() = VolunteerFragment()
+        fun newInstance() = DetailsFragment()
     }
 
-    private lateinit var viewModel: VolunteerViewModel
+    private lateinit var viewModel: DetailsViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_volunteer, container, false)
+        return inflater.inflate(R.layout.fragment_details, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(VolunteerViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(DetailsViewModel::class.java)
         // TODO: Use the ViewModel
     }
 
