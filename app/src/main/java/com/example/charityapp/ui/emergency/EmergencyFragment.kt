@@ -40,6 +40,7 @@ class EmergencyFragment : Fragment() {
         pager= binding.pager
         tab =binding.tabs
 
+        adapter.addFragment(SurgicalAidsFragment(),"All")
         adapter.addFragment(BloodDonationFragment(),"Blood Donation")
         adapter.addFragment(MedecineFragment(),"Medecine")
         adapter.addFragment(SurgicalAidsFragment(),"Surgical Aids")

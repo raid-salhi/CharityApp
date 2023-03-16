@@ -7,20 +7,23 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.charityapp.R
+import com.example.charityapp.databinding.FragmentBloodDonationBinding
+import com.example.charityapp.databinding.FragmentDonateBinding
 
 class BloodDonationFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = BloodDonationFragment()
-    }
-
+    private var _binding: FragmentBloodDonationBinding? = null
+    private val binding get() = _binding!!
     private lateinit var viewModel: BloodDonationViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_blood_donation, container, false)
+    ): View {
+        _binding = FragmentBloodDonationBinding.inflate(inflater, container, false)
+        val root: View = binding.root
+
+        return root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

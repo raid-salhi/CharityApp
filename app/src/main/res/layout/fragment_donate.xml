@@ -19,13 +19,13 @@
         android:id="@+id/tabs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:tabBackground="@color/white"
-        app:layout_constraintTop_toBottomOf="@id/seperator"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/seperator"
+        app:tabBackground="@color/white"
         app:tabGravity="fill"
         app:tabMode="fixed"
-        app:tabTextColor="@color/green_main"/>
+        app:tabTextColor="@color/green_main" />
     <androidx.viewpager.widget.ViewPager
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -34,4 +34,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tabs"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
