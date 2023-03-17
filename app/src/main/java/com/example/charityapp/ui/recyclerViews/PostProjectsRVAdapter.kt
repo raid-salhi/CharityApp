@@ -15,7 +15,7 @@ import com.example.charityapp.R
 import com.example.charityapp.classes.Post
 import com.example.charityapp.ui.details.DetailsFragment
 
-class PostProjectsRVAdapter(private val mList: List<Post>) : RecyclerView.Adapter<PostProjectsRVAdapter.ViewHolder>() {
+class PostProjectsRVAdapter(private val mList: List<Post>,private val clickHandler: PostClickHandler) : RecyclerView.Adapter<PostProjectsRVAdapter.ViewHolder>() {
 
     // create new views
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -47,7 +47,6 @@ class PostProjectsRVAdapter(private val mList: List<Post>) : RecyclerView.Adapte
     }
 
     private fun navigateTofragment(detailsFragment: DetailsFragment) {
-       val transaction: FragmentTransaction
 
     }
 
@@ -57,7 +56,7 @@ class PostProjectsRVAdapter(private val mList: List<Post>) : RecyclerView.Adapte
     }
 
     // Holds the views for adding it to image and text
-    class ViewHolder(ItemView: View) : RecyclerView.ViewHolder(ItemView) {
+    inner class ViewHolder(ItemView: View) : RecyclerView.ViewHolder(ItemView),View.OnClickListener {
         val iconCategory: ImageView = itemView.findViewById(R.id.categoryIcon)
         val title: TextView = itemView.findViewById(R.id.title)
         val category: TextView = itemView.findViewById(R.id.category)
@@ -65,5 +64,13 @@ class PostProjectsRVAdapter(private val mList: List<Post>) : RecyclerView.Adapte
         val amountRemaining: TextView = itemView.findViewById(R.id.amountRemaining)
         val progressBar: ProgressBar = itemView.findViewById(R.id.progressBar)
         val donateButton : Button = itemView.findViewById(R.id.buttonDonate)
+        init {
+            itemView.setOnClickListener (this)
+
+        }
+        override fun onClick(v: View?) {
+            val currentPost = mList[bindingAdapterPosition]
+            clickHandler.clickedPostItem(currentPost)
+        }
     }
 }

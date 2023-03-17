@@ -1,25 +1,35 @@
 package com.example.charityapp.ui.projects
 
+import android.app.Activity
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager.widget.ViewPager
+import com.example.charityapp.MainActivity
 import com.example.charityapp.R
 import com.example.charityapp.classes.Post
 import com.example.charityapp.databinding.FragmentProjectsBinding
+import com.example.charityapp.ui.recyclerViews.PostClickHandler
 import com.example.charityapp.ui.recyclerViews.PostProjectsRVAdapter
 import com.example.charityapp.ui.recyclerViews.PostRVAdapter
 import com.google.android.material.tabs.TabLayout
 import kotlinx.coroutines.launch
+import kotlin.math.log
 
-class ProjectsFragment : Fragment() {
+class ProjectsFragment : Fragment() , PostClickHandler {
+    private val TAG = "ProjectsFragment"
     private var _binding: FragmentProjectsBinding? = null
     private val binding get() = _binding!!
 
@@ -39,10 +49,12 @@ class ProjectsFragment : Fragment() {
         postList.add(Post("Building a house for poor family","Projects","Setif",40000,13000, R.drawable.outline_construction_24))
 
 
-        adapter= PostProjectsRVAdapter(postList)
+        adapter= PostProjectsRVAdapter(postList,this)
         postProjectsRV =binding.projectsRV
         postProjectsRV.layoutManager = LinearLayoutManager(requireContext())
         postProjectsRV.adapter = adapter
+
+
 
 
         return binding.root
@@ -61,6 +73,12 @@ class ProjectsFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    override fun clickedPostItem(post: Post) {
+        Log.d(TAG, post.title)
+        val bundle= bundleOf("title" to post.title)
+        findNavController().navigate(R.id.navigation_details,bundle)
     }
 
 }

@@ -36,7 +36,11 @@
         android:id="@+id/navigation_projects"
         android:name="com.example.charityapp.ui.projects.ProjectsFragment"
         android:label="@string/title_projects"
-        tools:layout="@layout/fragment_projects" />
+        tools:layout="@layout/fragment_projects" >
+        <action
+            android:id="@+id/action_navigation_projects_to_navigation_details"
+            app:destination="@id/navigation_details" />
+    </fragment>
     <fragment
         android:id="@+id/navigation_profile"
         android:name="com.example.charityapp.ui.profile.ProfileFragment"
@@ -61,5 +65,9 @@
         android:id="@+id/navigation_details"
         android:name="com.example.charityapp.ui.details.DetailsFragment"
         android:label="@string/title_details"
-        tools:layout="@layout/fragment_details" />
+        tools:layout="@layout/fragment_details" >
+        <argument
+            android:name="title"
+            app:argType="string" />
+    </fragment>
 </navigation>
