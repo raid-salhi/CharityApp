@@ -5,15 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.donate.DonateFragment">
-    <View
-        android:layout_width="match_parent"
-        android:id="@+id/seperator"
-        android:layout_height="0.5dp"
-        android:background="@color/grey"
-        android:layout_marginTop="?attr/actionBarSize"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabs"
@@ -21,7 +12,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/seperator"
+        app:layout_constraintTop_toTopOf="parent"
         app:tabBackground="@color/white"
         app:tabGravity="fill"
         app:tabMode="fixed"
