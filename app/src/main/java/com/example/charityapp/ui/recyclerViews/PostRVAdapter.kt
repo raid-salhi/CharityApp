@@ -28,7 +28,7 @@ class PostRVAdapter(private val mList: List<Post>) : RecyclerView.Adapter<PostRV
 
         val ItemsViewModel = mList[position]
 
-        holder.iconCategory.setImageResource(ItemsViewModel.iconCategory)
+        holder.iconCategory.setImageResource(R.drawable.outline_payments_24)
         holder.title.text = ItemsViewModel.title
         holder.category.text = ItemsViewModel.category
         holder.location.text = ItemsViewModel.location

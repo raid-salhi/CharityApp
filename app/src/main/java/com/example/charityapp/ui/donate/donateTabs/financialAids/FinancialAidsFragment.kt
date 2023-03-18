@@ -33,8 +33,8 @@ class FinancialAidsFragment() : Fragment() {
         val root: View = binding.root
 
         val postList = ArrayList<Post>()
-        postList.add(Post("Orphins Donations","Donation","Setif",100000,53000, R.drawable.outline_payments_24))
-        postList.add(Post("Poor Family Donations","Donation","Bejaia",50000,23000, R.drawable.outline_payments_24))
+        postList.add(Post("Orphins Donations","Donation","Setif",100000,53000))
+        postList.add(Post("Poor Family Donations","Donation","Bejaia",50000,23000))
 
 
         adapter= PostRVAdapter(postList)

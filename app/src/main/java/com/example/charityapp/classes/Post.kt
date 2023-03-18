@@ -1,15 +1,19 @@
 package com.example.charityapp.classes
 
+import com.example.charityapp.R
+
 class Post(
-    val title : String,
-    val category : String,
-    val location : String,
-    val amountGoal : Int,
-    val amountReached : Int,
-    val iconCategory: Int
+    var title : String = "",
+    var category : String = "",
+    var location : String = "",
+    var amountGoal : Int=0,
+    var amountReached : Int=0,
 ) {
+
     fun getAmountRemaining(): String {
         return "${amountGoal-amountReached} DA"
     }
+
+
 
 }

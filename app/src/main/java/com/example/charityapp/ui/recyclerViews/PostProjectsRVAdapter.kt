@@ -32,7 +32,7 @@ class PostProjectsRVAdapter(private val mList: List<Post>,private val clickHandl
 
         val ItemsViewModel = mList[position]
 
-        holder.iconCategory.setImageResource(ItemsViewModel.iconCategory)
+        holder.iconCategory.setImageResource(R.drawable.outline_construction_24)
         holder.title.text = ItemsViewModel.title
         holder.category.text = ItemsViewModel.category
         holder.location.text = ItemsViewModel.location

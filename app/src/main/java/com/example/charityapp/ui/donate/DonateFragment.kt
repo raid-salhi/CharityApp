@@ -64,8 +64,8 @@ class DonateFragment : Fragment() {
         lifecycleScope.launch {
             val toolbarTitle = activity?.findViewById<TextView>(R.id.toolbar_title)
             toolbarTitle?.setText(R.string.donate)
-            postList.add(Post("Orphins Donations","Donation","Setif",100000,53000, R.drawable.outline_payments_24))
-            postList.add(Post("Poor Family Donations","Donation","Bejaia",50000,23000, R.drawable.outline_payments_24))
+            postList.add(Post("Orphins Donations","Donation","Setif",100000,53000))
+            postList.add(Post("Poor Family Donations","Donation","Bejaia",50000,23000))
         }
     }
     override fun onDestroyView() {

@@ -31,9 +31,9 @@ class OthersFragment : Fragment() {
         val root: View = binding.root
         val postList = ArrayList<Post>()
 
-        postList.add(Post("Needing clothes","Donation","Setif",100000,53000, R.drawable.outline_payments_24))
-        postList.add(Post("Needing funds to buy a baby's needs","Donation","Bejaia",50000,23000, R.drawable.outline_payments_24))
-        postList.add(Post("Looking for i dont know","Donation","Adrar",1000,900, R.drawable.outline_payments_24))
+        postList.add(Post("Needing clothes","Donation","Setif",100000,53000))
+        postList.add(Post("Needing funds to buy a baby's needs","Donation","Bejaia",50000,4500))
+        postList.add(Post("Looking for i dont know","Donation","Adrar",1000,900))
 
 
         adapter= PostRVAdapter(postList)
