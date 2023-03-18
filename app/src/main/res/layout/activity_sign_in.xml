@@ -33,11 +33,11 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/email_layout"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
-            android:padding="5dp"
-            android:hint="Email">
+            android:hint="Email"
+            android:padding="5dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/email_edit_text"
@@ -51,8 +51,8 @@
             android:id="@+id/password_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="5dp"
-            android:hint="Password">
+            android:hint="Password"
+            android:padding="5dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/password_edit_text"

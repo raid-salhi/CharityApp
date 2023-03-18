@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="wilaya_label" >
+        <item>01-Adrar</item>
+        <item>02-Chlef</item>
+        <item>03-Laghouat</item>
+        <item>04-Oum El Bouaghi</item>
+        <item>05-Batna</item>
+        <item>06-Bejaia</item>
+        <item>07-Biskra</item>
+        <item>08-Bechar</item>
+        <item>09-Blida</item>
+        <item>10-Bouira</item>
+        <item>11-Taminrasset</item>
+        <item>12-Tebessa</item>
+        <item>13-Tlemcen</item>
+        <item>14-Tiaret</item>
+        <item>15-Tizi-Ouzou</item>
+        <item>16-Alger</item>
+        <item>17-Djelfa</item>
+        <item>18-Jijel</item>
+        <item>19-Setif</item>
+        <item>20-Saida</item>
+        <item>21-Skikda</item>
+        <item>22-Sidi Bel Abbes</item>
+        <item>23-Annaba</item>
+        <item>24-Guelma</item>
+        <item>25-Constantine</item>
+        <item>26-Medea</item>
+        <item>27-Mostaganem</item>
+        <item>28-MSila</item>
+        <item>29-Mascara</item>
+        <item>30-Ouregla</item>
+        <item>31-Oran</item>
+        <item>32-El Bayadh</item>
+        <item>33-Illizi</item>
+        <item>34-Bordj bou Arreiridj</item>
+        <item>35-Boumerdes</item>
+        <item>36-ElTaref</item>
+        <item>37-Tindouf</item>
+        <item>38-Tissemsilit</item>
+        <item>39-ElOued</item>
+        <item>40-Khenchla</item>
+        <item>41-Souk-Ahras</item>
+        <item>42-Tipaza</item>
+        <item>43-Mila</item>
+        <item>44-AinDefla</item>
+        <item>45-Naama</item>
+        <item>46-AinTemouchent</item>
+        <item>47-Ghardaia</item>
+        <item>48-Relizane</item>
+    </string-array>
+    <string-array name="blood_groups">
+        <item>A+</item>
+        <item>A-</item>
+        <item>B+</item>
+        <item>B-</item>
+        <item>AB+</item>
+        <item>AB-</item>
+        <item>O+</item>
+        <item>O-</item>
+    </string-array>
+
+</resources>

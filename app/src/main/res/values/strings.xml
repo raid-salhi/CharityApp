@@ -21,69 +21,11 @@
     <string name="title_others">Others</string>
 
     <string name="blood_group_label">Blood Group</string>
-    <string-array name="blood_groups">
-        <item>A+</item>
-        <item>A-</item>
-        <item>B+</item>
-        <item>B-</item>
-        <item>AB+</item>
-        <item>AB-</item>
-        <item>O+</item>
-        <item>O-</item>
-    </string-array>
+
 
     <string name="wilaya_label">Wilaya</string>
     <string name="title_details">Details</string>
-    <string-array name="wilayas">
-        <item>Adrar</item>
-        <item>Chlef</item>
-        <item>Laghouat</item>
-        <item>Oum El Bouaghi</item>
-        <item>Batna</item>
-        <item>Bejaia</item>
-        <item>Biskra</item>
-        <item>Bechar</item>
-        <item>Blida</item>
-        <item>Bouira</item>
-        <item>Taminrasset</item>
-        <item>Tebessa</item>
-        <item>Tlemcen</item>
-        <item>Tiaret</item>
-        <item>Tizi-Ouzou</item>
-        <item>Alger</item>
-        <item>Djelfa</item>
-        <item>Jijel</item>
-        <item>Setif</item>
-        <item>Saida</item>
-        <item>Skikda</item>
-        <item>Sidi Bel Abbes</item>
-        <item>Annaba</item>
-        <item>Guelma</item>
-        <item>Constantine</item>
-        <item>Medea</item>
-        <item>Mostaganem</item>
-        <item>MSila</item>
-        <item>Mascara</item>
-        <item>Ouregla</item>
-        <item>Oran</item>
-        <item>El Bayadh</item>
-        <item>Illizi</item>
-        <item>Bordj bou Arreiridj</item>
-        <item>Boumerdes</item>
-        <item>ElTaref</item>
-        <item>Tindouf</item>
-        <item>Tissemsilit</item>
-        <item>ElOued</item>
-        <item>Khenchla</item>
-        <item>Souk-Ahras</item>
-        <item>Tipaza</item>
-        <item>Mila</item>
-        <item>AinDefla</item>
-        <item>Naama</item>
-        <item>AinTemouchent</item>
-        <item>Ghardaia</item>
-        <item>Relizane</item>
-    </string-array>
+
 
 </resources>
 
