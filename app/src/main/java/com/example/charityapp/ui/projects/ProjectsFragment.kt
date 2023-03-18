@@ -17,6 +17,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager.widget.ViewPager
+import com.airbnb.lottie.LottieAnimationView
 import com.example.charityapp.MainActivity
 import com.example.charityapp.R
 import com.example.charityapp.classes.Post
@@ -40,7 +41,7 @@ class ProjectsFragment : Fragment() , PostClickHandler {
     private val TAG = "ProjectsFragment"
     private var _binding: FragmentProjectsBinding? = null
     private val binding get() = _binding!!
-
+    private lateinit var animationView : LottieAnimationView
     private lateinit var viewModel: ProjectsViewModel
     private lateinit var postProjectsRV : RecyclerView
     private lateinit var adapter : PostProjectsRVAdapter
@@ -95,7 +96,7 @@ class ProjectsFragment : Fragment() , PostClickHandler {
         db.collection("Projects").get().addOnSuccessListener{ result ->
                     for (document in result)
                     {
-//                        postList.add(Post(document.get("title").toString(),document.get("category").toString(),document.get("location").toString(),15000,12000))
+                        binding.animationView.visibility = View.GONE
                         postList.add(document.toObject<Post>())
                         adapter.notifyDataSetChanged()
                     }
