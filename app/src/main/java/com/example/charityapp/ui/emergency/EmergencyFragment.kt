@@ -12,6 +12,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.viewpager.widget.ViewPager
 import com.example.charityapp.R
 import com.example.charityapp.databinding.FragmentEmergencyBinding
+import com.example.charityapp.ui.emergency.allEmergency.AllEmergencyFragment
 import com.example.charityapp.ui.emergency.bloodDonation.BloodDonationFragment
 import com.example.charityapp.ui.emergency.medecine.MedecineFragment
 import com.example.charityapp.ui.emergency.surgicalAids.SurgicalAidsFragment
@@ -40,7 +41,7 @@ class EmergencyFragment : Fragment() {
         pager= binding.pager
         tab =binding.tabs
 
-        adapter.addFragment(SurgicalAidsFragment(),"All")
+        adapter.addFragment(AllEmergencyFragment(),"All")
         adapter.addFragment(BloodDonationFragment(),"Blood Donation")
         adapter.addFragment(MedecineFragment(),"Medecine")
         adapter.addFragment(SurgicalAidsFragment(),"Surgical Aids")

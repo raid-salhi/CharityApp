@@ -10,8 +10,14 @@ class Post(
     var amountReached : Int=0,
 ) {
 
-    fun getAmountRemaining(): String {
-        return "${amountGoal-amountReached} DA"
+    fun getAmountReachedPer(): String {
+        return "${amountReached*100/(amountGoal)} %"
+    }
+    fun getAmountGoalCash():String{
+        return "$amountGoal DA"
+    }
+    fun getAmountGoalString():String{
+        return "$amountGoal"
     }
 
 

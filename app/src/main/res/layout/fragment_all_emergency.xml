@@ -4,9 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.emergency.surgicalAids.SurgicalAidsFragment">
+    tools:context=".ui.emergency.allEmergency.AllEmergencyFragment">
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/surgicalAidsRV"
+        android:id="@+id/allEmergencyRV"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:listitem="@layout/item_card" />

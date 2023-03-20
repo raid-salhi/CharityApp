@@ -11,7 +11,7 @@ import com.example.charityapp.R
 import com.example.charityapp.classes.Post
 
 
-class PostRVAdapter(private val mList: List<Post>) : RecyclerView.Adapter<PostRVAdapter.ViewHolder>() {
+class PostRVAdapter(private val mList: List<Post>,private val clickHandler: PostClickHandler) : RecyclerView.Adapter<PostRVAdapter.ViewHolder>() {
 
     // create new views
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -27,12 +27,24 @@ class PostRVAdapter(private val mList: List<Post>) : RecyclerView.Adapter<PostRV
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
         val ItemsViewModel = mList[position]
-
-        holder.iconCategory.setImageResource(R.drawable.outline_payments_24)
+        if (ItemsViewModel.category == "Projects") {
+            holder.amountGoalIcon.visibility = View.GONE
+            holder.iconCategory.setImageResource(R.drawable.outline_construction_24)
+            holder.amountGoal.text = ItemsViewModel.getAmountGoalCash()
+        }else if (ItemsViewModel.category == "Donation"){
+            holder.amountGoalIcon.visibility = View.GONE
+            holder.iconCategory.setImageResource(R.drawable.outline_payments_24)
+            holder.amountGoal.text = ItemsViewModel.getAmountGoalCash()
+        }
+        else if (ItemsViewModel.category == "Emergency") {
+            holder.iconCategory.setImageResource(R.drawable.pill_outline)
+            holder.amountGoalIcon.setImageResource(R.drawable.pill)
+            holder.amountGoal.text = ItemsViewModel.getAmountGoalString()
+        }
         holder.title.text = ItemsViewModel.title
         holder.category.text = ItemsViewModel.category
         holder.location.text = ItemsViewModel.location
-        holder.amountRemaining.text = ItemsViewModel.getAmountRemaining()
+        holder.amountReached.text = ItemsViewModel.getAmountReachedPer()
         holder.progressBar.max= ItemsViewModel.amountGoal
         holder.progressBar.progress= ItemsViewModel.amountReached
 
@@ -44,12 +56,22 @@ class PostRVAdapter(private val mList: List<Post>) : RecyclerView.Adapter<PostRV
     }
 
     // Holds the views for adding it to image and text
-    class ViewHolder(ItemView: View) : RecyclerView.ViewHolder(ItemView) {
+    inner class ViewHolder(ItemView: View) : RecyclerView.ViewHolder(ItemView),View.OnClickListener {
         val iconCategory: ImageView = itemView.findViewById(R.id.categoryIcon)
         val title: TextView = itemView.findViewById(R.id.title)
         val category: TextView = itemView.findViewById(R.id.category)
         val location: TextView = itemView.findViewById(R.id.location)
-        val amountRemaining: TextView = itemView.findViewById(R.id.amountRemaining)
+        val amountGoal: TextView = itemView.findViewById(R.id.amountGoal)
+        val amountGoalIcon: ImageView = itemView.findViewById(R.id.amountGoalIcon)
+        val amountReached: TextView = itemView.findViewById(R.id.amountReached)
         val progressBar: ProgressBar = itemView.findViewById(R.id.progressBar)
+        init {
+            itemView.setOnClickListener (this)
+
+        }
+        override fun onClick(v: View?) {
+            val currentPost = mList[bindingAdapterPosition]
+            clickHandler.clickedPostItem(currentPost)
+        }
     }
 }

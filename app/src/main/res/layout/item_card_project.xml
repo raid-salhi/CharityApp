@@ -131,7 +131,7 @@
                 android:text="Amount remaining :" />
 
             <TextView
-                android:id="@+id/amountRemaining"
+                android:id="@+id/amountGoal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"

@@ -4,12 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.emergency.surgicalAids.SurgicalAidsFragment">
+    android:padding="10dp"
+    tools:context=".ui.donate.donateTabs.allDonation.AllDonationFragment">
+
+
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/surgicalAidsRV"
+        android:id="@+id/allDonationRV"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:listitem="@layout/item_card" />
-
 
 </LinearLayout>

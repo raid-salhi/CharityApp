@@ -13,6 +13,7 @@ import androidx.viewpager.widget.ViewPager
 import com.example.charityapp.R
 import com.example.charityapp.classes.Post
 import com.example.charityapp.databinding.FragmentDonateBinding
+import com.example.charityapp.ui.donate.donateTabs.allDonation.AllDonationFragment
 import com.example.charityapp.ui.donate.donateTabs.financialAids.FinancialAidsFragment
 import com.example.charityapp.ui.donate.donateTabs.others.OthersFragment
 import com.google.android.material.tabs.TabLayout
@@ -44,7 +45,7 @@ class DonateFragment : Fragment() {
         tab =binding.tabs
 
 
-
+        adapter.addFragment(AllDonationFragment(),"All")
         adapter.addFragment(FinancialAidsFragment(),"Financial Aids")
         adapter.addFragment(OthersFragment(),"Others")
 

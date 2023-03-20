@@ -1,4 +1,4 @@
-package com.example.charityapp.ui.donate.donateTabs.others
+package com.example.charityapp.ui.emergency.allEmergency
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
@@ -13,18 +13,19 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.charityapp.R
 import com.example.charityapp.classes.Post
-import com.example.charityapp.databinding.FragmentFinancialAidsBinding
-import com.example.charityapp.databinding.FragmentOthersBinding
+import com.example.charityapp.databinding.FragmentAllEmergencyBinding
 import com.example.charityapp.ui.recyclerViews.PostClickHandler
 import com.example.charityapp.ui.recyclerViews.PostRVAdapter
 
-class OthersFragment : Fragment(),PostClickHandler {
+class AllEmergencyFragment : Fragment(), PostClickHandler {
 
-
-    private var _binding: FragmentOthersBinding? = null
+    companion object {
+        fun newInstance() = AllEmergencyFragment()
+    }
+    private var _binding: FragmentAllEmergencyBinding? = null
     private val binding get() = _binding!!
-    private lateinit var viewModel: OthersViewModel
-    private val TAG = "OtherssFragment"
+    private lateinit var viewModel: AllEmergencyViewModel
+    private val TAG = "AllEmergencyFragment"
     private lateinit var postRV : RecyclerView
     private lateinit var adapter : PostRVAdapter
 
@@ -32,28 +33,26 @@ class OthersFragment : Fragment(),PostClickHandler {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentOthersBinding.inflate(inflater, container, false)
+        _binding = FragmentAllEmergencyBinding.inflate(inflater, container, false)
         val root: View = binding.root
-        val postList = ArrayList<Post>()
 
-        postList.add(Post("Needing clothes","Donation","Setif",100000,53000))
-        postList.add(Post("Needing funds to buy a baby's needs","Donation","Bejaia",50000,4500))
-        postList.add(Post("Looking for i dont know","Donation","Adrar",1000,900))
+        val postList = ArrayList<Post>()
+        postList.add(Post("Needs AB+ bloodtype","Emergency","Setif",5,2))
+        postList.add(Post("Needing B- as soon as possible","Emergency","Bejaia",2,0))
 
 
         adapter= PostRVAdapter(postList,this)
-        postRV =binding.othersRV
+        postRV =binding.allEmergencyRV
         postRV.layoutManager = LinearLayoutManager(requireContext())
         postRV.adapter = adapter
 
         return root
     }
 
-    @Deprecated("Deprecated in Java")
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(OthersViewModel::class.java)
-
+        viewModel = ViewModelProvider(this).get(AllEmergencyViewModel::class.java)
+        // TODO: Use the ViewModel
     }
     override fun clickedPostItem(post: Post) {
         Log.d(TAG, post.title)
