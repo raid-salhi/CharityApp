@@ -3,6 +3,8 @@ package com.example.charityapp.ui.recyclerViews
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
@@ -27,27 +29,56 @@ class PostRVAdapter(private val mList: List<Post>,private val clickHandler: Post
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
         val ItemsViewModel = mList[position]
-        if (ItemsViewModel.category == "Projects") {
-            holder.amountGoalIcon.visibility = View.GONE
-            holder.iconCategory.setImageResource(R.drawable.outline_construction_24)
-            holder.amountGoal.text = ItemsViewModel.getAmountGoalCash()
-        }else if (ItemsViewModel.category == "Donation"){
-            holder.amountGoalIcon.visibility = View.GONE
-            holder.iconCategory.setImageResource(R.drawable.outline_payments_24)
-            holder.amountGoal.text = ItemsViewModel.getAmountGoalCash()
-        }
-        else if (ItemsViewModel.category == "Emergency") {
-            holder.iconCategory.setImageResource(R.drawable.pill_outline)
-            holder.amountGoalIcon.setImageResource(R.drawable.pill)
-            holder.amountGoal.text = ItemsViewModel.getAmountGoalString()
-        }
         holder.title.text = ItemsViewModel.title
         holder.category.text = ItemsViewModel.category
         holder.location.text = ItemsViewModel.location
         holder.amountReached.text = ItemsViewModel.getAmountReachedPer()
         holder.progressBar.max= ItemsViewModel.amountGoal
         holder.progressBar.progress= ItemsViewModel.amountReached
+        setCustomizationBySubCategory(holder,ItemsViewModel)
 
+    }
+
+    private fun setCustomizationBySubCategory(holder: ViewHolder,ItemsViewModel:Post) {
+        if (ItemsViewModel.subCategory == "Project Donation") {
+            holder.amountGoalIcon.visibility = View.GONE
+            holder.iconCategory.setImageResource(R.drawable.outline_construction_24)
+            holder.amountGoal.text = ItemsViewModel.getAmountGoalCash()
+        }
+        else if (ItemsViewModel.subCategory == "Volunteer") {
+            holder.amountGoalIcon.setImageResource(R.drawable.person)
+            holder.iconCategory.setImageResource(R.drawable.outline_construction_24)
+            holder.amountGoal.text = ItemsViewModel.getAmountGoalString()
+            holder.button.setText(R.string.volunteer)
+
+        }
+        else if (ItemsViewModel.subCategory == "Financial Aids") {
+            holder.amountGoalIcon.visibility = View.GONE
+            holder.iconCategory.setImageResource(R.drawable.outline_payments_24)
+            holder.amountGoal.text = ItemsViewModel.getAmountGoalCash()
+        }
+        else if (ItemsViewModel.subCategory == "Others") {
+            holder.frame.visibility = View.GONE
+            holder.iconCategory.setImageResource(R.drawable.outline_payments_24)
+            holder.amountGoal.text = ItemsViewModel.getAmountGoalCash()
+            holder.button.setText(R.string.contact)
+        }
+        else if (ItemsViewModel.subCategory == "Blood Donation") {
+            holder.amountGoalIcon.setImageResource(R.drawable.person)
+            holder.iconCategory.setImageResource(R.drawable.outline_bloodtype_24)
+            holder.amountGoal.text = ItemsViewModel.getAmountGoalString()
+        }
+        else if (ItemsViewModel.subCategory == "Medicine") {
+            holder.amountGoalIcon.setImageResource(R.drawable.pill)
+            holder.iconCategory.setImageResource(R.drawable.pill_outline)
+            holder.amountGoal.text = ItemsViewModel.getAmountGoalString()
+            holder.button.setText(R.string.contact)
+        }
+        else if (ItemsViewModel.subCategory == "Surgical Aids") {
+            holder.amountGoalIcon.visibility = View.GONE
+            holder.iconCategory.setImageResource(R.drawable.surgical)
+            holder.amountGoal.text = ItemsViewModel.getAmountGoalCash()
+        }
     }
 
     // return the number of the items in the list
@@ -65,6 +96,8 @@ class PostRVAdapter(private val mList: List<Post>,private val clickHandler: Post
         val amountGoalIcon: ImageView = itemView.findViewById(R.id.amountGoalIcon)
         val amountReached: TextView = itemView.findViewById(R.id.amountReached)
         val progressBar: ProgressBar = itemView.findViewById(R.id.progressBar)
+        val button: Button = itemView.findViewById(R.id.button)
+        val frame :FrameLayout = itemView.findViewById(R.id.frame)
         init {
             itemView.setOnClickListener (this)
 

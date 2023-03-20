@@ -65,8 +65,11 @@ class VolunteerFragment : Fragment(), PostClickHandler {
             for (document in result)
             {
                 binding.animationView.visibility = View.GONE
-                postList.add(document.toObject<Post>())
-                adapter.notifyDataSetChanged()
+                if (document.get("subCategory").toString()=="Volunteer")
+                {
+                    postList.add(document.toObject<Post>())
+                    adapter.notifyDataSetChanged()
+                }
             }
         }.addOnFailureListener {
             Log.d(TAG, "Error getting documents: ", it)

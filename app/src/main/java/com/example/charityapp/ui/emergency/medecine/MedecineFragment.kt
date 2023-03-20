@@ -18,6 +18,10 @@ import com.example.charityapp.databinding.FragmentMedecineBinding
 import com.example.charityapp.ui.emergency.bloodDonation.BloodDonationViewModel
 import com.example.charityapp.ui.recyclerViews.PostClickHandler
 import com.example.charityapp.ui.recyclerViews.PostRVAdapter
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.firestore.ktx.toObject
+import com.google.firebase.ktx.Firebase
 
 class MedecineFragment : Fragment(), PostClickHandler {
 
@@ -31,6 +35,8 @@ class MedecineFragment : Fragment(), PostClickHandler {
     private val TAG = "MedecineFragment"
     private lateinit var postRV : RecyclerView
     private lateinit var adapter : PostRVAdapter
+    private lateinit var db : FirebaseFirestore
+    private lateinit var postList : ArrayList<Post>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,15 +45,17 @@ class MedecineFragment : Fragment(), PostClickHandler {
         _binding = FragmentMedecineBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val postList = ArrayList<Post>()
-        postList.add(Post("Needs Tramadol","Emergency","Setif",5,2))
-        postList.add(Post("Needing Dolipran","Emergency","Bejaia",2,0))
+        postList = arrayListOf()
+//        postList.add(Post("Needs Tramadol","Emergency","Setif",5,2,"Medicine"))
+//        postList.add(Post("Needing Dolipran","Emergency","Bejaia",2,0,"Medicine"))
 
-
+        db = Firebase.firestore
         adapter= PostRVAdapter(postList,this)
         postRV =binding.medicineRV
         postRV.layoutManager = LinearLayoutManager(requireContext())
+        postRV.setHasFixedSize(true)
         postRV.adapter = adapter
+        eventChangeListner()
 
         return root
     }
@@ -61,6 +69,26 @@ class MedecineFragment : Fragment(), PostClickHandler {
         Log.d(TAG, post.title)
         val bundle= bundleOf("title" to post.title)
         findNavController().navigate(R.id.navigation_details,bundle)
+    }
+    private fun eventChangeListner() {
+
+        db.collection("Emergency").get().addOnSuccessListener{ result ->
+            for (document in result)
+            {
+                binding.animationView.visibility = View.GONE
+                if (document.get("subCategory").toString()=="Medicine")
+                {
+                    postList.add(document.toObject<Post>())
+                    adapter.notifyDataSetChanged()
+                }
+            }
+        }.addOnFailureListener {
+            Log.d(TAG, "Error getting documents: ", it)
+        }
+    }
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
 }

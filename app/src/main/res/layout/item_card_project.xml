@@ -159,7 +159,7 @@
             android:gravity="bottom|center">
 
             <Button
-                android:id="@+id/buttonDonate"
+                android:id="@+id/button"
                 style="@style/Widget.Material3.Button.OutlinedButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -187,7 +187,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:strokeColor="@color/green_main"
-                app:layout_constraintStart_toEndOf="@+id/buttonDonate" />
+                app:layout_constraintStart_toEndOf="@+id/button" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -2,7 +2,7 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="300dp"
+    android:layout_height="wrap_content"
     android:layout_margin="10dp"
     app:cardCornerRadius="25dp"
     app:cardElevation="6dp">
@@ -113,6 +113,7 @@
         </LinearLayout>
 
         <FrameLayout
+            android:id="@+id/frame"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp">
@@ -180,10 +181,11 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginTop="50dp"
             android:gravity="bottom|center">
 
             <Button
-                android:id="@+id/buttonDonate"
+                android:id="@+id/button"
                 style="@style/Widget.Material3.Button.OutlinedButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

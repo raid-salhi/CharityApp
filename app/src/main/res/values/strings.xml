@@ -25,6 +25,8 @@
 
     <string name="wilaya_label">Wilaya</string>
     <string name="title_details">Details</string>
+    <string name="volunteer">Volunteer</string>
+    <string name="contact">Contact</string>
 
 
 </resources>

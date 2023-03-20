@@ -65,8 +65,11 @@ class ProjectDonationFragment : Fragment() ,PostClickHandler{
             for (document in result)
             {
                 binding.animationView.visibility = View.GONE
+                if (document.get("subCategory").toString()=="Project Donation")
+                {
                 postList.add(document.toObject<Post>())
                 adapter.notifyDataSetChanged()
+                }
             }
         }.addOnFailureListener {
             Log.d(TAG, "Error getting documents: ", it)
