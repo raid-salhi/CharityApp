@@ -52,17 +52,12 @@ class PostRVAdapter(private val mList: List<Post>,private val clickHandler: Post
             holder.button.setText(R.string.volunteer)
 
         }
-        else if (ItemsViewModel.subCategory == "Financial Aids") {
+        else if (ItemsViewModel.category == "Donation") {
             holder.amountGoalIcon.visibility = View.GONE
             holder.iconCategory.setImageResource(R.drawable.outline_payments_24)
             holder.amountGoal.text = ItemsViewModel.getAmountGoalCash()
         }
-        else if (ItemsViewModel.subCategory == "Others") {
-            holder.frame.visibility = View.GONE
-            holder.iconCategory.setImageResource(R.drawable.outline_payments_24)
-            holder.amountGoal.text = ItemsViewModel.getAmountGoalCash()
-            holder.button.setText(R.string.contact)
-        }
+
         else if (ItemsViewModel.subCategory == "Blood Donation") {
             holder.amountGoalIcon.setImageResource(R.drawable.person)
             holder.iconCategory.setImageResource(R.drawable.outline_bloodtype_24)
