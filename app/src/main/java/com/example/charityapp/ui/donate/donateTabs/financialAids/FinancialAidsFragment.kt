@@ -53,7 +53,6 @@ class FinancialAidsFragment() : Fragment() ,PostClickHandler{
         postRV.setHasFixedSize(true)
         postRV.adapter = adapter
         eventChangeListner()
-
         return root
     }
 

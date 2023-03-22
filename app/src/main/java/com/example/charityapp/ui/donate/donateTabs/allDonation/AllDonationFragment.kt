@@ -35,8 +35,8 @@ class AllDonationFragment : Fragment(), PostClickHandler {
     private val TAG = "AllDonationFragment"
     private lateinit var postRV : RecyclerView
     private lateinit var adapter : PostRVAdapter
-    private lateinit var db : FirebaseFirestore
     private lateinit var postList : ArrayList<Post>
+    private lateinit var db : FirebaseFirestore
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -64,7 +64,7 @@ class AllDonationFragment : Fragment(), PostClickHandler {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(AllDonationViewModel::class.java)
-        // TODO: Use the ViewModel
+
     }
     private fun eventChangeListner() {
 

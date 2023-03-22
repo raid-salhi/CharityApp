@@ -7,4 +7,5 @@ import com.example.charityapp.classes.Post
 
 class FinancialAidsViewModel : ViewModel() {
 
+
 }
