@@ -12,6 +12,9 @@
         android:theme="@style/Theme.CharityApp"
         tools:targetApi="31">
         <activity
+            android:name=".NeedHelpActivity"
+            android:exported="false" />
+        <activity
             android:name=".SignIn"
             android:exported="false" />
         <activity

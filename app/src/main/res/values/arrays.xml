@@ -50,6 +50,7 @@
         <item>47-Ghardaia</item>
         <item>48-Relizane</item>
     </string-array>
+
     <string-array name="blood_groups">
         <item>A+</item>
         <item>A-</item>
@@ -59,6 +60,13 @@
         <item>AB-</item>
         <item>O+</item>
         <item>O-</item>
+    </string-array>
+
+    <string-array name="category">
+        <item>Financial help</item>
+        <item>Blood Donation</item>
+        <item>Surgical aid</item>
+        <item>Medications</item>
     </string-array>
 
 </resources>
