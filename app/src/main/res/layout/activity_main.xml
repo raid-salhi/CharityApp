@@ -14,28 +14,36 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.appcompat.widget.Toolbar
+        <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/white"
-            android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+            android:contextClickable="true"
+            android:gravity="center"
+            android:theme="@style/IconColor"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:popupTheme="@style/Widget.AppCompat.Light.PopupMenu">
+            app:navigationIconTint="@color/green_main"
+            app:popupTheme="@style/Widget.AppCompat.Light.PopupMenu"
+            app:title="@string/title_need_help"
+            app:titleCentered="true"
+            app:titleTextAppearance="@style/TitleTextAppearance"
+            app:titleTextColor="@color/green_main">
 
-            <TextView
-                android:id="@+id/toolbar_title"
-                style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+            <Button
+
+                android:id="@+id/logoutButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center|top"
-                android:text="Hello"
+                android:layout_gravity="end"
+                android:background="?android:attr/selectableItemBackground"
+                android:text="@string/logout"
                 android:textColor="@color/green_main"
-                tools:layout_editor_absoluteX="16dp"
-                tools:layout_editor_absoluteY="37dp" />
-        </androidx.appcompat.widget.Toolbar>
+                android:visibility="gone" />
+
+        </com.google.android.material.appbar.MaterialToolbar>
 
         <View
             android:id="@+id/view"
@@ -56,6 +64,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
+
             app:menu="@menu/bottom_nav_menu" />
 
         <fragment

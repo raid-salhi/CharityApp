@@ -4,6 +4,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
@@ -34,7 +35,7 @@ class HomeFragment : Fragment() , PostClickHandler {
     private lateinit var adapter1 : PostRVAdapter
     private lateinit var adapter2 : PostRVAdapter
     private lateinit var adapter3 : PostRVAdapter
-
+    private lateinit var eventImg : ImageView
     private lateinit var db : FirebaseFirestore
     private lateinit var postEmergencyList : ArrayList<Post>
     private lateinit var postProjectList : ArrayList<Post>
@@ -50,13 +51,17 @@ class HomeFragment : Fragment() , PostClickHandler {
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
-        val toolbarTitle = activity?.findViewById<TextView>(R.id.toolbar_title)
-        toolbarTitle?.setText(R.string.title_home)
+//        val toolbarTitle = activity?.findViewById<TextView>(R.id.toolbar_title)
+//        toolbarTitle?.setText(R.string.title_home)
         db = Firebase.firestore
         setupEmerencyRV()
         setupProjectsRV()
         setupDonationRV()
         eventChangeListner()
+        eventImg = binding.eventImg
+        eventImg.setOnClickListener {
+            findNavController().navigate(R.id.navigation_event)
+        }
         return root
     }
 
@@ -95,8 +100,8 @@ class HomeFragment : Fragment() , PostClickHandler {
             ViewModelProvider(this).get(HomeViewModel::class.java)
         // TODO: Use the ViewModel
         lifecycleScope.launch {
-            val toolbarTitle = activity?.findViewById<TextView>(R.id.toolbar_title)
-            toolbarTitle?.setText(R.string.title_home)
+//            val toolbarTitle = activity?.findViewById<TextView>(R.id.toolbar_title)
+//            toolbarTitle?.setText(R.string.title_home)
         }
     }
     private fun eventChangeListner() {

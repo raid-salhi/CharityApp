@@ -32,8 +32,8 @@ class FaqFragment : Fragment() {
         viewModel = ViewModelProvider(this)[FaqViewModel::class.java]
         // TODO: Use the ViewModel
         lifecycleScope.launch {
-            val toolbarTitle = activity?.findViewById<TextView>(R.id.toolbar_title)
-            toolbarTitle?.setText(R.string.faq)
+//            val toolbarTitle = activity?.findViewById<TextView>(R.id.toolbar_title)
+//            toolbarTitle?.setText(R.string.faq)
         }
     }
 

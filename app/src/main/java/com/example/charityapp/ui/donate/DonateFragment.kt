@@ -70,8 +70,8 @@ class DonateFragment : Fragment(),PostClickHandler {
         viewModel = ViewModelProvider(this).get(DonateViewModel::class.java)
         // TODO: Use the ViewModel
         lifecycleScope.launch {
-            val toolbarTitle = activity?.findViewById<TextView>(R.id.toolbar_title)
-            toolbarTitle?.setText(R.string.donate)
+//            val toolbarTitle = activity?.findViewById<TextView>(R.id.toolbar_title)
+//            toolbarTitle?.setText(R.string.donate)
         }
     }
     private fun eventChangeListner() {

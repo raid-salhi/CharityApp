@@ -13,4 +13,16 @@
         <item name="android:statusBarColor">@color/green_main</item>
         <!-- Customize your theme here. -->
     </style>
+    <style name="TitleTextAppearance" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/green_main</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+    <style name="IconColor" parent="Theme.CharityApp">
+        <item name="android:textColorSecondary">@color/green_main</item>
+    </style>
+    <style name="ProfileIconColor" parent="Theme.CharityApp">
+        <item name="android:textColorSecondary">@color/white</item>
+    </style>
+
 </resources>

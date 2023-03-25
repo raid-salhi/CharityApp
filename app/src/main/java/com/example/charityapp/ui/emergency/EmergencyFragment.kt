@@ -56,8 +56,8 @@ class EmergencyFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(EmergencyViewModel::class.java)
         // TODO: Use the ViewModel
         lifecycleScope.launch {
-            val toolbarTitle = activity?.findViewById<TextView>(R.id.toolbar_title)
-            toolbarTitle?.setText(R.string.title_emergency)
+//            val toolbarTitle = activity?.findViewById<TextView>(R.id.toolbar_title)
+//            toolbarTitle?.setText(R.string.title_emergency)
         }
     }
     override fun onDestroyView() {

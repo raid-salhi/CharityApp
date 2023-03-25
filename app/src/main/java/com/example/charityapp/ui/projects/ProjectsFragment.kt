@@ -63,8 +63,8 @@ class ProjectsFragment : Fragment()  {
         viewModel = ViewModelProvider(this)[ProjectsViewModel::class.java]
         // TODO: Use the ViewModel
         lifecycleScope.launch {
-            val toolbarTitle = activity?.findViewById<TextView>(R.id.toolbar_title)
-            toolbarTitle?.setText(R.string.title_projects)
+//            val toolbarTitle = activity?.findViewById<TextView>(R.id.toolbar_title)
+//            toolbarTitle?.setText(R.string.title_projects)
         }
     }
     override fun onDestroyView() {
