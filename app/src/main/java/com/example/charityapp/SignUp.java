@@ -131,12 +131,12 @@ public class SignUp extends AppCompatActivity {
             @Override
             public void onSuccess(AuthResult authResult) {
                 HashMap<String , Object> map = new HashMap<>();
-                map.put("Firstname" , Firstname);
-                map.put("Lastname" , Lastname);
-                map.put("Email" , Email);
-                map.put("Wilaya" , wilaya);
-                map.put("Blood Group" , bloodType);
-                map.put("id" , auth.getCurrentUser().getUid());
+                map.put("firstName" , Firstname);
+                map.put("lastName" , Lastname);
+                map.put("email" , Email);
+                map.put("wilaya" , wilaya);
+                map.put("bloodGroup" , bloodType);
+                map.put("userId" , auth.getCurrentUser().getUid());
                 reference.child("Users").child(auth.getCurrentUser().getUid()).setValue(map)
                         .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
