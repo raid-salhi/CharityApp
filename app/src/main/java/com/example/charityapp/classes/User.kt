@@ -7,5 +7,6 @@ class User(
     var email : String="",
     var bloodGroup : String="",
     var wilaya: String= "",
+
 ) {
 }

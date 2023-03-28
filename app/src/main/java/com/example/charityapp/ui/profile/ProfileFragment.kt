@@ -1,13 +1,18 @@
 package com.example.charityapp.ui.profile
 
 import android.content.Intent
+import android.graphics.BitmapFactory
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.Toast
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
@@ -18,12 +23,16 @@ import com.example.charityapp.SignIn
 import com.example.charityapp.classes.User
 import com.example.charityapp.databinding.FragmentProfileBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
 import kotlinx.coroutines.launch
+import java.io.File
 
 class ProfileFragment : Fragment() {
 
@@ -35,9 +44,11 @@ class ProfileFragment : Fragment() {
     private lateinit var viewModel: ProfileViewModel
     private lateinit var logoutButton : Button
     private lateinit var database : DatabaseReference
+    private lateinit var storage : StorageReference
     private var user : User? = null
     private var userUpdate : User? = null
     private var auth: FirebaseAuth? = null
+    private lateinit var imgUri : String
 
 
     override fun onCreateView(
@@ -48,8 +59,41 @@ class ProfileFragment : Fragment() {
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
+        handleIconClick()
+
+        val pickMedia = registerForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri ->
+            binding.profileImage.load(uri)
+            saveImageInFirebase(uri!!)
+        }
+        binding.profileImage.setOnClickListener {
+            MaterialAlertDialogBuilder(requireContext())
+                .setTitle(resources.getString(R.string.dialogTitle))
+                .setNegativeButton(resources.getString(R.string.cancel)) { dialog, which ->
+
+                }
+                .setPositiveButton(resources.getString(R.string.import_)) { dialog, which ->
+                    pickMedia.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
+
+                }
+                .show()
+
+        }
+        return root
+    }
+
+    private fun saveImageInFirebase(imgUri: Uri) {
+
+        storage =FirebaseStorage.getInstance().getReference("Users/"+ auth!!.currentUser!!.uid)
+        storage.putFile(imgUri).addOnSuccessListener {
+            Toast.makeText(context, "upload success", Toast.LENGTH_SHORT).show()
+        }
+
+
+    }
+
+    private fun handleIconClick() {
         binding.firstNameLayout.setEndIconOnClickListener {
-           handleClick(binding.firstNameEditText)
+            handleClick(binding.firstNameEditText)
         }
         binding.lastNameLayout.setEndIconOnClickListener {
             handleClick(binding.lastNameEditText)
@@ -63,14 +107,6 @@ class ProfileFragment : Fragment() {
         binding.bloodTypeLayout.setStartIconOnClickListener {
             handleClick(binding.bloodGroup)
         }
-
-        val pickMedia = registerForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri ->
-            binding.profileImage.load(uri)
-        }
-        binding.profileImage.setOnClickListener {
-            pickMedia.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
-        }
-        return root
     }
 
     private fun handleClick(it: View?) {
@@ -82,7 +118,7 @@ class ProfileFragment : Fragment() {
     }
 
     private fun saveChanges(view: View) {
-        //TODO: implement later
+
         userUpdate = User()
 
         userUpdate!!.firstName= binding.firstNameEditText.text.toString()
@@ -99,9 +135,7 @@ class ProfileFragment : Fragment() {
             "bloodGroup" to userUpdate!!.bloodGroup,
             "wilaya" to userUpdate!!.wilaya
         )
-        database.child(auth!!.currentUser!!.uid).updateChildren(userMap).addOnSuccessListener {
-            setUpTextFeilds(false)
-        }
+        database.child(auth!!.currentUser!!.uid).updateChildren(userMap)
 
     }
 
@@ -113,16 +147,27 @@ class ProfileFragment : Fragment() {
                     user=snapshot.getValue(User::class.java)!!
                     setUpProfileWithUserInfo(user!!)
                     binding.animationView.visibility=View.GONE
+                    binding.container.visibility=View.VISIBLE
 
                 }
 
                 private fun setUpProfileWithUserInfo(user: User) {
+                    getImageFromFirebase()
                     binding.firstNameEditText.setText(user.firstName)
                     binding.lastNameEditText.setText(user.lastName)
                     binding.emailEditText.setText(user.email)
                     binding.wilaya.setText(user.wilaya)
                     binding.bloodGroup.setText(user.bloodGroup)
+                    binding.userName.setText(user.lastName+" "+user.firstName)
 
+                }
+                private fun getImageFromFirebase() {
+                    storage = FirebaseStorage.getInstance().reference.child("Users/"+ auth!!.currentUser!!.uid)
+                    val localFile = File.createTempFile("tempImage","jpg")
+                    storage.getFile(localFile).addOnSuccessListener{
+                        val bitmap = BitmapFactory.decodeFile(localFile.absolutePath)
+                        binding.profileImage.setImageBitmap(bitmap)
+                    }
                 }
 
                 override fun onCancelled(error: DatabaseError) {
@@ -130,6 +175,15 @@ class ProfileFragment : Fragment() {
                 }
 
             })
+        }
+    }
+
+    private fun getImageFromFirebase() {
+        storage = FirebaseStorage.getInstance().reference.child("Users/"+ auth!!.currentUser!!.uid)
+        val localFile = File.createTempFile("tempImage","jpg")
+        storage.getFile(localFile).addOnSuccessListener{
+            val bitmap = BitmapFactory.decodeFile(localFile.absolutePath)
+            binding.profileImage.setImageBitmap(bitmap)
         }
     }
 
@@ -149,7 +203,7 @@ class ProfileFragment : Fragment() {
             }
             val currentUser = auth!!.currentUser
             setUpProfile(currentUser)
-            setUpTextFeilds(false)
+            setUpTextFeilds()
             val bottomNavBar : BottomNavigationView? = activity?.findViewById(R.id.bottom_nav_view)
             if (bottomNavBar != null) {
                 bottomNavBar.visibility=View.GONE
@@ -158,12 +212,12 @@ class ProfileFragment : Fragment() {
     }
 
 
-    private fun setUpTextFeilds(state:Boolean) {
-        binding.firstNameEditText.isEnabled = state
-        binding.lastNameEditText.isEnabled=state
-        binding.bloodGroup.isEnabled=state
-        binding.wilaya.isEnabled=state
-        binding.emailEditText.isEnabled=state
+    private fun setUpTextFeilds() {
+        binding.firstNameEditText.isEnabled = false
+        binding.lastNameEditText.isEnabled=false
+        binding.bloodGroup.isEnabled=false
+        binding.wilaya.isEnabled=false
+        binding.emailEditText.isEnabled=false
     }
 
 }
