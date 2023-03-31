@@ -112,6 +112,7 @@ class ProfileFragment : Fragment() {
     private fun handleClick(it: View?) {
         if (it!!.isEnabled) {
             saveChanges(it)
+            it.isEnabled = false
         }
         else
             it.isEnabled=true
@@ -136,6 +137,7 @@ class ProfileFragment : Fragment() {
             "wilaya" to userUpdate!!.wilaya
         )
         database.child(auth!!.currentUser!!.uid).updateChildren(userMap)
+
 
     }
 
@@ -178,14 +180,6 @@ class ProfileFragment : Fragment() {
         }
     }
 
-    private fun getImageFromFirebase() {
-        storage = FirebaseStorage.getInstance().reference.child("Users/"+ auth!!.currentUser!!.uid)
-        val localFile = File.createTempFile("tempImage","jpg")
-        storage.getFile(localFile).addOnSuccessListener{
-            val bitmap = BitmapFactory.decodeFile(localFile.absolutePath)
-            binding.profileImage.setImageBitmap(bitmap)
-        }
-    }
 
     @Deprecated("Deprecated in Java")
     override fun onActivityCreated(savedInstanceState: Bundle?) {

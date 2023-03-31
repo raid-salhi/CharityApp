@@ -78,7 +78,6 @@ class HomeFragment : Fragment() , PostClickHandler {
         adapter2= PostRVAdapter(postProjectList,this)
         postProjectsRV =binding.projectRV
         postProjectsRV.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
-
         postProjectsRV.adapter = adapter2
 
     }
@@ -109,7 +108,7 @@ class HomeFragment : Fragment() , PostClickHandler {
         db.collection("Donation").get().addOnSuccessListener{ result ->
             for (document in result)
             {
-//                binding.animationView.visibility = View.GONE
+               binding.animationView2.visibility = View.GONE
                 postDonationList.add(document.toObject<Post>())
                 adapter1.notifyDataSetChanged()
             }
@@ -119,7 +118,7 @@ class HomeFragment : Fragment() , PostClickHandler {
         db.collection("Emergency").get().addOnSuccessListener{ result ->
             for (document in result)
             {
-//                binding.animationView.visibility = View.GONE
+                binding.animationView.visibility = View.GONE
                 postEmergencyList.add(document.toObject<Post>())
                 adapter3.notifyDataSetChanged()
             }
@@ -129,7 +128,7 @@ class HomeFragment : Fragment() , PostClickHandler {
         db.collection("Projects").get().addOnSuccessListener{ result ->
             for (document in result)
             {
-//                binding.animationView.visibility = View.GONE
+              binding.animationView1.visibility = View.GONE
                 postProjectList.add(document.toObject<Post>())
                 adapter2.notifyDataSetChanged()
             }
