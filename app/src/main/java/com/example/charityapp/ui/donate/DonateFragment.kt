@@ -89,7 +89,13 @@ class DonateFragment : Fragment(),PostClickHandler {
     }
     override fun clickedPostItem(post: Post) {
         Log.d(TAG, post.title)
-        val bundle= bundleOf("title" to post.title)
+        val bundle= bundleOf(
+            "title" to post.title,
+            "category" to post.category,
+            "location" to post.location,
+            "amountGoal" to post.amountGoal,
+            "amountReached" to post.amountReached,
+            "subCategory" to post.subCategory)
         findNavController().navigate(R.id.navigation_details,bundle)
     }
     override fun onDestroyView() {
