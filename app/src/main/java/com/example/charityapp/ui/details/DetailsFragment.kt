@@ -6,10 +6,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
 import android.widget.TextView
-import com.example.charityapp.R
+import androidx.viewpager.widget.ViewPager
 import com.example.charityapp.databinding.FragmentDetailsBinding
-import com.example.charityapp.databinding.FragmentProjectsBinding
+import com.example.charityapp.ui.details.description.DescriptionFragment
+import com.example.charityapp.ui.details.pictures.PicturesFragment
+import com.google.android.material.tabs.TabLayout
 
 private const val ARG_TITLE ="title"
 private const val ARG_CATEGORY ="category"
@@ -50,7 +53,11 @@ class DetailsFragment : Fragment() {
     private var _binding: FragmentDetailsBinding? = null
     private val binding get() = _binding!!
     private lateinit var viewModel: DetailsViewModel
-    private lateinit var textView: TextView
+    private lateinit var pager: ViewPager
+    private lateinit var tab: TabLayout
+    private lateinit var amountReachedTV : TextView
+    private lateinit var amountGoalTV : TextView
+    private lateinit var progressBar: ProgressBar
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -68,8 +75,28 @@ class DetailsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentDetailsBinding.inflate(inflater, container, false)
-        textView = binding.detailsTitle
-        textView.text = param3.toString()
+
+        val adapter = ViewPagerDetailsAdapter(childFragmentManager)
+
+
+        pager= binding.viewPager
+        tab =binding.tabLayout
+        amountReachedTV = binding.amountReached
+        amountGoalTV = binding.amountGoal
+        progressBar = binding.progressBar2
+
+
+        adapter.addFragment(DescriptionFragment(),"Description")
+        adapter.addFragment(PicturesFragment(),"Pictures")
+        pager.adapter=adapter
+        tab.setupWithViewPager(pager)
+
+        amountReachedTV.setText("$param3 DA")
+        amountGoalTV.setText("$param4 DA")
+
+        progressBar.max=param4!!
+        progressBar.progress= param3!!
+
         return binding.root
 
     }

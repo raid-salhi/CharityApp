@@ -213,5 +213,11 @@ class ProfileFragment : Fragment() {
         binding.wilaya.isEnabled=false
         binding.emailEditText.isEnabled=false
     }
+    override fun onDestroyView() {
+        super.onDestroyView()
+        logoutButton = activity?.findViewById(R.id.logoutButton)!!
+        logoutButton.visibility = View.INVISIBLE
+
+    }
 
 }
