@@ -64,5 +64,6 @@ dependencies {
     def lottieVersion = "6.0.0"
     implementation "com.airbnb.android:lottie:$lottieVersion"
     implementation("io.coil-kt:coil:2.2.2")
+    implementation 'com.github.smarteist:autoimageslider:1.4.0'
 
 }

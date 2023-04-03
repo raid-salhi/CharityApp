@@ -22,8 +22,6 @@ import kotlinx.coroutines.launch
 class EmergencyFragment : Fragment() {
     private var _binding: FragmentEmergencyBinding? = null
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     private lateinit var pager: ViewPager // creating object of ViewPager
