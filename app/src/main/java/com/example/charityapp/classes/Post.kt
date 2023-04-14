@@ -9,6 +9,7 @@ class Post(
     var amountGoal : Int=1,
     var amountReached : Int=1,
     var subCategory: String= "",
+    var description: String="",
 ) {
 
     fun getAmountReachedPer(): String {

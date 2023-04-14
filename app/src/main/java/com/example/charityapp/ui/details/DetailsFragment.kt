@@ -8,10 +8,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
 import android.widget.TextView
+import androidx.lifecycle.Observer
 import androidx.viewpager.widget.ViewPager
 import com.example.charityapp.databinding.FragmentDetailsBinding
 import com.example.charityapp.ui.details.description.DescriptionFragment
 import com.example.charityapp.ui.details.pictures.PicturesFragment
+import com.example.charityapp.ui.donate.DonateViewModel
 import com.google.android.material.tabs.TabLayout
 
 private const val ARG_TITLE ="title"
@@ -22,6 +24,7 @@ private const val ARG_SUBCATEGORY ="subCategory"
 private const val ARG_LOCATION ="location"
 
 
+
 class DetailsFragment : Fragment() {
 
     private var param1 : String? = null
@@ -30,6 +33,7 @@ class DetailsFragment : Fragment() {
     private var param4: Int? = null
     private var param5: String? = null
     private var param6: String? = null
+
 
     companion object {
         fun newInstance(params1: String,
@@ -67,6 +71,7 @@ class DetailsFragment : Fragment() {
             param4 = it.getInt(ARG_AMOUNTGOAL)
             param5 = it.getString(ARG_SUBCATEGORY)
             param6 = it.getString(ARG_LOCATION)
+
         }
     }
 
@@ -75,8 +80,10 @@ class DetailsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentDetailsBinding.inflate(inflater, container, false)
-
-        val adapter = ViewPagerDetailsAdapter(childFragmentManager)
+//        val bundle1 = Bundle()
+//        bundle1.putString("description",param1)
+        val bundle = requireArguments()
+        val adapter = ViewPagerDetailsAdapter(childFragmentManager,bundle)
 
 
         pager= binding.viewPager
@@ -104,7 +111,7 @@ class DetailsFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(DetailsViewModel::class.java)
-        // TODO: Use the ViewModel
+
     }
 
 

@@ -27,10 +27,11 @@
         android:textSize="16sp" />
 
     <TextView
+        android:id="@+id/description_content"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:lineSpacingExtra="10sp"
-        android:text="description : Ehsan association has decided to launch this program that will benefit the wilaya of bejaia and speifically Amizour . people have been asking for it for so long because it would enhance their quality of life by a lot since they wont have to travel to Bejaia for  health care services. we all know how generous  algerian people are when it comes to helping others. Be one of them !" />
+        android:text="heyy" />
 
 </LinearLayout>

@@ -32,11 +32,6 @@
         android:label="@string/title_emergency"
         tools:layout="@layout/fragment_emergency" />
     <fragment
-        android:id="@+id/navigation_need_help"
-        android:name="com.example.charityapp.ui.needHelp.NeedHelpFragment"
-        android:label="@string/title_need_help"
-        tools:layout="@layout/fragment_need_help" />
-    <fragment
         android:id="@+id/navigation_projects"
         android:name="com.example.charityapp.ui.projects.ProjectsFragment"
         android:label="@string/title_projects"
@@ -56,15 +51,11 @@
         android:label="@string/title_donate"
         tools:layout="@layout/fragment_donate" />
     <fragment
-        android:id="@+id/navigation_financial_aids"
-        android:name="com.example.charityapp.ui.donate.donateTabs.financialAids.FinancialAidsFragment"
-        android:label="@string/title_financial_aids"
-        tools:layout="@layout/fragment_financial_aids" />
-    <fragment
-        android:id="@+id/navigation_others"
-        android:name="com.example.charityapp.ui.donate.donateTabs.others.OthersFragment"
-        android:label="@string/title_others"
-        tools:layout="@layout/fragment_others" />
+        android:id="@+id/navigation_description"
+        android:name="com.example.charityapp.ui.details.description.DescriptionFragment"
+        android:label="@string/description"
+        tools:layout="@layout/fragment_description" />
+
     <fragment
         android:id="@+id/navigation_details"
         android:name="com.example.charityapp.ui.details.DetailsFragment"

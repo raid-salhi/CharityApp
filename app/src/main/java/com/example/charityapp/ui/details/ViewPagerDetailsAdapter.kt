@@ -1,19 +1,22 @@
 package com.example.charityapp.ui.details
 
+import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
 
-class ViewPagerDetailsAdapter (supportFragmentManager: FragmentManager) :
+class ViewPagerDetailsAdapter (supportFragmentManager: FragmentManager, args: Bundle) :
     FragmentStatePagerAdapter(supportFragmentManager) {
 
     // declare arrayList to contain fragments and its title
+    private val bundle = args
     private val mFragmentList = ArrayList<Fragment>()
     private val mFragmentTitleList = ArrayList<String>()
 
     override fun getItem(position: Int): Fragment {
-        // return a particular fragment page
-        return mFragmentList[position]
+        val fragment = mFragmentList[position]
+        fragment.arguments= bundle
+        return fragment
     }
 
     override fun getCount(): Int {

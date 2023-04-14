@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -17,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.charityapp.R
 import com.example.charityapp.classes.Post
 import com.example.charityapp.databinding.FragmentDonateBinding
+import com.example.charityapp.ui.details.description.DescriptionFragment
 import com.example.charityapp.ui.recyclerViews.PostClickHandler
 import com.example.charityapp.ui.recyclerViews.PostRVAdapter
 import com.google.firebase.firestore.FirebaseFirestore
@@ -68,11 +70,6 @@ class DonateFragment : Fragment(),PostClickHandler {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(DonateViewModel::class.java)
-        // TODO: Use the ViewModel
-        lifecycleScope.launch {
-//            val toolbarTitle = activity?.findViewById<TextView>(R.id.toolbar_title)
-//            toolbarTitle?.setText(R.string.donate)
-        }
     }
     private fun eventChangeListner() {
 
@@ -95,7 +92,10 @@ class DonateFragment : Fragment(),PostClickHandler {
             "location" to post.location,
             "amountGoal" to post.amountGoal,
             "amountReached" to post.amountReached,
-            "subCategory" to post.subCategory)
+            "subCategory" to post.subCategory,
+            "description" to post.description)
+
+
         findNavController().navigate(R.id.navigation_details,bundle)
     }
     override fun onDestroyView() {
