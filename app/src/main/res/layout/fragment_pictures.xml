@@ -22,6 +22,7 @@
         android:layout_height="350dp"
         android:layout_margin="16dp"
         android:layout_marginTop="20dp"
+        app:cardBackgroundColor="#FFF8F8"
         app:cardCornerRadius="20dp"
         app:cardElevation="10dp">
 
@@ -41,7 +42,7 @@
             app:sliderIndicatorSelectedColor="@color/green_main"
             app:sliderIndicatorUnselectedColor="#FFF"
             app:sliderScrollTimeInSec="1"
-            app:sliderStartAutoCycle="true" />
+            app:sliderStartAutoCycle="false" />
 
     </androidx.cardview.widget.CardView>
 

@@ -2,6 +2,7 @@ package com.example.charityapp.ui.recyclerViews
 
 
 
+import android.graphics.Bitmap
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,10 +11,10 @@ import com.example.charityapp.R
 import com.smarteist.autoimageslider.SliderViewAdapter
 
 
-class SliderImageAdapter(imageList: ArrayList<Int>) :
+class SliderImageAdapter(imageList: ArrayList<Bitmap>) :
     SliderViewAdapter<SliderImageAdapter.SliderAdapterVH>() {
 
-    private var mSliderItems:ArrayList<Int> = imageList
+    private var mSliderItems:ArrayList<Bitmap> = imageList
 
 
 
@@ -25,7 +26,7 @@ class SliderImageAdapter(imageList: ArrayList<Int>) :
 
     override fun onBindViewHolder(viewHolder: SliderAdapterVH, position: Int) {
         val sliderItem = mSliderItems[position]
-        viewHolder.imageView.setImageResource(sliderItem)
+        viewHolder.imageView.setImageBitmap(sliderItem)
 
     }
 
