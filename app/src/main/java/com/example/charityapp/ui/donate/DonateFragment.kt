@@ -23,6 +23,7 @@ import com.example.charityapp.ui.recyclerViews.PostClickHandler
 import com.example.charityapp.ui.recyclerViews.PostRVAdapter
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.firestore.ktx.getField
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.launch
@@ -87,6 +88,7 @@ class DonateFragment : Fragment(),PostClickHandler {
     override fun clickedPostItem(post: Post) {
         Log.d(TAG, post.title)
         val bundle= bundleOf(
+            "pid" to post.pid,
             "title" to post.title,
             "category" to post.category,
             "location" to post.location,
@@ -94,6 +96,7 @@ class DonateFragment : Fragment(),PostClickHandler {
             "amountReached" to post.amountReached,
             "subCategory" to post.subCategory,
             "description" to post.description)
+
 
 
         findNavController().navigate(R.id.navigation_details,bundle)

@@ -3,6 +3,7 @@ package com.example.charityapp.classes
 import com.example.charityapp.R
 
 class Post(
+    var pid : String="",
     var title : String = "",
     var category : String = "",
     var location : String = "",
