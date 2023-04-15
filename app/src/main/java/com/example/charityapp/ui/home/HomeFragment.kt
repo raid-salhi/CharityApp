@@ -128,7 +128,7 @@ class HomeFragment : Fragment() , PostClickHandler {
         db.collection("Projects").get().addOnSuccessListener{ result ->
             for (document in result)
             {
-              binding.animationView1.visibility = View.GONE
+                binding.animationView1.visibility = View.GONE
                 postProjectList.add(document.toObject<Post>())
                 adapter2.notifyDataSetChanged()
             }
@@ -139,7 +139,19 @@ class HomeFragment : Fragment() , PostClickHandler {
     }
     override fun clickedPostItem(post: Post) {
         Log.d(TAG, post.title)
-        val bundle= bundleOf("title" to post.title)
+        val bundle= bundleOf(
+            "pid" to post.pid,
+            "title" to post.title,
+            "category" to post.category,
+            "location" to post.location,
+            "amountGoal" to post.amountGoal,
+            "amountReached" to post.amountReached,
+            "subCategory" to post.subCategory,
+            "description" to post.description,
+            "imagesNumber" to post.imagesNumber,
+            "description" to post.description,
+            "imagesNumber" to post.imagesNumber)
+
         findNavController().navigate(R.id.navigation_details,bundle)
     }
 

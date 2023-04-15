@@ -40,11 +40,12 @@ class PostRVAdapter(private val mList: List<Post>,private val clickHandler: Post
     }
 
     private fun setCustomizationBySubCategory(holder: ViewHolder,ItemsViewModel:Post) {
-        if (ItemsViewModel.subCategory == "Project Donation") {
+        if (ItemsViewModel.category == "Donation") {
             holder.amountGoalIcon.visibility = View.GONE
-            holder.iconCategory.setImageResource(R.drawable.outline_construction_24)
+            holder.iconCategory.setImageResource(R.drawable.outline_payments_24)
             holder.amountGoal.text = ItemsViewModel.getAmountGoalCash()
         }
+
         else if (ItemsViewModel.subCategory == "Volunteer") {
             holder.amountGoalIcon.setImageResource(R.drawable.person)
             holder.iconCategory.setImageResource(R.drawable.outline_construction_24)
@@ -52,9 +53,9 @@ class PostRVAdapter(private val mList: List<Post>,private val clickHandler: Post
             holder.button.setText(R.string.volunteer)
 
         }
-        else if (ItemsViewModel.category == "Donation") {
+        else if (ItemsViewModel.subCategory == "Project Donation") {
             holder.amountGoalIcon.visibility = View.GONE
-            holder.iconCategory.setImageResource(R.drawable.outline_payments_24)
+            holder.iconCategory.setImageResource(R.drawable.outline_construction_24)
             holder.amountGoal.text = ItemsViewModel.getAmountGoalCash()
         }
 
