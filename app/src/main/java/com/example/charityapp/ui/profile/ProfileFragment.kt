@@ -214,6 +214,10 @@ class ProfileFragment : Fragment() {
         super.onDestroyView()
         logoutButton = activity?.findViewById(R.id.logoutButton)!!
         logoutButton.visibility = View.INVISIBLE
+        val bottomNavBar : BottomNavigationView? = activity?.findViewById(R.id.bottom_nav_view)
+        if (bottomNavBar != null) {
+            bottomNavBar.visibility=View.VISIBLE
+        }
 
     }
 

@@ -95,7 +95,8 @@ class DonateFragment : Fragment(),PostClickHandler {
             "amountGoal" to post.amountGoal,
             "amountReached" to post.amountReached,
             "subCategory" to post.subCategory,
-            "description" to post.description)
+            "description" to post.description,
+            "imagesNumber" to post.imagesNumber)
 
 
 

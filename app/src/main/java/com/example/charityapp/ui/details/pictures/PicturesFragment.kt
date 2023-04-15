@@ -8,8 +8,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import com.example.charityapp.R
 import com.example.charityapp.databinding.FragmentPicturesBinding
 import com.example.charityapp.ui.recyclerViews.SliderImageAdapter
 import com.google.firebase.storage.FirebaseStorage
@@ -19,16 +17,20 @@ import java.io.File
 
 private const val ARG_TITLE ="title"
 private const val ARG_PID="pid"
+private const val ARG_IMAGES_NUMBER="imagesNumber"
 class PicturesFragment : Fragment() {
 
     private var param1: String? = null
     private var param2: String? = null
+    private var param3: Int? = null
     companion object {
         fun newInstance(params1: String,
-                        params2: String) = PicturesFragment().apply {
+                        params2: String,
+                        params3: Int) = PicturesFragment().apply {
             arguments=Bundle().apply {
                 putString(ARG_TITLE,params1)
                 putString(ARG_PID,params2)
+                putInt(ARG_IMAGES_NUMBER,params3)
             }
         }
     }
@@ -45,6 +47,7 @@ class PicturesFragment : Fragment() {
         arguments?.let{
             param1=it.getString(ARG_TITLE)
             param2=it.getString(ARG_PID)
+            param3=it.getInt(ARG_IMAGES_NUMBER)
         }
     }
     override fun onCreateView(
@@ -56,9 +59,19 @@ class PicturesFragment : Fragment() {
 
         binding.title.text=param1
         imageList = ArrayList()
-        for (i in 1..2) {
+        setUpImageList(param3!!)
+
+        sliderView = binding.imageSlider
+        sliderAdapter = SliderImageAdapter(imageList)
+        sliderView.setSliderAdapter(sliderAdapter)
+
+
+        return root
+    }
+
+    private fun setUpImageList(imageNumber: Int) {
+        for (i in 1..imageNumber) {
             storage = FirebaseStorage.getInstance().reference.child("Images/"+param2+"$i.jpg")
-//            Toast.makeText(activity,"Images/"+param2+"$i" , Toast.LENGTH_SHORT).show()
             val localFile = File.createTempFile("tempImage", "jpg")
             storage.getFile(localFile).addOnSuccessListener {
                 val bitmap = BitmapFactory.decodeFile(localFile.absolutePath)
@@ -66,15 +79,6 @@ class PicturesFragment : Fragment() {
                 sliderAdapter.notifyDataSetChanged()
             }
         }
-
-        sliderView = binding.imageSlider
-
-
-        sliderAdapter = SliderImageAdapter(imageList)
-        sliderView.setSliderAdapter(sliderAdapter)
-//        sliderView.startAutoCycle()
-
-        return root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

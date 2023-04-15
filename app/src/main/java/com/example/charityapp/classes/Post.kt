@@ -11,6 +11,7 @@ class Post(
     var amountReached : Int=1,
     var subCategory: String= "",
     var description: String="",
+    var imagesNumber: Int = 0
 ) {
 
     fun getAmountReachedPer(): String {
