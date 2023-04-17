@@ -36,6 +36,11 @@
     <string name="import_">Import</string>
     <string name="description_example">description : Ehsan association has decided to launch this program that will benefit the wilaya of bejaia and speifically Amizour . people have been asking for it for so long because it would enhance their quality of life by a lot since they wont have to travel to Bejaia for health care services. we all know how generous algerian people are when it comes to helping others. Be one of them !</string>
     <string name="description">Description</string>
+    <string name="enter_the_donation_amount">Enter the donation amount</string>
+    <string name="paiment">Paiment</string>
+    <string name="donation_amount">Donation Amount</string>
+    <string name="thank_you_for_your_support">Thank you for your support</string>
+    <string name="pay_with_eddahabia">Pay with eddahabia</string>
 
 
 </resources>

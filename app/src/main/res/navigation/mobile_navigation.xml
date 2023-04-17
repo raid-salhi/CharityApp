@@ -65,4 +65,9 @@
             android:name="title"
             app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/navigation_paiement"
+        android:name="com.example.charityapp.ui.paiment.amount.amountFragment"
+        android:label="@string/paiment"
+        tools:layout="@layout/fragment_amount" />
 </navigation>

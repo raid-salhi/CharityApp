@@ -13,6 +13,7 @@ import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.viewpager.widget.ViewPager
 import com.example.charityapp.R
 import com.example.charityapp.databinding.FragmentDetailsBinding
@@ -113,7 +114,8 @@ class DetailsFragment : Fragment() {
             if(actionButton.text == "Volunteer"){
                 val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://docs.google.com/forms/d/e/1FAIpQLSdJ6P6qdd51X-5Tww5yNiTK-PdYlYCkY25p0f1vNQacssnABw/viewform?usp=sf_link"))
                 startActivity(intent)
-            }
+            }else
+                findNavController().navigate(R.id.navigation_paiement)
         }
 
         return binding.root
