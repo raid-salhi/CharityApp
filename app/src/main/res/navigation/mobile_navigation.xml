@@ -70,4 +70,9 @@
         android:name="com.example.charityapp.ui.paiment.amount.amountFragment"
         android:label="@string/paiment"
         tools:layout="@layout/fragment_amount" />
+    <fragment
+        android:id="@+id/navigation_complete_paiment"
+        android:name="com.example.charityapp.ui.paiment.redirection.RedirectionFragment"
+        android:label="@string/paiment"
+        tools:layout="@layout/fragment_redirection" />
 </navigation>
