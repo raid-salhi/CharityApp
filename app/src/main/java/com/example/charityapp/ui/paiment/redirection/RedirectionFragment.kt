@@ -1,5 +1,6 @@
 package com.example.charityapp.ui.paiment.redirection
 
+import android.app.Dialog
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.util.Log
@@ -7,6 +8,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.example.charityapp.R
@@ -18,17 +21,21 @@ import com.google.firebase.ktx.Firebase
 private const val ARG_PID="pid"
 private const val ARG_AMOUNT_REACHED ="amountReached"
 private const val ARG_AMOUNT_DONATED ="amountDonated"
+private const val ARG_CATEGORY ="category"
 class RedirectionFragment : Fragment() {
     private var param1: String? = null
+    private var param2: String? = null
     private var param3: Int? = null
     private var param4: Int? = null
     companion object {
         fun newInstance(params1: String,
+                        params2: String,
                         params3: Int,
                         params4: Int, ) =
             DetailsFragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PID,params1)
+                    putString(ARG_CATEGORY,params2)
                     putInt(ARG_AMOUNT_REACHED,params3)
                     putInt(ARG_AMOUNT_DONATED,params4)
                 }
@@ -44,6 +51,7 @@ class RedirectionFragment : Fragment() {
         arguments?.let {
 
             param1 = it.getString(ARG_PID)
+            param2 = it.getString(ARG_CATEGORY)
             param3 = it.getInt(ARG_AMOUNT_REACHED)
             param4 = it.getInt(ARG_AMOUNT_DONATED)
         }
@@ -60,13 +68,20 @@ class RedirectionFragment : Fragment() {
         binding.payButton.setOnClickListener {
 
             val db = Firebase.firestore
-            val postRef = db.collection("Donation").document(param1.toString())
+            val postRef = db.collection(param2.toString()).document(param1.toString())
 
             postRef
                 .update("amountReached", param3!!)
                 .addOnSuccessListener {
-                    Toast.makeText(activity, "DocumentSnapshot successfully updated!", Toast.LENGTH_SHORT).show()
-                    findNavController().navigate(R.id.navigation_donate)
+                    val dialog = Dialog(requireContext())
+                    dialog.setContentView(R.layout.dialog_bg)
+                    dialog.window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+                    val dismissButton = dialog.findViewById<ImageView>(R.id.dismiss)
+                    dismissButton.setOnClickListener {
+                        dialog.dismiss()
+                    }
+                    dialog.show()
+                    findNavController().navigate(R.id.navigation_home)
                 }
                 .addOnFailureListener { Toast.makeText(activity, "Error updating document", Toast.LENGTH_SHORT).show()}
         }

@@ -17,6 +17,7 @@ private const val ARG_TITLE ="title"
 private const val ARG_PID="pid"
 private const val ARG_AMOUNT_REACHED ="amountReached"
 private const val ARG_AMOUNT_GOAL ="amountGoal"
+private const val ARG_CATEGORY ="category"
 
 class amountFragment : Fragment() {
 
@@ -24,17 +25,20 @@ class amountFragment : Fragment() {
     private var param2: String? = null
     private var param3: Int? = null
     private var param4: Int? = null
+    private var param5: String? = null
     companion object {
         fun newInstance(params1: String,
                         params2: String,
                         params3: Int,
-                        params4: Int, ) =
+                        params4: Int,
+                        params5: String) =
             DetailsFragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_TITLE,params1)
                     putString(ARG_PID,params2)
                     putInt(ARG_AMOUNT_REACHED,params3)
                     putInt(ARG_AMOUNT_GOAL,params4)
+                    putString(ARG_CATEGORY,params5)
                 }
 
             }
@@ -53,6 +57,8 @@ class amountFragment : Fragment() {
             param2 = it.getString(ARG_PID)
             param3 = it.getInt(ARG_AMOUNT_REACHED)
             param4 = it.getInt(ARG_AMOUNT_GOAL)
+            param5 = it.getString(ARG_CATEGORY)
+
 
         }
     }
@@ -70,6 +76,7 @@ class amountFragment : Fragment() {
                 param3 = param3?.plus(amountDonated)
                 val bundle = bundleOf(
                     "pid" to param2,
+                    "category" to param5,
                     "amountDonated" to amountDonated,
                     "amountReached" to param3
                 )
