@@ -114,8 +114,10 @@ class DetailsFragment : Fragment() {
             if(actionButton.text == "Volunteer"){
                 val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://docs.google.com/forms/d/e/1FAIpQLSdJ6P6qdd51X-5Tww5yNiTK-PdYlYCkY25p0f1vNQacssnABw/viewform?usp=sf_link"))
                 startActivity(intent)
-            }else
-                findNavController().navigate(R.id.navigation_paiement)
+            }else{
+                val bundle : Bundle = requireArguments()
+                findNavController().navigate(R.id.navigation_paiement,bundle)
+            }
         }
 
         return binding.root

@@ -91,7 +91,7 @@
     </androidx.cardview.widget.CardView>
 
     <Button
-        android:id="@+id/next_button"
+        android:id="@+id/pay_button"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
