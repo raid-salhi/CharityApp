@@ -104,7 +104,11 @@ class DetailsFragment : Fragment() {
 
         pager.adapter=adapter
         tab.setupWithViewPager(pager)
-
+        if (param3!! >= param4!!){
+            param3 = param4
+            actionButton.isEnabled = false
+            actionButton.setBackgroundColor(resources.getColor(R.color.green_main_disable))
+        }
         setUpDetailsByCategory()
 
         progressBar.max=param4!!
@@ -179,8 +183,5 @@ class DetailsFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(DetailsViewModel::class.java)
 
     }
-
-
-
 
 }

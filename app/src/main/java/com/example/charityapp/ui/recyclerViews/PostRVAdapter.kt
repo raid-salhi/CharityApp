@@ -1,5 +1,9 @@
 package com.example.charityapp.ui.recyclerViews
 
+import android.content.Intent
+import android.graphics.Color
+import android.net.Uri
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,6 +12,9 @@ import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
+import androidx.core.content.ContextCompat.startActivity
+import androidx.navigation.Navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.charityapp.R
 import com.example.charityapp.classes.Post
@@ -29,17 +36,27 @@ class PostRVAdapter(private val mList: List<Post>,private val clickHandler: Post
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
         val ItemsViewModel = mList[position]
+        if (ItemsViewModel.amountReached >= ItemsViewModel.amountGoal){
+            ItemsViewModel.amountReached =  ItemsViewModel.amountGoal
+            holder.button.isEnabled = false
+        }
         holder.title.text = ItemsViewModel.title
         holder.category.text = ItemsViewModel.category
         holder.location.text = ItemsViewModel.location
         holder.amountReached.text = ItemsViewModel.getAmountReachedPer()
         holder.progressBar.max= ItemsViewModel.amountGoal
         holder.progressBar.progress= ItemsViewModel.amountReached
+
         setCustomizationBySubCategory(holder,ItemsViewModel)
+
+        holder.button.setOnClickListener {
+            clickHandler.clickedPostItem(ItemsViewModel)
+        }
 
     }
 
     private fun setCustomizationBySubCategory(holder: ViewHolder,ItemsViewModel:Post) {
+
         if (ItemsViewModel.category == "Donation") {
             holder.amountGoalIcon.visibility = View.GONE
             holder.iconCategory.setImageResource(R.drawable.outline_payments_24)
@@ -92,7 +109,7 @@ class PostRVAdapter(private val mList: List<Post>,private val clickHandler: Post
         val amountGoalIcon: ImageView = itemView.findViewById(R.id.amountGoalIcon)
         val amountReached: TextView = itemView.findViewById(R.id.amountReached)
         val progressBar: ProgressBar = itemView.findViewById(R.id.progressBar)
-        val button: Button = itemView.findViewById(R.id.button)
+        val button: Button = itemView.findViewById(R.id.actionButton)
         val frame :FrameLayout = itemView.findViewById(R.id.frame)
         init {
             itemView.setOnClickListener (this)

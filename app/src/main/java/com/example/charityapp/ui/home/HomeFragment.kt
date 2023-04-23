@@ -54,7 +54,7 @@ class HomeFragment : Fragment() , PostClickHandler {
 //        val toolbarTitle = activity?.findViewById<TextView>(R.id.toolbar_title)
 //        toolbarTitle?.setText(R.string.title_home)
         db = Firebase.firestore
-        setupEmerencyRV()
+        setupEmergencyRV()
         setupProjectsRV()
         setupDonationRV()
         eventChangeListner()
@@ -82,7 +82,7 @@ class HomeFragment : Fragment() , PostClickHandler {
 
     }
 
-    private fun setupEmerencyRV() {
+    private fun setupEmergencyRV() {
         postEmergencyList = arrayListOf()
         adapter3= PostRVAdapter(postEmergencyList,this)
         postEmergencyRV =binding.emergencyRV
