@@ -39,6 +39,7 @@ class PostRVAdapter(private val mList: List<Post>,private val clickHandler: Post
         if (ItemsViewModel.amountReached >= ItemsViewModel.amountGoal){
             ItemsViewModel.amountReached =  ItemsViewModel.amountGoal
             holder.button.isEnabled = false
+            holder.itemView.isEnabled = false
         }
         holder.title.text = ItemsViewModel.title
         holder.category.text = ItemsViewModel.category

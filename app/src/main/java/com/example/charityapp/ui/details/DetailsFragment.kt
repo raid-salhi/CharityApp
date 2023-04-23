@@ -20,6 +20,7 @@ import com.example.charityapp.databinding.FragmentDetailsBinding
 import com.example.charityapp.ui.details.description.DescriptionFragment
 import com.example.charityapp.ui.details.pictures.PicturesFragment
 import com.example.charityapp.ui.donate.DonateViewModel
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.tabs.TabLayout
 
 private const val ARG_TITLE ="title"
@@ -94,6 +95,11 @@ class DetailsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentDetailsBinding.inflate(inflater, container, false)
+
+        val bottomNavBar : BottomNavigationView? = activity?.findViewById(R.id.bottom_nav_view)
+        if (bottomNavBar != null) {
+            bottomNavBar.visibility=View.GONE
+        }
 
         val bundle = requireArguments()
         val adapter = ViewPagerDetailsAdapter(childFragmentManager,bundle)
@@ -173,7 +179,6 @@ class DetailsFragment : Fragment() {
         amountGoalTV = binding.amountGoal
         categoryImg = binding.categoryImg
         progressBar = binding.progressBar2
-        shareButton=binding.shareButton
         actionButton=binding.actionButton
 
     }
@@ -183,5 +188,12 @@ class DetailsFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(DetailsViewModel::class.java)
 
     }
-
+    override fun onDestroyView() {
+        super.onDestroyView()
+//        val bottomNavBar : BottomNavigationView? = activity?.findViewById(R.id.bottom_nav_view)
+//        if (bottomNavBar != null) {
+//            bottomNavBar.visibility=View.VISIBLE
+//        }
+        _binding = null
+    }
 }

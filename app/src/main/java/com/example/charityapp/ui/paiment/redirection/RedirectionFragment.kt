@@ -15,6 +15,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.charityapp.R
 import com.example.charityapp.databinding.FragmentRedirectionBinding
 import com.example.charityapp.ui.details.DetailsFragment
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
@@ -93,7 +94,18 @@ class RedirectionFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(RedirectionViewModel::class.java)
-        // TODO: Use the ViewModel
+        val bottomNavBar : BottomNavigationView? = activity?.findViewById(R.id.bottom_nav_view)
+        if (bottomNavBar != null) {
+            bottomNavBar.visibility=View.GONE
+        }
+    }
+    override fun onDestroyView() {
+        super.onDestroyView()
+        val bottomNavBar : BottomNavigationView? = activity?.findViewById(R.id.bottom_nav_view)
+        if (bottomNavBar != null) {
+            bottomNavBar.visibility=View.VISIBLE
+        }
+        _binding = null
     }
 
 }

@@ -10,9 +10,7 @@
         android:name="com.example.charityapp.ui.home.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" >
-        <action
-            android:id="@+id/action_navigation_home_to_navigation_event"
-            app:destination="@id/navigation_event" />
+
     </fragment>
 
     <fragment
@@ -21,11 +19,6 @@
         android:label="@string/faq"
         tools:layout="@layout/fragment_faq" />
 
-    <fragment
-        android:id="@+id/navigation_event"
-        android:name="com.example.charityapp.ui.event.EventFragment"
-        android:label="@string/title_event"
-        tools:layout="@layout/fragment_event" />
     <fragment
         android:id="@+id/navigation_emergency"
         android:name="com.example.charityapp.ui.emergency.EmergencyFragment"

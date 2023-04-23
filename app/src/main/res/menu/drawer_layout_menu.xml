@@ -5,11 +5,11 @@
         android:icon="@drawable/ic_profile"
         android:title="@string/profile"
         android:checkable="true"/>
-    <item
-        android:id="@+id/navigation_event"
-        android:icon="@drawable/baseline_event_24"
-        android:title="@string/title_event"
-        android:checkable="true"/>
+<!--    <item-->
+<!--        android:id="@+id/navigation_event"-->
+<!--        android:icon="@drawable/baseline_event_24"-->
+<!--        android:title="@string/title_event"-->
+<!--        android:checkable="true"/>-->
     <item
         android:id="@+id/navigation_need_help"
         android:icon="@drawable/baseline_support_24"

@@ -12,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.charityapp.R
 import com.example.charityapp.databinding.FragmentAmountBinding
 import com.example.charityapp.ui.details.*
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 private const val ARG_TITLE ="title"
 private const val ARG_PID="pid"
@@ -52,6 +53,11 @@ class amountFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val bottomNavBar : BottomNavigationView? = activity?.findViewById(R.id.bottom_nav_view)
+        if (bottomNavBar != null) {
+            bottomNavBar.visibility=View.GONE
+        }
+
         arguments?.let {
             param1 = it.getString(ARG_TITLE)
             param2 = it.getString(ARG_PID)
@@ -69,6 +75,7 @@ class amountFragment : Fragment() {
 
         _binding = FragmentAmountBinding.inflate(inflater, container, false)
         val root: View = binding.root
+
 
         binding.nextButton.setOnClickListener {
             if (binding.amountEditText.text?.isEmpty() == false){
@@ -90,7 +97,15 @@ class amountFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(AmountViewModel::class.java)
-        // TODO: Use the ViewModel
+
+    }
+    override fun onDestroyView() {
+        super.onDestroyView()
+//        val bottomNavBar : BottomNavigationView? = activity?.findViewById(R.id.bottom_nav_view)
+//        if (bottomNavBar != null) {
+//            bottomNavBar.visibility=View.VISIBLE
+//        }
+        _binding = null
     }
 
 }
