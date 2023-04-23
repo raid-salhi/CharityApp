@@ -1,6 +1,7 @@
 package com.example.charityapp.ui.profile
 
 import android.content.Intent
+import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
@@ -29,6 +30,7 @@ import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import kotlinx.coroutines.launch
+import java.io.ByteArrayOutputStream
 import java.io.File
 
 class ProfileFragment : Fragment() {
@@ -80,12 +82,58 @@ class ProfileFragment : Fragment() {
 
     private fun saveImageInFirebase(imgUri: Uri) {
 
+        val reducedImage = reduceImageSize(imgUri)
+
         storage =FirebaseStorage.getInstance().getReference("Users/"+ auth!!.currentUser!!.uid)
-        storage.putFile(imgUri).addOnSuccessListener {
+        storage.putBytes(reducedImage).addOnSuccessListener {
             Toast.makeText(context, "upload success", Toast.LENGTH_SHORT).show()
         }
 
 
+    }
+
+    private fun reduceImageSize(imgUri: Uri): ByteArray {
+        // Get the Uri of the image you want to upload
+        val imageUri: Uri = imgUri
+
+// Get the InputStream from the Uri
+        val inputStream = context?.contentResolver?.openInputStream(imageUri)
+
+// Create a Bitmap from the InputStream
+        val bitmap = BitmapFactory.decodeStream(inputStream)
+
+// Set the maximum image size you want to allow
+        val maxSize = 1024 // in pixels
+
+// Get the current dimensions of the bitmap
+        val width = bitmap.width
+        val height = bitmap.height
+
+// Calculate the new dimensions for the bitmap
+        var newWidth = width
+        var newHeight = height
+        if (width > maxSize || height > maxSize) {
+            if (width > height) {
+                newWidth = maxSize
+                newHeight = (newWidth * height) / width
+            } else {
+                newHeight = maxSize
+                newWidth = (newHeight * width) / height
+            }
+        }
+
+// Create a new bitmap with the new dimensions
+        val resizedBitmap = Bitmap.createScaledBitmap(bitmap, newWidth, newHeight, true)
+
+// Create a ByteArrayOutputStream to hold the compressed image data
+        val outputStream = ByteArrayOutputStream()
+
+// Compress the resized bitmap and write it to the ByteArrayOutputStream
+        resizedBitmap.compress(Bitmap.CompressFormat.JPEG, 80, outputStream)
+
+// Get the compressed image data as a ByteArray
+
+        return outputStream.toByteArray()
     }
 
     private fun handleIconClick() {
