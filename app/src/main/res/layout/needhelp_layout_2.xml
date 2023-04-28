@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:text="Choose the donation type : "
+                android:textSize="22sp"
+                android:layout_marginBottom="60dp"/>
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/category_radio_group">
+
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/donation_radio_button"
+                    android:text="Surgical aid"
+                    android:textSize="17sp"
+                    android:buttonTint="@color/green_main"
+                    android:layout_marginBottom="8dp"/>
+
+
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/project_radio_button"
+                    android:text="Blood Donation"
+                    android:textSize="17sp"
+                    android:buttonTint="@color/green_main"
+                    android:layout_marginBottom="8dp"/>
+
+
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/emergency_radio_button"
+                    android:text="Medicins"
+                    android:textSize="17sp"
+                    android:buttonTint="@color/green_main"/>
+
+            </RadioGroup>
+
+        </LinearLayout>
+
+        <Button
+            app:backgroundTint="@color/green_main"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Next"
+            android:id="@+id/next2"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="40dp"/>
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
