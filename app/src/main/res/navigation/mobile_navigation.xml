@@ -68,4 +68,19 @@
         android:name="com.example.charityapp.ui.paiment.redirection.RedirectionFragment"
         android:label="@string/paiment"
         tools:layout="@layout/fragment_redirection" />
+    <fragment
+        android:id="@+id/needHelpFragment"
+        android:name="com.example.charityapp.ui.needhelp.NeedHelpFragment"
+        android:label="@string/title_need_help"
+        tools:layout="@layout/fragment_need_help" />
+    <fragment
+        android:id="@+id/needHelp2Fragment"
+        android:name="com.example.charityapp.ui.needhelp.NeedHelp2Fragment"
+        android:label="NeedHelp2Fragment"
+        tools:layout="@layout/needhelp_layout_2"/>
+    <fragment
+        android:id="@+id/needHelp3Fragment"
+        android:name="com.example.charityapp.ui.needhelp.NeedHelp3Fragment"
+        android:label="NeedHelp3Fragment"
+        tools:layout="@layout/needhelp_layout_3"/>
 </navigation>
