@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -11,62 +12,69 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:gravity="center">
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
-                android:text="Choose the donation type : "
-                android:textSize="22sp"
-                android:layout_marginBottom="60dp"/>
+                android:layout_marginTop="120dp"
+                android:fontFamily="@font/euclid_circular_b_medium"
+                android:text="Select the emergency type : "
+                android:textSize="24sp" />
 
             <RadioGroup
+                android:id="@+id/category_radio_group"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/category_radio_group">
+                android:layout_marginTop="60dp">
 
                 <RadioButton
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
                     android:id="@+id/donation_radio_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:background="@drawable/rounded"
+                    android:buttonTint="@color/green_main"
                     android:text="Surgical aid"
-                    android:textSize="17sp"
-                    android:buttonTint="@color/green_main"
-                    android:layout_marginBottom="8dp"/>
+                    android:textSize="17sp" />
 
 
                 <RadioButton
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
                     android:id="@+id/project_radio_button"
-                    android:text="Blood Donation"
-                    android:textSize="17sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
                     android:buttonTint="@color/green_main"
-                    android:layout_marginBottom="8dp"/>
+                    android:text="Blood Donation"
+                    android:textSize="17sp" />
 
 
                 <RadioButton
+                    android:id="@+id/emergency_radio_button"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/emergency_radio_button"
+                    android:buttonTint="@color/green_main"
                     android:text="Medicins"
-                    android:textSize="17sp"
-                    android:buttonTint="@color/green_main"/>
+                    android:textSize="17sp" />
 
             </RadioGroup>
 
         </LinearLayout>
 
         <Button
-            app:backgroundTint="@color/green_main"
+            android:id="@+id/next2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Next"
-            android:id="@+id/next2"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="40dp"/>
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="40dp"
+            android:background="@drawable/button"
+            android:text="Next"
+            android:textSize="18sp"
+            app:backgroundTint="@color/green_main" />
 
     </RelativeLayout>
 

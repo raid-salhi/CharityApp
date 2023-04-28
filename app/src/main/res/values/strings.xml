@@ -42,6 +42,9 @@
     <string name="thank_you_for_your_support">Thank you for your support</string>
     <string name="pay_with_eddahabia">Pay with eddahabia</string>
     <string name="complete_paiment">Complete your payment</string>
+    <string name="start">Start</string>
+    <string name="notice_des">The need help section is made for those who has emergent situation , like : \n - Blood Need \n - Surgical Aids \n -Medecine need \n So if you are in such a situation don\'t hesitate to procede with this section , you are going to fill a a form so that you situation will be treated by our professionals .</string>
+    <string name="submit">Submit</string>
 
 
 </resources>
