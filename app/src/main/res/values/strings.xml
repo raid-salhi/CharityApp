@@ -42,9 +42,22 @@
     <string name="thank_you_for_your_support">Thank you for your support</string>
     <string name="pay_with_eddahabia">Pay with eddahabia</string>
     <string name="complete_paiment">Complete your payment</string>
+<<<<<<< Updated upstream
     <string name="start">Start</string>
     <string name="notice_des">The need help section is made for those who has emergent situation , like : \n - Blood Need \n - Surgical Aids \n -Medecine need \n So if you are in such a situation don\'t hesitate to procede with this section , you are going to fill a a form so that you situation will be treated by our professionals .</string>
     <string name="submit">Submit</string>
+=======
+<<<<<<< HEAD
+    <string name="policy">After seting up your goal you will be asked to agree on our terms in order to complete tour request here are some of our main terms of condition :
+    -you will be recieving related phone calls
+    -you will have to cooperate with us in order to help our team investigation to confirm your case
+    -any false information given will result in a decline of you request</string>
+=======
+    <string name="start">Start</string>
+    <string name="notice_des">The need help section is made for those who has emergent situation , like : \n - Blood Need \n - Surgical Aids \n -Medecine need \n So if you are in such a situation don\'t hesitate to procede with this section , you are going to fill a a form so that you situation will be treated by our professionals .</string>
+    <string name="submit">Submit</string>
+>>>>>>> 975ddf8245bb1e863c3551e7b5040809c4dff61c
+>>>>>>> Stashed changes
 
 
 </resources>
