@@ -76,6 +76,7 @@
             android:background="@drawable/button"
             android:text="Next"
             android:textSize="18sp"
+            android:drawableEnd="@drawable/baseline_arrow_forward_24"
             app:backgroundTint="@color/green_main" />
 
     </RelativeLayout>

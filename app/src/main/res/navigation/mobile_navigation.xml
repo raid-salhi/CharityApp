@@ -76,11 +76,16 @@
     <fragment
         android:id="@+id/needHelp2Fragment"
         android:name="com.example.charityapp.ui.needhelp.NeedHelp2Fragment"
-        android:label="NeedHelp2Fragment"
+        android:label="@string/title_need_help"
         tools:layout="@layout/needhelp_layout_2"/>
     <fragment
         android:id="@+id/needHelp3Fragment"
         android:name="com.example.charityapp.ui.needhelp.NeedHelp3Fragment"
-        android:label="NeedHelp3Fragment"
+        android:label="@string/title_need_help"
         tools:layout="@layout/needhelp_layout_3"/>
+    <fragment
+        android:id="@+id/needHelp4Fragment"
+        android:name="com.example.charityapp.ui.needhelp.NeedHelp4Fragment"
+        android:label="@string/title_need_help"
+        tools:layout="@layout/needhelp_layout_4"/>
 </navigation>

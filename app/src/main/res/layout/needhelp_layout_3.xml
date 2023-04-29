@@ -76,7 +76,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/submit"
+        android:id="@+id/next_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -84,7 +84,8 @@
         android:layout_marginEnd="30dp"
         android:layout_marginBottom="40dp"
         android:background="@drawable/button"
-        android:text="@string/submit"
+        android:drawableEnd="@drawable/baseline_arrow_forward_24"
+        android:text="@string/next"
         android:textSize="18sp"
         app:backgroundTint="@color/green_main" />
 
