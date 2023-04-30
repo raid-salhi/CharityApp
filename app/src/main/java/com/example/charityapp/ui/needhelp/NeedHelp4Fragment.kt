@@ -54,13 +54,13 @@ class NeedHelp4Fragment : Fragment() {
         }
 
     }
-    override fun onDestroyView() {
-        super.onDestroyView()
-        val bottomNavBar : BottomNavigationView? = activity?.findViewById(R.id.bottom_nav_view)
-        if (bottomNavBar != null) {
-            bottomNavBar.visibility=View.VISIBLE
-        }
-        _binding = null
-    }
+//    override fun onDestroyView() {
+//        super.onDestroyView()
+//        val bottomNavBar : BottomNavigationView? = activity?.findViewById(R.id.bottom_nav_view)
+//        if (bottomNavBar != null) {
+//            bottomNavBar.visibility=View.VISIBLE
+//        }
+//        _binding = null
+//    }
 
 }

@@ -214,6 +214,8 @@ class ProfileFragment : Fragment() {
                     storage.getFile(localFile).addOnSuccessListener{
                         val bitmap = BitmapFactory.decodeFile(localFile.absolutePath)
                         binding.profileImage.setImageBitmap(bitmap)
+                    }.addOnFailureListener{
+                        binding.profileImage.setImageResource(R.drawable.person)
                     }
                 }
 

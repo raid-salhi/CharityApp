@@ -19,6 +19,7 @@ import com.example.charityapp.classes.Post
 import com.example.charityapp.databinding.FragmentHomeBinding
 import com.example.charityapp.ui.recyclerViews.PostClickHandler
 import com.example.charityapp.ui.recyclerViews.PostRVAdapter
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
@@ -98,10 +99,9 @@ class HomeFragment : Fragment() , PostClickHandler {
         super.onActivityCreated(savedInstanceState)
         val homeViewModel =
             ViewModelProvider(this).get(HomeViewModel::class.java)
-        // TODO: Use the ViewModel
-        lifecycleScope.launch {
-//            val toolbarTitle = activity?.findViewById<TextView>(R.id.toolbar_title)
-//            toolbarTitle?.setText(R.string.title_home)
+        val bottomNavBar : BottomNavigationView? = activity?.findViewById(R.id.bottom_nav_view)
+        if (bottomNavBar != null) {
+            bottomNavBar.visibility=View.VISIBLE
         }
     }
     private fun eventChangeListner() {
@@ -154,6 +154,10 @@ class HomeFragment : Fragment() , PostClickHandler {
             "imagesNumber" to post.imagesNumber)
 
         findNavController().navigate(R.id.navigation_details,bundle)
+    }
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
     }
 
     override fun onDestroyView() {

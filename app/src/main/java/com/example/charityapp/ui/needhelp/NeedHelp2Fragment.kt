@@ -31,10 +31,6 @@ class NeedHelp2Fragment : Fragment() {
     ): View {
         _binding = NeedhelpLayout2Binding.inflate(inflater, container, false)
 
-        val bottomNavBar : BottomNavigationView? = activity?.findViewById(R.id.bottom_nav_view)
-        if (bottomNavBar != null) {
-            bottomNavBar.visibility=View.GONE
-        }
 
 
         radioGroup = binding.categoryRadioGroup
@@ -64,5 +60,22 @@ class NeedHelp2Fragment : Fragment() {
         viewModel = ViewModelProvider(this).get(NeedHelp2ViewModel::class.java)
         // TODO: Use the ViewModel
     }
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        val bottomNavBar : BottomNavigationView? = activity?.findViewById(R.id.bottom_nav_view)
+        if (bottomNavBar != null) {
+            bottomNavBar.visibility=View.GONE
+        }
+
+    }
+//    override fun onDestroyView() {
+//        super.onDestroyView()
+//        val bottomNavBar : BottomNavigationView? = activity?.findViewById(R.id.bottom_nav_view)
+//        if (bottomNavBar != null) {
+//            bottomNavBar.visibility=View.VISIBLE
+//        }
+//        _binding = null
+//    }
 
 }
