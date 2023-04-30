@@ -65,6 +65,7 @@ class NeedHelp3Fragment : Fragment() {
                     "uri" to uriM,
                     "location" to location,
                     "subCategory" to param1)
+
                 findNavController().navigate(R.id.needHelp4Fragment,bundle)
             }else
                 Toast.makeText(requireContext(), "Fill all the cases please !", Toast.LENGTH_SHORT).show()

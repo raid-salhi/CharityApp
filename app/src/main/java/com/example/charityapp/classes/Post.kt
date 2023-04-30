@@ -13,7 +13,6 @@ class Post(
     var description: String="",
     var imagesNumber: Int = 0
 ) {
-
     fun getAmountReachedPer(): String {
         return "${amountReached*100/(amountGoal)} %"
     }
