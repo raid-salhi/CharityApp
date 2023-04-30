@@ -17,6 +17,9 @@ import com.example.charityapp.classes.Post
 import com.example.charityapp.databinding.NeedhelpLayout3Binding
 import com.example.charityapp.databinding.NeedhelpLayout4Binding
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import java.io.ByteArrayOutputStream
@@ -56,6 +59,7 @@ class NeedHelp4Fragment : Fragment() {
     private lateinit var storage : StorageReference
     private lateinit var postId: String
     private lateinit var post: Post
+    private lateinit var db : FirebaseFirestore
     private var _binding: NeedhelpLayout4Binding? = null
     private val binding get() = _binding!!
 
@@ -64,28 +68,39 @@ class NeedHelp4Fragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = NeedhelpLayout4Binding.inflate(inflater, container, false)
+        db = Firebase.firestore
         postId = UUID.randomUUID().toString()
-        post= Post(
-            postId,
-            param2!!,
-            "Emergency",
-            param5!!,
-            binding.amountEditText.text.toString().toInt(),
-            0,
-            param1!!,
-            param3!!,
-            1
-        )
         binding.switch1.setOnCheckedChangeListener { buttonView, isChecked ->
             binding.submitButton.isEnabled = isChecked
         }
 
+
         binding.submitButton.setOnClickListener {
+            post= Post(
+                pid = postId,
+                title = param2.toString(),
+                "Emergency",
+                location = param5.toString(),
+                amountGoal = binding.amountEditText.text.toString().toInt(),
+                0,
+                subCategory = param1.toString(),
+                description = param3.toString(),
+                1
+            )
             saveImageInFirebase(param4!!.toUri())
+            savePostInFirebase(post)
 
 
         }
         return binding.root
+    }
+
+    private fun savePostInFirebase(post: Post) {
+        db.collection("NeedHelpReq").document(postId)
+            .set(post)
+            .addOnSuccessListener { Toast.makeText(requireContext(), "DocumentSnapshot successfully written!", Toast.LENGTH_SHORT).show() }
+            .addOnFailureListener { Toast.makeText(requireContext(), "Error writing document", Toast.LENGTH_SHORT).show() }
+
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

@@ -44,20 +44,21 @@ class NeedHelp3Fragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = NeedhelpLayout3Binding.inflate(inflater, container, false)
-        title = binding.titleEditText.text.toString()
-        description = binding.descriptionEditText.text.toString()
-        location = binding.wilaya.text.toString()
+
 
         val pickMedia = registerForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri ->
             uriPath = uri!!.path.toString()
             uriM = uri.toString()
-            Toast.makeText(requireContext(), "Upload Successful "+uriPath, Toast.LENGTH_SHORT).show()
+
         }
         binding.buttonUploadPics.setOnClickListener {
             pickMedia.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
         }
         binding.nextBtn.setOnClickListener {
             if (binding.titleEditText.text!!.isNotEmpty() && binding.descriptionEditText.text!!.isNotEmpty()){
+                title = binding.titleEditText.text.toString()
+                description = binding.descriptionEditText.text.toString()
+                location = binding.wilaya.text.toString()
                 val bundle = bundleOf(
                     "title" to title,
                     "description" to description,
