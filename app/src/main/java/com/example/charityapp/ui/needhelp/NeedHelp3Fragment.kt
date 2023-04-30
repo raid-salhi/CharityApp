@@ -36,6 +36,7 @@ class NeedHelp3Fragment : Fragment() {
     private lateinit var description : String
     private val binding get() = _binding!!
     private lateinit var uriPath : String
+    private lateinit var uriM : String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -47,6 +48,7 @@ class NeedHelp3Fragment : Fragment() {
 
         val pickMedia = registerForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri ->
             uriPath = uri!!.path.toString()
+            uriM = uri.toString()
             Toast.makeText(requireContext(), "Upload Successful "+uriPath, Toast.LENGTH_SHORT).show()
         }
         binding.buttonUploadPics.setOnClickListener {
@@ -57,8 +59,8 @@ class NeedHelp3Fragment : Fragment() {
                 val bundle = bundleOf(
                     "title" to title,
                     "description" to description,
-                    "uriPath" to uriPath,
-                    "category" to param1)
+                    "uri" to uriM,
+                    "subCategory" to param1)
                 findNavController().navigate(R.id.needHelp4Fragment,bundle)
             }else
                 Toast.makeText(requireContext(), "Fill all the cases please !", Toast.LENGTH_SHORT).show()
