@@ -1,70 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".ui.needhelp.NeedHelp3Fragment"
-    android:padding="16dp">
+    android:layout_height="match_parent">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
+        android:padding="16dp">
 
-        android:gravity="center_horizontal"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="80dp"
-            android:text="Fill in the form below : "
-            android:textSize="22sp" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/title_layout"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="80dp"
-            android:layout_marginBottom="30dp"
-            android:hint="Title">
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/title_edit_text"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:text="Fill in the form below : "
+                android:textSize="22sp"
+                android:layout_marginBottom="60dp"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/title_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text" />
+                android:hint="Title"
+                android:layout_marginBottom="15dp">
 
-        </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/title_edit_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/description_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:hint="Description">
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/description_edit_text"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/description_layout"
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:gravity="top"
-                android:inputType="text"
-                android:lines="6"
-                android:maxLines="6" />
+                android:layout_height="wrap_content"
+                android:hint="Description"
+                android:layout_marginBottom="10dp">
 
-        </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/description_edit_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:maxLines="6"
+                    android:lines="6"
+                    android:inputType="text" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
 
         <Button
-            android:id="@+id/button_upload_pics"
-            style="@style/Widget.Material3.Button.OutlinedButton"
-            android:layout_width="wrap_content"
+            app:backgroundTint="@color/green_main"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+<<<<<<< Updated upstream
             android:layout_marginTop="50dp"
             android:drawableLeft="@drawable/ic_upload_img"
             android:drawableRight="@drawable/arrow_main_color"
@@ -88,6 +84,13 @@
         android:text="@string/next"
         android:textSize="18sp"
         app:backgroundTint="@color/green_main" />
+=======
+            android:text="Next"
+            android:id="@+id/next1"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="40dp"/>
+>>>>>>> Stashed changes
 
     </RelativeLayout>
 
+</androidx.constraintlayout.widget.ConstraintLayout>
