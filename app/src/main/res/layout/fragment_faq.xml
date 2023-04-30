@@ -5,9 +5,27 @@
     android:layout_height="match_parent"
     tools:context=".ui.faq.FaqFragment">
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Hello" />
+        android:gravity="center"
+        android:padding="18dp"
+        android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="What is Ihsan ?"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="120dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/FAQ"
+        android:textSize="17sp" />
+
+    </LinearLayout>
 
 </FrameLayout>

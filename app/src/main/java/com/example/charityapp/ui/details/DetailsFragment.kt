@@ -74,6 +74,7 @@ class DetailsFragment : Fragment() {
     private lateinit var amountGoalTV : TextView
     private lateinit var categoryImg : ImageView
     private lateinit var progressBar: ProgressBar
+    private lateinit var shareButton: ImageView
     private lateinit var actionButton: Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -189,10 +190,10 @@ class DetailsFragment : Fragment() {
     }
     override fun onDestroyView() {
         super.onDestroyView()
-        val bottomNavBar : BottomNavigationView? = activity?.findViewById(R.id.bottom_nav_view)
-        if (bottomNavBar != null) {
-            bottomNavBar.visibility=View.VISIBLE
-        }
+//        val bottomNavBar : BottomNavigationView? = activity?.findViewById(R.id.bottom_nav_view)
+//        if (bottomNavBar != null) {
+//            bottomNavBar.visibility=View.VISIBLE
+//        }
         _binding = null
     }
 }
