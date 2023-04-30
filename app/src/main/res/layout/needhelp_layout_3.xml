@@ -41,6 +41,20 @@
                 android:inputType="text" />
 
         </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/wilaya_layout"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Wilaya"
+            android:layout_marginBottom="30dp">
+
+        <AutoCompleteTextView
+            android:id="@+id/wilaya"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:simpleItems="@array/wilaya_label" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/description_layout"

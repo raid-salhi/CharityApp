@@ -33,6 +33,7 @@ class NeedHelp3Fragment : Fragment() {
     private lateinit var viewModel: NeedHelp3ViewModel
     private var _binding: NeedhelpLayout3Binding? = null
     private lateinit var title : String
+    private lateinit var location : String
     private lateinit var description : String
     private val binding get() = _binding!!
     private lateinit var uriPath : String
@@ -45,6 +46,7 @@ class NeedHelp3Fragment : Fragment() {
         _binding = NeedhelpLayout3Binding.inflate(inflater, container, false)
         title = binding.titleEditText.text.toString()
         description = binding.descriptionEditText.text.toString()
+        location = binding.wilaya.text.toString()
 
         val pickMedia = registerForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri ->
             uriPath = uri!!.path.toString()
@@ -60,6 +62,7 @@ class NeedHelp3Fragment : Fragment() {
                     "title" to title,
                     "description" to description,
                     "uri" to uriM,
+                    "location" to location,
                     "subCategory" to param1)
                 findNavController().navigate(R.id.needHelp4Fragment,bundle)
             }else

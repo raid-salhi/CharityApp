@@ -13,6 +13,7 @@ import android.widget.Toast
 import androidx.core.net.toUri
 import androidx.core.os.bundleOf
 import com.example.charityapp.R
+import com.example.charityapp.classes.Post
 import com.example.charityapp.databinding.NeedhelpLayout3Binding
 import com.example.charityapp.databinding.NeedhelpLayout4Binding
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -23,6 +24,7 @@ import java.util.UUID
 
 private const val ARG_SUB_CATEGORY ="subCategory"
 private const val ARG_TITLE ="title"
+private const val ARG_LOCATION ="location"
 private const val ARG_DESCRIPTION ="description"
 private const val ARG_URI ="uri"
 class NeedHelp4Fragment : Fragment() {
@@ -31,10 +33,12 @@ class NeedHelp4Fragment : Fragment() {
     private var param2 : String? = null
     private var param3 : String? = null
     private var param4 : String? = null
+    private var param5 : String? = null
     companion object {
         fun newInstance(params1: String,
                         params2: String,
                         params3: String,
+                        params5: String,
                         params4: String)=
             NeedHelp4Fragment().apply {
                 arguments=Bundle().apply {
@@ -42,6 +46,7 @@ class NeedHelp4Fragment : Fragment() {
                     putString(ARG_TITLE,params2)
                     putString(ARG_DESCRIPTION,params3)
                     putString(ARG_URI,params4)
+                    putString(ARG_LOCATION,params5)
 
                 }
             }
@@ -50,6 +55,7 @@ class NeedHelp4Fragment : Fragment() {
     private lateinit var viewModel: NeedHelp4ViewModel
     private lateinit var storage : StorageReference
     private lateinit var postId: String
+    private lateinit var post: Post
     private var _binding: NeedhelpLayout4Binding? = null
     private val binding get() = _binding!!
 
@@ -59,12 +65,24 @@ class NeedHelp4Fragment : Fragment() {
     ): View {
         _binding = NeedhelpLayout4Binding.inflate(inflater, container, false)
         postId = UUID.randomUUID().toString()
+        post= Post(
+            postId,
+            param2!!,
+            "Emergency",
+            param5!!,
+            binding.amountEditText.text.toString().toInt(),
+            0,
+            param1!!,
+            param3!!,
+            1
+        )
         binding.switch1.setOnCheckedChangeListener { buttonView, isChecked ->
             binding.submitButton.isEnabled = isChecked
         }
 
         binding.submitButton.setOnClickListener {
             saveImageInFirebase(param4!!.toUri())
+
 
         }
         return binding.root
@@ -82,6 +100,8 @@ class NeedHelp4Fragment : Fragment() {
             param2 = it.getString(ARG_TITLE)
             param3 = it.getString(ARG_DESCRIPTION)
             param4 = it.getString(ARG_URI)
+            param5 = it.getString(ARG_LOCATION)
+
         }
         val bottomNavBar : BottomNavigationView? = activity?.findViewById(R.id.bottom_nav_view)
         if (bottomNavBar != null) {
