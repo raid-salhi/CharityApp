@@ -32,7 +32,7 @@ private const val ARG_SUB_CATEGORY = "subCategory"
 private const val ARG_TITLE = "title"
 private const val ARG_LOCATION = "location"
 private const val ARG_DESCRIPTION = "description"
-private const val ARG_URI = "uri"
+private const val ARG_LIST_URI = "listUri"
 private const val ARG_CONTACT = "contact"
 
 class NeedHelp4Fragment : Fragment() {
@@ -40,9 +40,9 @@ class NeedHelp4Fragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
     private var param3: String? = null
-    private var param4: String? = null
     private var param5: String? = null
     private var param6: Int? = null
+    private var param7: ArrayList<String>? = null
 
     companion object {
         fun newInstance(
@@ -51,16 +51,16 @@ class NeedHelp4Fragment : Fragment() {
             params3: String,
             params5: String,
             params6: Int,
-            params4: String
+            params7: ArrayList<String>
         ) =
             NeedHelp4Fragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_SUB_CATEGORY, params1)
                     putString(ARG_TITLE, params2)
                     putString(ARG_DESCRIPTION, params3)
-                    putString(ARG_URI, params4)
                     putString(ARG_LOCATION, params5)
                     putInt(ARG_CONTACT, params6)
+                    putStringArrayList(ARG_LIST_URI,params7)
                 }
             }
     }
@@ -83,6 +83,7 @@ class NeedHelp4Fragment : Fragment() {
         postId = UUID.randomUUID().toString()
         binding.switch1.setOnCheckedChangeListener { buttonView, isChecked ->
             binding.submitButton.isEnabled = isChecked
+
         }
 
 
@@ -96,11 +97,11 @@ class NeedHelp4Fragment : Fragment() {
                 0,
                 subCategory = param1.toString(),
                 description = param3.toString(),
-                1,
+                imagesNumber = param7!!.size,
                 contact = param6!!
             )
-            if (param4 != null)
-                saveImageInFirebase(param4!!.toUri())
+            if (param7!!.isNotEmpty())
+                saveImageInFirebase(param7!!)
             savePostInFirebase(post)
 
 
@@ -151,9 +152,9 @@ class NeedHelp4Fragment : Fragment() {
             param1 = it.getString(ARG_SUB_CATEGORY)
             param2 = it.getString(ARG_TITLE)
             param3 = it.getString(ARG_DESCRIPTION)
-            param4 = it.getString(ARG_URI)
             param5 = it.getString(ARG_LOCATION)
             param6 = it.getInt(ARG_CONTACT)
+            param7= it.getStringArrayList(ARG_LIST_URI)
         }
         val bottomNavBar: BottomNavigationView? = activity?.findViewById(R.id.bottom_nav_view)
         if (bottomNavBar != null) {
@@ -162,16 +163,14 @@ class NeedHelp4Fragment : Fragment() {
 
     }
 
-    private fun saveImageInFirebase(imgUri: Uri) {
-
-        val reducedImage = reduceImageSize(imgUri)
-
-        storage = FirebaseStorage.getInstance().getReference("NeedHelpReq/" + postId)
-        storage.putBytes(reducedImage).addOnSuccessListener {
-            Toast.makeText(context, "upload success", Toast.LENGTH_SHORT).show()
+    private fun saveImageInFirebase(listUri: List<String>) {
+        for (i in listUri.indices){
+            val reducedImage = reduceImageSize(listUri[i].toUri())
+            storage = FirebaseStorage.getInstance().getReference("NeedHelpReq/"+ postId+ i)
+            storage.putBytes(reducedImage).addOnSuccessListener {
+                Toast.makeText(context, "upload success", Toast.LENGTH_SHORT).show()
+            }
         }
-
-
     }
 
     private fun reduceImageSize(imgUri: Uri): ByteArray {

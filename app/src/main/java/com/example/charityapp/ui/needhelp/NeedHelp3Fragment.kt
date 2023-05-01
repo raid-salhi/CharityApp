@@ -1,8 +1,6 @@
 package com.example.charityapp.ui.needhelp
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,13 +8,14 @@ import android.widget.Toast
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.os.bundleOf
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import coil.load
 import com.example.charityapp.R
-import com.example.charityapp.databinding.NeedhelpLayout2Binding
 import com.example.charityapp.databinding.NeedhelpLayout3Binding
 import com.example.charityapp.ui.details.*
 import com.google.android.material.bottomnavigation.BottomNavigationView
+
 private const val ARG_CATEGORY ="category"
 class NeedHelp3Fragment : Fragment() {
     private var param1 : String? = null
@@ -37,8 +36,8 @@ class NeedHelp3Fragment : Fragment() {
     private lateinit var location : String
     private lateinit var description : String
     private val binding get() = _binding!!
-    private lateinit var uriPath : String
-    private var uriM : String? = null
+    private lateinit var uriList : ArrayList<String>
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -46,11 +45,12 @@ class NeedHelp3Fragment : Fragment() {
     ): View {
         _binding = NeedhelpLayout3Binding.inflate(inflater, container, false)
 
+        uriList=ArrayList()
+        val pickMedia = registerForActivityResult(ActivityResultContracts.PickMultipleVisualMedia(3)) { uris ->
 
-        val pickMedia = registerForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri ->
-            uriPath = uri!!.path.toString()
-            uriM = uri.toString()
-
+            for(uri in uris)
+                uriList.add(uri.toString())
+            Toast.makeText(requireContext(), "You have selected "+uriList.size.toString()+ " pictures", Toast.LENGTH_SHORT).show()
         }
         binding.buttonUploadPics.setOnClickListener {
             pickMedia.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
@@ -64,9 +64,9 @@ class NeedHelp3Fragment : Fragment() {
                 val bundle = bundleOf(
                     "title" to title,
                     "description" to description,
-                    "uri" to uriM,
                     "contact" to phone,
                     "location" to location,
+                    "listUri" to uriList,
                     "subCategory" to param1)
 
                 findNavController().navigate(R.id.needHelp4Fragment,bundle)
