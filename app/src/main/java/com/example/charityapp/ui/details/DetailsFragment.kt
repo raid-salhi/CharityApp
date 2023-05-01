@@ -1,6 +1,8 @@
 package com.example.charityapp.ui.details
 
+import android.Manifest
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.net.Uri
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
@@ -8,10 +10,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.ProgressBar
-import android.widget.TextView
+import android.widget.*
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager.widget.ViewPager
@@ -30,6 +31,7 @@ private const val ARG_AMOUNT_GOAL ="amountGoal"
 private const val ARG_SUBCATEGORY ="subCategory"
 private const val ARG_LOCATION ="location"
 private const val ARG_IMAGES_NUMBER="imagesNumber"
+private const val MY_PERMISSIONS_REQUEST_CALL_PHONE = 1
 
 
 
@@ -121,17 +123,33 @@ class DetailsFragment : Fragment() {
         progressBar.progress= param3!!
 
         actionButton.setOnClickListener {
-            if(actionButton.text == "Volunteer"){
-                val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://docs.google.com/forms/d/e/1FAIpQLSdJ6P6qdd51X-5Tww5yNiTK-PdYlYCkY25p0f1vNQacssnABw/viewform?usp=sf_link"))
-                startActivity(intent)
-            }else{
-                val bundle : Bundle = requireArguments()
-                findNavController().navigate(R.id.navigation_paiement,bundle)
+            handleButtonClicked()
             }
+        return binding.root
         }
 
-        return binding.root
+    private fun handleButtonClicked() {
+        if(actionButton.text == "Volunteer"){
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://docs.google.com/forms/d/e/1FAIpQLSdJ6P6qdd51X-5Tww5yNiTK-PdYlYCkY25p0f1vNQacssnABw/viewform?usp=sf_link"))
+            startActivity(intent)
+        }else if (actionButton.text == "Donate"){
+            val bundle : Bundle = requireArguments()
+            findNavController().navigate(R.id.navigation_paiement,bundle)
+        }else{
+            val phoneIntent = Intent(Intent.ACTION_CALL)
+            phoneIntent.data = Uri.parse("tel:+213554709283")
+            if (ContextCompat.checkSelfPermission(requireActivity(),
+                    Manifest.permission.CALL_PHONE)
+                != PackageManager.PERMISSION_GRANTED) {
 
+                ActivityCompat.requestPermissions(/* activity = */ requireActivity(),
+                    /* permissions = */ arrayOf(Manifest.permission.CALL_PHONE),
+                    /* requestCode = */ MY_PERMISSIONS_REQUEST_CALL_PHONE)
+
+            } else {
+                startActivity(phoneIntent)
+            }
+        }
     }
 
     private fun setUpDetailsByCategory() {
@@ -148,14 +166,14 @@ class DetailsFragment : Fragment() {
         }
 
         else if (param5 == "Blood Donation") {
-            actionButton.setText(R.string.donate)
+            actionButton.setText(R.string.contact)
             categoryImg.setImageResource(R.drawable.person)
             amountReachedTV.setText(param3.toString())
             amountGoalTV.setText(param4.toString())
         }
 
         else if (param5 == "Medicine") {
-            actionButton.setText(R.string.donate)
+            actionButton.setText(R.string.contact)
             categoryImg.setImageResource(R.drawable.pill)
             amountReachedTV.setText(param3.toString())
             amountGoalTV.setText(param4.toString())
@@ -188,6 +206,20 @@ class DetailsFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(DetailsViewModel::class.java)
 
     }
+
+    override fun onRequestPermissionsResult(requestCode: Int,
+                                            permissions: Array<String>,
+                                            grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == MY_PERMISSIONS_REQUEST_CALL_PHONE) {
+            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                Toast.makeText(requireContext(), "Camera Permission Granted", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(requireContext(), "Camera Permission Denied", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
 //        val bottomNavBar : BottomNavigationView? = activity?.findViewById(R.id.bottom_nav_view)

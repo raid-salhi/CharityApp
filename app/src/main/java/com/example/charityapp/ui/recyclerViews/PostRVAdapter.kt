@@ -81,6 +81,7 @@ class PostRVAdapter(private val mList: List<Post>,private val clickHandler: Post
             holder.amountGoalIcon.setImageResource(R.drawable.person)
             holder.iconCategory.setImageResource(R.drawable.outline_bloodtype_24)
             holder.amountGoal.text = ItemsViewModel.getAmountGoalString()
+            holder.button.setText(R.string.contact)
         }
         else if (ItemsViewModel.subCategory == "Medicine") {
             holder.amountGoalIcon.setImageResource(R.drawable.pill)
