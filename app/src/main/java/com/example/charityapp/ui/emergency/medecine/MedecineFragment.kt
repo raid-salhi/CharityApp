@@ -75,6 +75,7 @@ class MedecineFragment : Fragment(), PostClickHandler {
             "amountReached" to post.amountReached,
             "subCategory" to post.subCategory,
             "description" to post.description,
+            "contact" to post.contact,
             "imagesNumber" to post.imagesNumber)
         findNavController().navigate(R.id.navigation_details,bundle)
     }

@@ -30,6 +30,7 @@ private const val ARG_AMOUNT_REACHED ="amountReached"
 private const val ARG_AMOUNT_GOAL ="amountGoal"
 private const val ARG_SUBCATEGORY ="subCategory"
 private const val ARG_LOCATION ="location"
+private const val ARG_CONTACT ="contact"
 private const val ARG_IMAGES_NUMBER="imagesNumber"
 private const val MY_PERMISSIONS_REQUEST_CALL_PHONE = 1
 
@@ -44,6 +45,8 @@ class DetailsFragment : Fragment() {
     private var param5: String? = null
     private var param6: String? = null
     private var param7: Int? = null
+    private var param8: Int? = null
+
 
 
     companion object {
@@ -53,7 +56,8 @@ class DetailsFragment : Fragment() {
                         params4: Int,
                         params5: String,
                         params6: String,
-                        params7: Int) =
+                        params7: Int,
+                        params8: Int) =
             DetailsFragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_TITLE,params1)
@@ -63,6 +67,7 @@ class DetailsFragment : Fragment() {
                     putString(ARG_SUBCATEGORY,params5)
                     putString(ARG_LOCATION,params6)
                     putInt(ARG_IMAGES_NUMBER,params7)
+                    putInt(ARG_CONTACT,params8)
                 }
 
         }
@@ -88,6 +93,7 @@ class DetailsFragment : Fragment() {
             param5 = it.getString(ARG_SUBCATEGORY)
             param6 = it.getString(ARG_LOCATION)
             param7 = it.getInt(ARG_IMAGES_NUMBER)
+            param8= it.getInt(ARG_CONTACT)
 
         }
     }
@@ -137,7 +143,7 @@ class DetailsFragment : Fragment() {
             findNavController().navigate(R.id.navigation_paiement,bundle)
         }else{
             val phoneIntent = Intent(Intent.ACTION_CALL)
-            phoneIntent.data = Uri.parse("tel:+213554709283")
+            phoneIntent.data = Uri.parse("tel:+213"+param8.toString())
             if (ContextCompat.checkSelfPermission(requireActivity(),
                     Manifest.permission.CALL_PHONE)
                 != PackageManager.PERMISSION_GRANTED) {
