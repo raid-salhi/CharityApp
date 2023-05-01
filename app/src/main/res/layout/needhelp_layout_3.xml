@@ -6,6 +6,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".ui.needhelp.NeedHelp3Fragment"
     android:padding="16dp">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -30,7 +33,7 @@
             android:id="@+id/title_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="80dp"
+            android:layout_marginTop="50dp"
             android:layout_marginBottom="30dp"
             android:hint="Title">
 
@@ -39,7 +42,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text" />
-
         </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/wilaya_layout"
@@ -48,12 +50,27 @@
             android:layout_height="wrap_content"
             android:hint="Wilaya"
             android:layout_marginBottom="30dp">
-
         <AutoCompleteTextView
             android:id="@+id/wilaya"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:simpleItems="@array/wilaya_label" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/phone_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:hint="Phone Number"
+            app:counterEnabled="true"
+            app:counterMaxLength="10">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/phone_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="phone" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -80,6 +97,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
+            android:layout_marginBottom="20dp"
             android:drawableLeft="@drawable/ic_upload_img"
             android:drawableRight="@drawable/arrow_main_color"
             android:fontFamily="@font/euclid_circular_b_medium"
@@ -87,21 +105,24 @@
             android:textSize="16sp"
             app:strokeWidth="0dp" />
 
+        <Button
+            android:id="@+id/next_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="40dp"
+            android:background="@drawable/button"
+            android:drawableEnd="@drawable/baseline_arrow_forward_24"
+            android:gravity="bottom|center"
+            android:text="@string/next"
+            android:textSize="18sp"
+            app:backgroundTint="@color/green_main" />
+
     </LinearLayout>
+    </ScrollView>
 
-    <Button
-        android:id="@+id/next_btn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="40dp"
-        android:background="@drawable/button"
-        android:drawableEnd="@drawable/baseline_arrow_forward_24"
-        android:text="@string/next"
-        android:textSize="18sp"
-        app:backgroundTint="@color/green_main" />
 
-    </RelativeLayout>
+</RelativeLayout>
 

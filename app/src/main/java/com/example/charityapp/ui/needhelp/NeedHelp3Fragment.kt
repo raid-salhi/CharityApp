@@ -33,11 +33,12 @@ class NeedHelp3Fragment : Fragment() {
     private lateinit var viewModel: NeedHelp3ViewModel
     private var _binding: NeedhelpLayout3Binding? = null
     private lateinit var title : String
+    private var phone : Int = 0
     private lateinit var location : String
     private lateinit var description : String
     private val binding get() = _binding!!
     private lateinit var uriPath : String
-    private lateinit var uriM : String
+    private var uriM : String? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -55,14 +56,16 @@ class NeedHelp3Fragment : Fragment() {
             pickMedia.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
         }
         binding.nextBtn.setOnClickListener {
-            if (binding.titleEditText.text!!.isNotEmpty() && binding.descriptionEditText.text!!.isNotEmpty()){
+            if (binding.titleEditText.text!!.isNotEmpty() && binding.descriptionEditText.text!!.isNotEmpty() && binding.phoneEditText.text!!.isNotEmpty()){
                 title = binding.titleEditText.text.toString()
                 description = binding.descriptionEditText.text.toString()
                 location = binding.wilaya.text.toString()
+                phone = binding.phoneEditText.text.toString().toInt()
                 val bundle = bundleOf(
                     "title" to title,
                     "description" to description,
                     "uri" to uriM,
+                    "contact" to phone,
                     "location" to location,
                     "subCategory" to param1)
 

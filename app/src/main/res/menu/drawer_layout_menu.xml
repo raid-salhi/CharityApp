@@ -11,7 +11,7 @@
 <!--        android:title="@string/title_event"-->
 <!--        android:checkable="true"/>-->
     <item
-        android:id="@+id/navigation_need_help"
+        android:id="@+id/needHelpFragment"
         android:icon="@drawable/baseline_support_24"
         android:title="@string/title_need_help"
         android:checkable="true"/>

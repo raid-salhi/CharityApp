@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="16dp"
     tools:context="ui.needhelp.NeedHelp4Fragment">
 
     <LinearLayout
@@ -25,10 +26,10 @@
             android:textStyle="bold" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/title_layout"
+            android:id="@+id/amount_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Enter the amount of money"
+            android:hint="Enter the nedded amount"
             app:suffixText="DA">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -83,8 +84,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

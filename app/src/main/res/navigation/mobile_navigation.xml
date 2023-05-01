@@ -68,7 +68,6 @@
         android:name="com.example.charityapp.ui.paiment.redirection.RedirectionFragment"
         android:label="@string/paiment"
         tools:layout="@layout/fragment_redirection" />
-<<<<<<< Updated upstream
     <fragment
         android:id="@+id/needHelpFragment"
         android:name="com.example.charityapp.ui.needhelp.NeedHelpFragment"
@@ -89,6 +88,5 @@
         android:name="com.example.charityapp.ui.needhelp.NeedHelp4Fragment"
         android:label="@string/title_need_help"
         tools:layout="@layout/needhelp_layout_4"/>
-=======
->>>>>>> Stashed changes
+
 </navigation>

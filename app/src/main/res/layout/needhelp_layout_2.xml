@@ -1,79 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+
 
     <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="16dp">
 
-        <LinearLayout
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="130dp"
+            android:layout_marginBottom="60dp"
+            android:fontFamily="@font/euclid_circular_b_medium"
+            android:text="Choose the Emergency type : "
+            android:textSize="22sp" />
+
+        <RadioGroup
+            android:id="@+id/category_radio_group"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:gravity="center">
+            android:layout_height="wrap_content">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:text="Choose the donation type : "
-                android:textSize="22sp"
-                android:layout_marginBottom="60dp"/>
 
-            <RadioGroup
+            <RadioButton
+                android:id="@+id/donation_radio_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/category_radio_group">
+                android:layout_marginBottom="8dp"
+                android:buttonTint="@color/green_main"
+                android:text="Surgical Aid"
+                android:textSize="17sp" />
 
-                <RadioButton
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/donation_radio_button"
-                    android:text="Surgical aid"
-                    android:textSize="17sp"
-                    android:buttonTint="@color/green_main"
-                    android:layout_marginBottom="8dp"/>
-
-
-                <RadioButton
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/project_radio_button"
-                    android:text="Blood Donation"
-                    android:textSize="17sp"
-                    android:buttonTint="@color/green_main"
-                    android:layout_marginBottom="8dp"/>
+            <RadioButton
+                android:id="@+id/project_radio_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:buttonTint="@color/green_main"
+                android:text="Blood Donation"
+                android:textSize="17sp" />
 
 
-                <RadioButton
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/emergency_radio_button"
-                    android:text="Medicins"
-                    android:textSize="17sp"
-                    android:buttonTint="@color/green_main"/>
+            <RadioButton
+                android:id="@+id/emergency_radio_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/green_main"
+                android:text="Medicine"
+                android:textSize="17sp" />
 
-            </RadioGroup>
+        </RadioGroup>
 
-        </LinearLayout>
+    </LinearLayout>
 
         <Button
-            app:backgroundTint="@color/green_main"
+            android:id="@+id/next2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Next"
-<<<<<<< Updated upstream
-            android:textSize="18sp"
-            android:drawableEnd="@drawable/baseline_arrow_forward_24"
-            app:backgroundTint="@color/green_main" />
-=======
-            android:id="@+id/next2"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="40dp"/>
->>>>>>> Stashed changes
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="40dp"
+            android:background="@drawable/button"
+            android:drawableEnd="@drawable/baseline_arrow_forward_24"
+            android:text="@string/next"
+            android:textSize="18sp"
+            app:backgroundTint="@color/green_main" />
 
-    </RelativeLayout>
+</RelativeLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
