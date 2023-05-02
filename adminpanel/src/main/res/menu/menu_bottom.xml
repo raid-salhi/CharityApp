@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/nav_projects"
+        android:icon="@drawable/projects"
+        android:title="Projects"/>
+
+    <item android:id="@+id/nav_emergency"
+        android:icon="@drawable/emergency"
+        android:title="Emergency"/>
+
+    <item android:id="@+id/nav_add"
+        android:icon="@drawable/add"
+        android:title="add"/>
+
+    <item android:id="@+id/nav_donate"
+        android:icon="@drawable/donate"
+        android:title="Donate"/>
+
+    <item android:id="@+id/nav_needhelp"
+        android:icon="@drawable/needhelp"
+        android:title="need help"/>
+
+</menu>
