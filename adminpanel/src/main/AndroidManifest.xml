@@ -9,9 +9,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CharityApp">
         <activity
-            android:name=".MainActivity"
-            android:exported="false" />
-        <activity
             android:name=".LoginActivity"
             android:exported="true" >
             <intent-filter>
