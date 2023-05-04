@@ -18,7 +18,7 @@ class NeedHelpFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_need_help, container, false)
+        return inflater.inflate(R.layout.fragment_need_help_request, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
