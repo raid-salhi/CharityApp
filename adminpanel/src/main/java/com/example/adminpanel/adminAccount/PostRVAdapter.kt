@@ -1,19 +1,15 @@
-package com.example.charityapp.ui.recyclerViews
+package com.example.adminpanel.adminAccount
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.FrameLayout
-import android.widget.ImageView
-import android.widget.ProgressBar
-import android.widget.TextView
+import android.widget.*
 import androidx.recyclerview.widget.RecyclerView
-import com.example.charityapp.R
-import com.example.charityapp.classes.Post
+import com.example.adminpanel.PostClickHandler
+import com.example.adminpanel.R
+import com.example.adminpanel.classes.Post
 
-
-class PostRVAdapter(private val mList: List<Post>,private val clickHandler: PostClickHandler) : RecyclerView.Adapter<PostRVAdapter.ViewHolder>() {
+class PostRVAdapter(private val mList: List<Post>, private val clickHandler: PostClickHandler) : RecyclerView.Adapter<PostRVAdapter.ViewHolder>() {
 
     // create new views
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -61,7 +57,6 @@ class PostRVAdapter(private val mList: List<Post>,private val clickHandler: Post
             holder.amountGoalIcon.setImageResource(R.drawable.person)
             holder.iconCategory.setImageResource(R.drawable.outline_construction_24)
             holder.amountGoal.text = ItemsViewModel.getAmountGoalString()
-            holder.button.setText(R.string.volunteer)
 
         }
         else if (ItemsViewModel.subCategory == "Project Donation") {
@@ -74,13 +69,12 @@ class PostRVAdapter(private val mList: List<Post>,private val clickHandler: Post
             holder.amountGoalIcon.setImageResource(R.drawable.person)
             holder.iconCategory.setImageResource(R.drawable.outline_bloodtype_24)
             holder.amountGoal.text = ItemsViewModel.getAmountGoalString()
-            holder.button.setText(R.string.contact)
         }
         else if (ItemsViewModel.subCategory == "Medicine") {
             holder.amountGoalIcon.setImageResource(R.drawable.pill)
             holder.iconCategory.setImageResource(R.drawable.pill_outline)
             holder.amountGoal.text = ItemsViewModel.getAmountGoalString()
-            holder.button.setText(R.string.contact)
+
         }
         else if (ItemsViewModel.subCategory == "Surgical Aids") {
             holder.amountGoalIcon.visibility = View.GONE
@@ -95,7 +89,7 @@ class PostRVAdapter(private val mList: List<Post>,private val clickHandler: Post
     }
 
     // Holds the views for adding it to image and text
-    inner class ViewHolder(ItemView: View) : RecyclerView.ViewHolder(ItemView),View.OnClickListener {
+    inner class ViewHolder(ItemView: View) : RecyclerView.ViewHolder(ItemView), View.OnClickListener {
         val iconCategory: ImageView = itemView.findViewById(R.id.categoryIcon)
         val title: TextView = itemView.findViewById(R.id.title)
         val category: TextView = itemView.findViewById(R.id.category)
@@ -104,8 +98,8 @@ class PostRVAdapter(private val mList: List<Post>,private val clickHandler: Post
         val amountGoalIcon: ImageView = itemView.findViewById(R.id.amountGoalIcon)
         val amountReached: TextView = itemView.findViewById(R.id.amountReached)
         val progressBar: ProgressBar = itemView.findViewById(R.id.progressBar)
-        val button: Button = itemView.findViewById(R.id.actionButton)
-        val frame :FrameLayout = itemView.findViewById(R.id.frame)
+        val button: Button = itemView.findViewById(R.id.callButton)
+        val frame : FrameLayout = itemView.findViewById(R.id.frame)
         init {
             itemView.setOnClickListener (this)
 
