@@ -1,4 +1,4 @@
-package com.example.adminpanel.adminAccount
+package com.example.adminpanel.classes
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,7 +7,6 @@ import android.widget.*
 import androidx.recyclerview.widget.RecyclerView
 import com.example.adminpanel.PostClickHandler
 import com.example.adminpanel.R
-import com.example.adminpanel.classes.Post
 
 class PostRVAdapter(private val mList: List<Post>, private val clickHandler: PostClickHandler) : RecyclerView.Adapter<PostRVAdapter.ViewHolder>() {
 
@@ -45,7 +44,7 @@ class PostRVAdapter(private val mList: List<Post>, private val clickHandler: Pos
 
     }
 
-    private fun setCustomizationBySubCategory(holder: ViewHolder,ItemsViewModel:Post) {
+    private fun setCustomizationBySubCategory(holder: ViewHolder, ItemsViewModel:Post) {
 
         if (ItemsViewModel.category == "Donation") {
             holder.amountGoalIcon.visibility = View.GONE
