@@ -2,10 +2,16 @@ package com.example.adminpanel
 
 import android.os.Bundle
 import android.util.Log
+import android.Manifest
+import android.content.Intent
+import android.content.pm.PackageManager
+import android.net.Uri
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -17,7 +23,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
-
+private const val MY_PERMISSIONS_REQUEST_CALL_PHONE = 1
 
 class NeedHelpRequestFragment : Fragment(), PostClickHandler {
     private var _binding: FragmentNeedHelpRequestBinding? = null
@@ -87,6 +93,22 @@ class NeedHelpRequestFragment : Fragment(), PostClickHandler {
 
     override fun deletePostItem(post: Post) {
         TODO("Not yet implemented")
+    }
+
+    override fun callAction(post: Post) {
+        val phoneIntent = Intent(Intent.ACTION_CALL)
+        phoneIntent.data = Uri.parse("tel:+213"+post.contact.toString())
+        if (ContextCompat.checkSelfPermission(requireActivity(),
+                Manifest.permission.CALL_PHONE)
+            != PackageManager.PERMISSION_GRANTED) {
+
+            ActivityCompat.requestPermissions(/* activity = */ requireActivity(),
+                /* permissions = */ arrayOf(Manifest.permission.CALL_PHONE),
+                /* requestCode = */ MY_PERMISSIONS_REQUEST_CALL_PHONE)
+
+        } else {
+            startActivity(phoneIntent)
+        }
     }
 
     override fun onDestroyView() {

@@ -26,7 +26,7 @@ class PostRVAdapter(private val mList: List<Post>, private val clickHandler: Pos
         val ItemsViewModel = mList[position]
         if (ItemsViewModel.amountReached >= ItemsViewModel.amountGoal){
             ItemsViewModel.amountReached =  ItemsViewModel.amountGoal
-            holder.button.isEnabled = false
+            holder.deleteButton.isEnabled = false
             holder.itemView.isEnabled = false
         }
         holder.title.text = ItemsViewModel.title
@@ -38,8 +38,11 @@ class PostRVAdapter(private val mList: List<Post>, private val clickHandler: Pos
 
         setCustomizationBySubCategory(holder,ItemsViewModel)
 
-        holder.button.setOnClickListener {
-            clickHandler.clickedPostItem(ItemsViewModel)
+        holder.deleteButton.setOnClickListener {
+            clickHandler.deletePostItem(ItemsViewModel)
+        }
+        holder.deleteButton.setOnClickListener {
+            clickHandler.callAction(ItemsViewModel)
         }
 
     }
@@ -97,7 +100,8 @@ class PostRVAdapter(private val mList: List<Post>, private val clickHandler: Pos
         val amountGoalIcon: ImageView = itemView.findViewById(R.id.amountGoalIcon)
         val amountReached: TextView = itemView.findViewById(R.id.amountReached)
         val progressBar: ProgressBar = itemView.findViewById(R.id.progressBar)
-        val button: Button = itemView.findViewById(R.id.callButton)
+        val deleteButton: Button = itemView.findViewById(R.id.deleteButton)
+        val callButton: Button = itemView.findViewById(R.id.callButton)
         val frame : FrameLayout = itemView.findViewById(R.id.frame)
         init {
             itemView.setOnClickListener (this)
