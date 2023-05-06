@@ -71,8 +71,9 @@ public class EditFragment extends Fragment {
                 wilaya.setText((CharSequence) documentSnapshot.get("location"));
                 title.setText((CharSequence) documentSnapshot.get("title"));
                 description.setText((CharSequence) documentSnapshot.get("description"));
-//                phone.setText((String) documentSnapshot.get("contact"));
-//                amount.setText((String) documentSnapshot.get("amountGoal"));
+                phone.setText((int) documentSnapshot.get("contact"));
+                amount.setText((int) documentSnapshot.get("amountGoal"));
+
             }
         });
 
@@ -91,25 +92,23 @@ public class EditFragment extends Fragment {
 
                    Toast.makeText(getContext(), "Empty credentials", Toast.LENGTH_SHORT).show();
                }else {
-                   Map<String, Object> data = new HashMap<>();
-                   data.put("subCategory", subCategory.getText().toString());
-                   data.put("location", wilaya.getText().toString());
-                   data.put("title", title.getText().toString());
-                   data.put("description", description.getText().toString());
-//                   data.put("contact", phone.getText().toString());
-//                   data.put("amountGoal", amount.getText().toString());
-
-                   ref.set(data).addOnSuccessListener(new OnSuccessListener<Void>() {
+                   ref.update( "subCategory", subCategory.getText().toString());
+                   ref.update("location", wilaya.getText().toString());
+                   ref.update("title", title.getText().toString());
+                   ref.update("description", description.getText().toString());
+                   ref.update("contact", Integer.getInteger(phone.getText().toString()));
+                   ref.update("amountGoal" , Integer.getInteger(amount.getText().toString()))
+                           .addOnSuccessListener(new OnSuccessListener<Void>() {
                        @Override
                        public void onSuccess(Void unused) {
                            Toast.makeText(getContext(), "post updated successfully", Toast.LENGTH_SHORT).show();
                        }
                    }).addOnFailureListener(new OnFailureListener() {
-                       @Override
-                       public void onFailure(@NonNull Exception e) {
-                           Toast.makeText(getContext(), "failed to update the post", Toast.LENGTH_SHORT).show();
-                       }
-                   });
+                               @Override
+                               public void onFailure(@NonNull Exception e) {
+                                   Toast.makeText(getContext(), "failed to update the post", Toast.LENGTH_SHORT).show();
+                               }
+                       });
                }
             }
         });
