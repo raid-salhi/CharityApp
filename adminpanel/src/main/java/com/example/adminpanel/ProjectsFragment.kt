@@ -89,7 +89,7 @@ class ProjectsFragment : Fragment(), PostClickHandler {
 
 
 
-//        findNavController().navigate(R.id.navigation_details,bundle)
+        findNavController().navigate(R.id.navigation_deatils,bundle)
     }
 
     override fun deletePostItem(post: Post) {

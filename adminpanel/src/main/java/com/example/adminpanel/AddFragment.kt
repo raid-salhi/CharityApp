@@ -69,6 +69,7 @@ class AddFragment : Fragment() {
         }
         binding.subCategory.setOnItemClickListener { parent, view, position, id ->
             subcategorySelected= parent.getItemAtPosition(position).toString()
+            setEditTextSuffix()
         }
         binding.wilaya.setOnItemClickListener { parent, view, position, id ->
             wilayaSelected=parent.getItemAtPosition(position).toString()
@@ -110,6 +111,25 @@ class AddFragment : Fragment() {
 
         return binding.root
     }
+
+    private fun setEditTextSuffix() {
+        if (categorySelected == "Donation") {
+            binding.amountLayout.suffixText = "DA"
+
+        }
+       if (subcategorySelected == "Volunteer" || subcategorySelected == "Blood Donation") {
+            binding.amountLayout.suffixText = "Person"
+
+        }
+
+        else if (subcategorySelected == "Medicine") {
+           binding.amountLayout.suffixText = "Pcs"
+
+       }else
+           binding.amountLayout.suffixText = "DA"
+
+    }
+
 
     private fun savePostInFirebase(newPost: Post) {
         db = Firebase.firestore

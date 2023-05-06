@@ -4,6 +4,8 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import android.provider.DocumentsContract;
 import android.text.TextUtils;
@@ -19,6 +21,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -34,6 +37,7 @@ public class EditFragment extends Fragment {
 
     private String id;
     private String category;
+    private TextInputLayout subCategoryLayout;
     private AutoCompleteTextView subCategory;
     private AutoCompleteTextView wilaya;
     private EditText title;
@@ -55,24 +59,28 @@ public class EditFragment extends Fragment {
         category = bundle.getString("category");
         db = FirebaseFirestore.getInstance();
         subCategory = view.findViewById(R.id.sub_category);
+        subCategoryLayout = view.findViewById(R.id.sub_category_layout);
         wilaya = view.findViewById(R.id.wilaya);
         title = view.findViewById(R.id.title_edit_text);
         description = view.findViewById(R.id.description_edit_text);
         phone = view.findViewById(R.id.phone_edit_text);
         amount = view.findViewById(R.id.amount_edit_text);
         Continue = view.findViewById(R.id.continue_button);
-
+        if(category.equals("Donation")){
+            subCategoryLayout.setVisibility(View.GONE);
+        }
         DocumentReference ref = db.collection(category).document(id);
         ref.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+
                 DocumentSnapshot documentSnapshot = task.getResult();
                 subCategory.setText((CharSequence) documentSnapshot.get("subCategory"));
                 wilaya.setText((CharSequence) documentSnapshot.get("location"));
                 title.setText((CharSequence) documentSnapshot.get("title"));
                 description.setText((CharSequence) documentSnapshot.get("description"));
-                phone.setText((int) documentSnapshot.get("contact"));
-                amount.setText((int) documentSnapshot.get("amountGoal"));
+                phone.setText(documentSnapshot.get("contact").toString());
+                amount.setText(documentSnapshot.get("amountGoal").toString());
 
             }
         });
@@ -87,7 +95,7 @@ public class EditFragment extends Fragment {
                String Contact = phone.getText().toString();
                String AmountGoal =  amount.getText().toString();
 
-               if(TextUtils.isEmpty(SubCategory) || TextUtils.isEmpty(Location) || TextUtils.isEmpty(Title)
+               if(TextUtils.isEmpty(Location) || TextUtils.isEmpty(Title)
                  || TextUtils.isEmpty(Description) || TextUtils.isEmpty(Contact) || TextUtils.isEmpty(AmountGoal)){
 
                    Toast.makeText(getContext(), "Empty credentials", Toast.LENGTH_SHORT).show();
@@ -96,12 +104,14 @@ public class EditFragment extends Fragment {
                    ref.update("location", wilaya.getText().toString());
                    ref.update("title", title.getText().toString());
                    ref.update("description", description.getText().toString());
-                   ref.update("contact", Integer.getInteger(phone.getText().toString()));
-                   ref.update("amountGoal" , Integer.getInteger(amount.getText().toString()))
+                   ref.update("contact", Long.parseLong(phone.getText().toString()));
+                   ref.update("amountGoal" , Long.parseLong(amount.getText().toString()))
                            .addOnSuccessListener(new OnSuccessListener<Void>() {
                        @Override
                        public void onSuccess(Void unused) {
                            Toast.makeText(getContext(), "post updated successfully", Toast.LENGTH_SHORT).show();
+
+
                        }
                    }).addOnFailureListener(new OnFailureListener() {
                                @Override

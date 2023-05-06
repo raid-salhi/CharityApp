@@ -92,6 +92,7 @@ class ProjectDonationFragment : Fragment() ,PostClickHandler{
             "description" to post.description,
             "imagesNumber" to post.imagesNumber,
             "description" to post.description,
+            "contact" to post.contact,
             "imagesNumber" to post.imagesNumber)
         findNavController().navigate(R.id.navigation_details,bundle)
     }

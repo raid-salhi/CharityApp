@@ -42,12 +42,13 @@ class LoginActivity : AppCompatActivity() {
             auth.signInWithEmailAndPassword(email,password).addOnCompleteListener(this) {
                 if (it.isSuccessful) {
                     Toast.makeText(this, "Successfully LoggedIn", Toast.LENGTH_SHORT).show()
+                    val intent = Intent(this, MainActivity::class.java)
+                    startActivity(intent)
                 } else
                     Toast.makeText(this, "Log In failed ", Toast.LENGTH_SHORT).show()
 
             }
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
+
         }else{
             Toast.makeText(this, "You don't have permissions", Toast.LENGTH_SHORT).show()
         }
@@ -56,14 +57,7 @@ class LoginActivity : AppCompatActivity() {
     public override fun onStart() {
         super.onStart()
         // Check if user is signed in (non-null) and update UI accordingly.
-        val currentUser = auth.currentUser
-        updateUI(currentUser)
+
     }
 
-    private fun updateUI(currentUser: FirebaseUser?) {
-        if (currentUser != null) {
-            val intent = Intent(this,MainActivity::class.java)
-            startActivity(intent)
-        }
-    }
 }

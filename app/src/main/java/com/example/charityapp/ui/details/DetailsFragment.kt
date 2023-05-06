@@ -34,6 +34,7 @@ private const val ARG_LOCATION ="location"
 private const val ARG_CONTACT ="contact"
 private const val ARG_IMAGES_NUMBER="imagesNumber"
 private const val ARG_PID="pid"
+private const val ARG_DESCRIPTION ="description"
 private const val MY_PERMISSIONS_REQUEST_CALL_PHONE = 1
 
 
@@ -49,6 +50,7 @@ class DetailsFragment : Fragment() {
     private var param7: Int? = null
     private var param8: Int? = null
     private var param9: String? = null
+    private var param10: String? = null
 
 
 
@@ -61,6 +63,7 @@ class DetailsFragment : Fragment() {
                         params6: String,
                         params7: Int,
                         params9: String,
+                        params10: String,
                         params8: Int) =
             DetailsFragment().apply {
                 arguments = Bundle().apply {
@@ -71,6 +74,7 @@ class DetailsFragment : Fragment() {
                     putString(ARG_SUBCATEGORY,params5)
                     putString(ARG_LOCATION,params6)
                     putString(ARG_PID,params9)
+                    putString(ARG_DESCRIPTION,params10)
                     putInt(ARG_IMAGES_NUMBER,params7)
                     putInt(ARG_CONTACT,params8)
                 }
@@ -100,6 +104,7 @@ class DetailsFragment : Fragment() {
             param7 = it.getInt(ARG_IMAGES_NUMBER)
             param8= it.getInt(ARG_CONTACT)
             param9=it.getString(ARG_PID)
+            param10=it.getString(ARG_DESCRIPTION)
 
         }
     }
@@ -118,7 +123,8 @@ class DetailsFragment : Fragment() {
         val bundle = bundleOf(
             ARG_PID to param9,
             ARG_TITLE to param1,
-            ARG_IMAGES_NUMBER to param7
+            ARG_IMAGES_NUMBER to param7,
+            ARG_DESCRIPTION to param10
         )
         val adapter = ViewPagerDetailsAdapter(childFragmentManager,bundle)
 

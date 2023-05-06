@@ -87,9 +87,7 @@ class donateFragment : Fragment() ,PostClickHandler {
             "contact" to post.contact,
             "imagesNumber" to post.imagesNumber)
 
-
-
-//        findNavController().navigate(R.id.navigation_details,bundle)
+        findNavController().navigate(R.id.navigation_deatils,bundle)
     }
 
     override fun deletePostItem(post: Post) {

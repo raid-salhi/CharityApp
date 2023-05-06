@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -75,6 +76,7 @@ class BloodDonationFragment : Fragment(),PostClickHandler {
             "description" to post.description,
             "contact" to post.contact,
             "imagesNumber" to post.imagesNumber)
+
         findNavController().navigate(R.id.navigation_details,bundle)
     }
     private fun eventChangeListner() {

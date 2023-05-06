@@ -34,5 +34,10 @@
         android:name="com.example.adminpanel.EditFragment"
         android:label="Edit"
         tools:layout="@layout/fragment_edit"/>
+    <fragment
+        android:id="@+id/navigation_deatils"
+        android:name="com.example.adminpanel.DeatilsFragment"
+        android:label="Details"
+        tools:layout="@layout/fragment_deatils"/>
 
 </navigation>

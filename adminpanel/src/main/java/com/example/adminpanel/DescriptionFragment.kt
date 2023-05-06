@@ -1,18 +1,13 @@
-package com.example.charityapp.ui.details.description
+package com.example.adminpanel
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.lifecycle.Observer
-import com.example.charityapp.R
-import com.example.charityapp.databinding.FragmentDescriptionBinding
-import com.example.charityapp.databinding.FragmentDetailsBinding
-import com.example.charityapp.ui.details.*
-import com.example.charityapp.ui.donate.DonateViewModel
+import androidx.lifecycle.ViewModelProvider
+import com.example.adminpanel.databinding.FragmentDescriptionBinding
+
 private const val ARG_TITLE ="title"
 private const val ARG_DESCRIPTION ="description"
 class DescriptionFragment : Fragment() {
@@ -27,11 +22,11 @@ class DescriptionFragment : Fragment() {
                     putString(ARG_DESCRIPTION,params2)
                     putString(ARG_TITLE,params1)
                 }
-         }
+            }
     }
 
 
-    private lateinit var viewModel: DescriptionViewModel
+
     private var _binding: FragmentDescriptionBinding? = null
     private val binding get() = _binding!!
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,11 +47,6 @@ class DescriptionFragment : Fragment() {
         return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(DescriptionViewModel::class.java)
 
-
-    }
 
 }
