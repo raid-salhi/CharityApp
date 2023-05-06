@@ -103,7 +103,7 @@ class EmergencyFragment : Fragment(), PostClickHandler {
                 val navController = findNavController()
                 navController.run {
                     popBackStack()
-                    navigate(R.id.navigation_donate)
+                    navigate(R.id.navigation_emergency)
                 }
 
             }
@@ -123,6 +123,30 @@ class EmergencyFragment : Fragment(), PostClickHandler {
         } else {
             startActivity(phoneIntent)
         }
+    }
+
+    override fun editPostItem(post: Post) {
+        val bundle= bundleOf(
+            "pid" to post.pid,
+            "title" to post.title,
+            "category" to post.category,
+            "location" to post.location,
+            "amountGoal" to post.amountGoal,
+            "amountReached" to post.amountReached,
+            "subCategory" to post.subCategory,
+            "description" to post.description,
+            "imagesNumber" to post.imagesNumber,
+            "description" to post.description,
+            "contact" to post.contact,
+            "imagesNumber" to post.imagesNumber)
+
+
+
+        findNavController().navigate(R.id.navigation_edit,bundle)
+    }
+
+    override fun acceptPostItem(post: Post) {
+        TODO("Not yet implemented")
     }
 
     override fun onDestroyView() {

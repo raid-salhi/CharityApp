@@ -13,6 +13,7 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.os.bundleOf
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager.widget.ViewPager
@@ -32,6 +33,7 @@ private const val ARG_SUBCATEGORY ="subCategory"
 private const val ARG_LOCATION ="location"
 private const val ARG_CONTACT ="contact"
 private const val ARG_IMAGES_NUMBER="imagesNumber"
+private const val ARG_PID="pid"
 private const val MY_PERMISSIONS_REQUEST_CALL_PHONE = 1
 
 
@@ -46,6 +48,7 @@ class DetailsFragment : Fragment() {
     private var param6: String? = null
     private var param7: Int? = null
     private var param8: Int? = null
+    private var param9: String? = null
 
 
 
@@ -57,6 +60,7 @@ class DetailsFragment : Fragment() {
                         params5: String,
                         params6: String,
                         params7: Int,
+                        params9: String,
                         params8: Int) =
             DetailsFragment().apply {
                 arguments = Bundle().apply {
@@ -66,6 +70,7 @@ class DetailsFragment : Fragment() {
                     putInt(ARG_AMOUNT_GOAL,params4)
                     putString(ARG_SUBCATEGORY,params5)
                     putString(ARG_LOCATION,params6)
+                    putString(ARG_PID,params9)
                     putInt(ARG_IMAGES_NUMBER,params7)
                     putInt(ARG_CONTACT,params8)
                 }
@@ -94,6 +99,7 @@ class DetailsFragment : Fragment() {
             param6 = it.getString(ARG_LOCATION)
             param7 = it.getInt(ARG_IMAGES_NUMBER)
             param8= it.getInt(ARG_CONTACT)
+            param9=it.getString(ARG_PID)
 
         }
     }
@@ -109,7 +115,11 @@ class DetailsFragment : Fragment() {
             bottomNavBar.visibility=View.GONE
         }
 
-        val bundle = requireArguments()
+        val bundle = bundleOf(
+            ARG_PID to param9,
+            ARG_TITLE to param1,
+            ARG_IMAGES_NUMBER to param7
+        )
         val adapter = ViewPagerDetailsAdapter(childFragmentManager,bundle)
 
 

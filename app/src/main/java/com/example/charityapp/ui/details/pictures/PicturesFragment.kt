@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.example.charityapp.databinding.FragmentPicturesBinding
 import com.example.charityapp.ui.recyclerViews.SliderImageAdapter
 import com.google.firebase.storage.FirebaseStorage
@@ -39,6 +40,7 @@ class PicturesFragment : Fragment() {
     private var _binding: FragmentPicturesBinding? = null
     private val binding get() = _binding!!
     lateinit var imageList : ArrayList<Bitmap>
+    lateinit var image : String
     lateinit var sliderView: SliderView
     lateinit var sliderAdapter: SliderImageAdapter
     private lateinit var storage : StorageReference
@@ -59,6 +61,7 @@ class PicturesFragment : Fragment() {
 
         binding.title.text=param1
         imageList = ArrayList()
+        Toast.makeText(requireContext(), param1!!, Toast.LENGTH_SHORT).show()
         setUpImageList(param3!!)
 
         sliderView = binding.imageSlider
@@ -70,8 +73,9 @@ class PicturesFragment : Fragment() {
     }
 
     private fun setUpImageList(imageNumber: Int) {
-        for (i in 1..imageNumber) {
-            storage = FirebaseStorage.getInstance().reference.child("Images/"+param2+"$i.jpg")
+        for (i in 0..imageNumber) {
+            storage = FirebaseStorage.getInstance().reference.child("Images/"+param2+"$i")
+            Toast.makeText(requireContext(), "Images/"+param2+"$i", Toast.LENGTH_SHORT).show()
             val localFile = File.createTempFile("tempImage", "jpg")
             storage.getFile(localFile).addOnSuccessListener {
                 val bitmap = BitmapFactory.decodeFile(localFile.absolutePath)

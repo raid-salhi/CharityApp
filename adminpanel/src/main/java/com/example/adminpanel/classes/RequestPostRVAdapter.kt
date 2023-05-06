@@ -8,14 +8,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.adminpanel.PostClickHandler
 import com.example.adminpanel.R
 
-class PostRVAdapter(private val mList: List<Post>, private val clickHandler: PostClickHandler) : RecyclerView.Adapter<PostRVAdapter.ViewHolder>() {
+class RequestPostRVAdapter (private val mList: List<Post>, private val clickHandler: PostClickHandler) : RecyclerView.Adapter<RequestPostRVAdapter.ViewHolder>() {
 
     // create new views
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         // inflates the card_view_design view
         // that is used to hold list item
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_card, parent, false)
+            .inflate(R.layout.request_item_card, parent, false)
 
         return ViewHolder(view)
     }
@@ -24,64 +24,39 @@ class PostRVAdapter(private val mList: List<Post>, private val clickHandler: Pos
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
         val ItemsViewModel = mList[position]
-        if (ItemsViewModel.amountReached >= ItemsViewModel.amountGoal){
-            ItemsViewModel.amountReached =  ItemsViewModel.amountGoal
-            holder.deleteButton.isEnabled = false
-            holder.itemView.isEnabled = false
+        if (ItemsViewModel.amountReached >= ItemsViewModel.amountGoal) {
+            ItemsViewModel.amountReached = ItemsViewModel.amountGoal
         }
         holder.title.text = ItemsViewModel.title
         holder.category.text = ItemsViewModel.category
         holder.location.text = ItemsViewModel.location
         holder.amountReached.text = ItemsViewModel.getAmountReachedPer()
-        holder.progressBar.max= ItemsViewModel.amountGoal
-        holder.progressBar.progress= ItemsViewModel.amountReached
+        holder.progressBar.max = ItemsViewModel.amountGoal
+        holder.progressBar.progress = ItemsViewModel.amountReached
 
-        setCustomizationBySubCategory(holder,ItemsViewModel)
+        setCustomizationBySubCategory(holder, ItemsViewModel)
 
-        holder.deleteButton.setOnClickListener {
+        holder.acceptButton.setOnClickListener {
+            clickHandler.acceptPostItem(ItemsViewModel)
+        }
+        holder.declineButton.setOnClickListener {
             clickHandler.deletePostItem(ItemsViewModel)
-        }
-        holder.callButton.setOnClickListener {
-            clickHandler.callAction(ItemsViewModel)
-        }
-        holder.editButton.setOnClickListener {
-            clickHandler.editPostItem(ItemsViewModel)
         }
 
     }
 
-    private fun setCustomizationBySubCategory(holder: ViewHolder, ItemsViewModel:Post) {
+    private fun setCustomizationBySubCategory(holder: ViewHolder, ItemsViewModel: Post) {
 
-        if (ItemsViewModel.category == "Donation") {
-            holder.amountGoalIcon.visibility = View.GONE
-            holder.iconCategory.setImageResource(R.drawable.outline_payments_24)
-            holder.amountGoal.text = ItemsViewModel.getAmountGoalCash()
-        }
-
-        else if (ItemsViewModel.subCategory == "Volunteer") {
-            holder.amountGoalIcon.setImageResource(R.drawable.person)
-            holder.iconCategory.setImageResource(R.drawable.outline_construction_24)
-            holder.amountGoal.text = ItemsViewModel.getAmountGoalString()
-
-        }
-        else if (ItemsViewModel.subCategory == "Project Donation") {
-            holder.amountGoalIcon.visibility = View.GONE
-            holder.iconCategory.setImageResource(R.drawable.outline_construction_24)
-            holder.amountGoal.text = ItemsViewModel.getAmountGoalCash()
-        }
-
-        else if (ItemsViewModel.subCategory == "Blood Donation") {
+        if(ItemsViewModel.subCategory == "Blood Donation") {
             holder.amountGoalIcon.setImageResource(R.drawable.person)
             holder.iconCategory.setImageResource(R.drawable.outline_bloodtype_24)
             holder.amountGoal.text = ItemsViewModel.getAmountGoalString()
-        }
-        else if (ItemsViewModel.subCategory == "Medicine") {
+        } else if (ItemsViewModel.subCategory == "Medicine") {
             holder.amountGoalIcon.setImageResource(R.drawable.pill)
             holder.iconCategory.setImageResource(R.drawable.pill_outline)
             holder.amountGoal.text = ItemsViewModel.getAmountGoalString()
 
-        }
-        else if (ItemsViewModel.subCategory == "Surgical Aids") {
+        } else if (ItemsViewModel.subCategory == "Surgical Aids") {
             holder.amountGoalIcon.visibility = View.GONE
             holder.iconCategory.setImageResource(R.drawable.surgical)
             holder.amountGoal.text = ItemsViewModel.getAmountGoalCash()
@@ -94,7 +69,8 @@ class PostRVAdapter(private val mList: List<Post>, private val clickHandler: Pos
     }
 
     // Holds the views for adding it to image and text
-    inner class ViewHolder(ItemView: View) : RecyclerView.ViewHolder(ItemView), View.OnClickListener {
+    inner class ViewHolder(ItemView: View) : RecyclerView.ViewHolder(ItemView),
+        View.OnClickListener {
         val iconCategory: ImageView = itemView.findViewById(R.id.categoryIcon)
         val title: TextView = itemView.findViewById(R.id.title)
         val category: TextView = itemView.findViewById(R.id.category)
@@ -103,14 +79,15 @@ class PostRVAdapter(private val mList: List<Post>, private val clickHandler: Pos
         val amountGoalIcon: ImageView = itemView.findViewById(R.id.amountGoalIcon)
         val amountReached: TextView = itemView.findViewById(R.id.amountReached)
         val progressBar: ProgressBar = itemView.findViewById(R.id.progressBar)
-        val deleteButton: Button = itemView.findViewById(R.id.deleteButton)
-        val callButton: Button = itemView.findViewById(R.id.callButton)
-        val editButton: Button = itemView.findViewById(R.id.edit)
-        val frame : FrameLayout = itemView.findViewById(R.id.frame)
+        val acceptButton: Button = itemView.findViewById(R.id.accept_btn)
+        val declineButton: Button = itemView.findViewById(R.id.reject_btn)
+        val frame: FrameLayout = itemView.findViewById(R.id.frame)
+
         init {
-            itemView.setOnClickListener (this)
+            itemView.setOnClickListener(this)
 
         }
+
         override fun onClick(v: View?) {
             val currentPost = mList[bindingAdapterPosition]
             clickHandler.clickedPostItem(currentPost)

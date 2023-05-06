@@ -51,7 +51,7 @@ public class EditFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_edit, container, false);
 
         bundle = getArguments();
-        id = bundle.getString("id");
+        id = bundle.getString("pid");
         category = bundle.getString("category");
         db = FirebaseFirestore.getInstance();
         subCategory = view.findViewById(R.id.sub_category);
@@ -71,8 +71,8 @@ public class EditFragment extends Fragment {
                 wilaya.setText((CharSequence) documentSnapshot.get("location"));
                 title.setText((CharSequence) documentSnapshot.get("title"));
                 description.setText((CharSequence) documentSnapshot.get("description"));
-                phone.setText((CharSequence) documentSnapshot.get("contact"));
-                amount.setText((CharSequence) documentSnapshot.get("amountGoal"));
+//                phone.setText((String) documentSnapshot.get("contact"));
+//                amount.setText((String) documentSnapshot.get("amountGoal"));
             }
         });
 
@@ -96,8 +96,8 @@ public class EditFragment extends Fragment {
                    data.put("location", wilaya.getText().toString());
                    data.put("title", title.getText().toString());
                    data.put("description", description.getText().toString());
-                   data.put("contact", phone.getText().toString());
-                   data.put("amountGoal", amount.getText().toString());
+//                   data.put("contact", phone.getText().toString());
+//                   data.put("amountGoal", amount.getText().toString());
 
                    ref.set(data).addOnSuccessListener(new OnSuccessListener<Void>() {
                        @Override

@@ -29,5 +29,10 @@
         android:name="com.example.adminpanel.ProjectsFragment"
         android:label="@string/title_projects"
         tools:layout="@layout/fragment_project" />
+    <fragment
+        android:id="@+id/navigation_edit"
+        android:name="com.example.adminpanel.EditFragment"
+        android:label="Edit"
+        tools:layout="@layout/fragment_edit"/>
 
 </navigation>

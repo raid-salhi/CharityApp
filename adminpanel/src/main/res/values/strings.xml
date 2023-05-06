@@ -16,4 +16,6 @@
     <string name="title_emergency">Emergency</string>
     <string name="title_request">Requests</string>
     <string name="title_projects">Projects</string>
+    <string name="description">Description</string>
+    <string name="title_details">Details</string>
 </resources>

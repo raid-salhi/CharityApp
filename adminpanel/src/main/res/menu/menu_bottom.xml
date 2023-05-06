@@ -9,16 +9,18 @@
         android:icon="@drawable/emergency"
         android:title="Emergency"/>
 
-    <item android:id="@+id/nav_add"
+    <item
+        android:id="@+id/nav_add"
         android:icon="@drawable/add"
-        android:title="add"/>
+        android:title="Add" />
 
     <item android:id="@+id/nav_donate"
         android:icon="@drawable/donate"
         android:title="Donate"/>
 
-    <item android:id="@+id/nav_needhelp"
+    <item
+        android:id="@+id/nav_needhelp"
         android:icon="@drawable/needhelp"
-        android:title="need help"/>
+        android:title="Need Help" />
 
 </menu>

@@ -71,6 +71,7 @@ class AllEmergencyFragment : Fragment(), PostClickHandler {
             "subCategory" to post.subCategory,
             "description" to post.description,
             "contact" to post.contact,
+            "pid" to post.pid,
             "imagesNumber" to post.imagesNumber)
         findNavController().navigate(R.id.navigation_details,bundle)
     }
