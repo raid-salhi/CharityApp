@@ -46,6 +46,9 @@ class PostRVAdapter(private val mList: List<Post>,private val clickHandler: Post
         holder.button.setOnClickListener {
             clickHandler.clickedPostItem(ItemsViewModel)
         }
+        holder.button2.setOnClickListener {
+            clickHandler.clickedPostItem(ItemsViewModel)
+        }
 
     }
 
@@ -105,7 +108,7 @@ class PostRVAdapter(private val mList: List<Post>,private val clickHandler: Post
         val amountReached: TextView = itemView.findViewById(R.id.amountReached)
         val progressBar: ProgressBar = itemView.findViewById(R.id.progressBar)
         val button: Button = itemView.findViewById(R.id.actionButton)
-        val frame :FrameLayout = itemView.findViewById(R.id.frame)
+        val button2: Button = itemView.findViewById(R.id.actionButton2)
         init {
             itemView.setOnClickListener (this)
 

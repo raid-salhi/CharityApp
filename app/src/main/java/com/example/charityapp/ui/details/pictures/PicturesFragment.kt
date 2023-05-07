@@ -75,7 +75,7 @@ class PicturesFragment : Fragment() {
     private fun setUpImageList(imageNumber: Int) {
         for (i in 0..imageNumber) {
             storage = FirebaseStorage.getInstance().reference.child("Images/"+param2+"$i")
-            Toast.makeText(requireContext(), "Images/"+param2+"$i", Toast.LENGTH_SHORT).show()
+           
             val localFile = File.createTempFile("tempImage", "jpg")
             storage.getFile(localFile).addOnSuccessListener {
                 val bitmap = BitmapFactory.decodeFile(localFile.absolutePath)
