@@ -23,6 +23,7 @@ donations or post requests for help.
 - Ability to add , delete , edit any post.
 - Ability to approve or reject needhelp requests.
 - Ability to call the needhelp requester.
+
 - Browsing and surfing different posts and accessing their details.
 ## Tech used
 - Programing language : Java , Kotlin.
@@ -30,9 +31,12 @@ donations or post requests for help.
 - Libraries : Coil , Image slider , Material Design 3 .... etc
 ## Screenshots
 
-<img src="https://github.com/raid-salhi/CharityApp/assets/118809948/cc943986-1e9f-4db3-bea1-4b469f06a8af" width="350"/>
-<img src="https://github.com/raid-salhi/CharityApp/assets/118809948/b0bb739f-64fc-47d2-83ac-9889bf978a27" width="300"/>
-<img src="https://github.com/raid-salhi/CharityApp/assets/118809948/9d03fb87-518f-4868-bf55-896519a411d1" width="300"/>
-<img src="https://github.com/raid-salhi/CharityApp/assets/118809948/d69777b7-d2d9-490a-89fe-b7508548c9d1" width="300"/>
+
+
+<img src="https://github.com/raid-salhi/CharityApp/assets/118809948/c54f1520-0b55-4623-8fab-b9a60825a7f9" width="300"/>
+<img src="https://github.com/raid-salhi/CharityApp/assets/118809948/45970358-3f01-462a-817e-75bad378573f" width="300"/>
+<img src="https://github.com/raid-salhi/CharityApp/assets/118809948/d16a157b-2397-4e0d-bfd8-01edc0c3120e" width="300"/>
+<img src="https://github.com/raid-salhi/CharityApp/assets/118809948/186f5306-ac73-403c-8686-c3df163d3e3e" width="300"/>
+
 
 
