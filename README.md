@@ -1,5 +1,4 @@
-# CharityApp
- This is a charityApp
+
 # I7ssan Projects
 It contains two main apps :
 #### I7ssan App
@@ -37,10 +36,4 @@ donations or post requests for help.
 <img src="https://github.com/raid-salhi/CharityApp/assets/118809948/9d03fb87-518f-4868-bf55-896519a411d1" width="300"/>
 <img src="https://github.com/raid-salhi/CharityApp/assets/118809948/d69777b7-d2d9-490a-89fe-b7508548c9d1" width="300"/>
 
-
-**Table of Contents**
-
-[TOCM]
-
-[TOC]
 
