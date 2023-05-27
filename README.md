@@ -30,7 +30,7 @@ donations or post requests for help.
 - Libraries : Coil , Image slider , Material Design 3 .... etc
 ## Screenshots
 
-<img src="https://github.com/raid-salhi/CharityApp/assets/118809948/cc943986-1e9f-4db3-bea1-4b469f06a8af" width="300"/>
+<img src="https://github.com/raid-salhi/CharityApp/assets/118809948/cc943986-1e9f-4db3-bea1-4b469f06a8af" width="350"/>
 <img src="https://github.com/raid-salhi/CharityApp/assets/118809948/b0bb739f-64fc-47d2-83ac-9889bf978a27" width="300"/>
 <img src="https://github.com/raid-salhi/CharityApp/assets/118809948/9d03fb87-518f-4868-bf55-896519a411d1" width="300"/>
 <img src="https://github.com/raid-salhi/CharityApp/assets/118809948/d69777b7-d2d9-490a-89fe-b7508548c9d1" width="300"/>
