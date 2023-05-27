@@ -9,8 +9,7 @@ It is also an Android application that allows admin to handle need help requests
 
 ## Features
 #### I7ssan App
-- Ability to donate blood by finding and registering for blood 
-donation drives near the user's location.
+- Ability to donate blood by choosing any possible blood match and connect with the one who is in need.
 - Ability to donate medicines and raise funds for surgical 
 procedures by selecting the appropriate emergency party.
 - Ability to post requests for urgent help through the "Need Help" 
